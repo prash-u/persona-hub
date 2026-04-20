@@ -20,6 +20,21 @@ npm install
 npm run dev
 ```
 
+## Codespaces
+
+This repo is intended to run in GitHub Codespaces with Node 20.9.0 or newer.
+
+If a Codespace was created before the lockfile or runtime config was updated, rebuild the container or run:
+
+```bash
+rm -rf node_modules package-lock.json
+nvm install 20.9.0
+nvm use 20.9.0
+npm install
+```
+
+This repository uses `npm install` in Codespaces because the previous issue was an out-of-sync `package-lock.json`. Once the lockfile is fresh and committed, installs should be stable across Linux and macOS.
+
 ## Customizing
 
 Almost everything you need to personalize lives in two files:

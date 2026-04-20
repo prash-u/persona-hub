@@ -36,6 +36,34 @@ export default function Contact() {
     }
   };
 
+  const contactLinks = [
+    {
+      icon: <Mail className="h-4 w-4" />,
+      title: "Email",
+      value: siteConfig.author.email,
+      href: `mailto:${siteConfig.author.email}`,
+    },
+    {
+      icon: <Github className="h-4 w-4" />,
+      title: "GitHub",
+      value: siteConfig.social.github.replace(/^https?:\/\//, ""),
+      href: siteConfig.social.github,
+    },
+    siteConfig.social.linkedin
+      ? {
+          icon: <Linkedin className="h-4 w-4" />,
+          title: "LinkedIn",
+          value: siteConfig.social.linkedin.replace(/^https?:\/\//, ""),
+          href: siteConfig.social.linkedin,
+        }
+      : null,
+  ].filter(Boolean) as Array<{
+    icon: React.ReactNode;
+    title: string;
+    value: string;
+    href: string;
+  }>;
+
   return (
     <>
       <Seo
@@ -107,24 +135,15 @@ export default function Contact() {
           </form>
 
           <aside className="space-y-3">
-            <ContactCard
-              icon={<Mail className="h-4 w-4" />}
-              title="Email"
-              value={siteConfig.author.email}
-              href={`mailto:${siteConfig.author.email}`}
-            />
-            <ContactCard
-              icon={<Github className="h-4 w-4" />}
-              title="GitHub"
-              value={siteConfig.social.github.replace(/^https?:\/\//, "")}
-              href={siteConfig.social.github}
-            />
-            <ContactCard
-              icon={<Linkedin className="h-4 w-4" />}
-              title="LinkedIn"
-              value={siteConfig.social.linkedin.replace(/^https?:\/\//, "")}
-              href={siteConfig.social.linkedin}
-            />
+            {contactLinks.map((item) => (
+              <ContactCard
+                key={item.title}
+                icon={item.icon}
+                title={item.title}
+                value={item.value}
+                href={item.href}
+              />
+            ))}
 
             <div className="mt-6 rounded-2xl border border-dashed border-border p-6">
               <div className="text-mono text-xs uppercase tracking-widest text-muted-foreground">

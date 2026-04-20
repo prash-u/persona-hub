@@ -9,30 +9,30 @@ export type NavItem = {
 };
 
 export const siteConfig = {
-  name: "Your Name",
-  shortName: "Portfolio",
-  title: "Your Name — Researcher, Engineer, Maker",
-  tagline: "Biotech · Machine learning · Visual systems",
+  name: "Prashant Umrekar",
+  shortName: "Prashant",
+  title: "Prashant Umrekar — Biotech, ML, and Visual Systems",
+  tagline: "Bioprocessing · computer vision · scientific systems",
   description:
-    "Selected work in computational biology, machine learning, and creative engineering — a working notebook of experiments, instruments, and images.",
+    "Selected work across bioprocessing, computer vision, biotech operations, and interactive systems for scientific work.",
   url: import.meta.env.VITE_SITE_URL || "https://example.com",
   basePath: import.meta.env.VITE_BASE_PATH || "/",
   locale: "en_US",
 
   author: {
-    name: "Your Name",
-    role: "Researcher & Engineer",
-    location: "Somewhere on Earth",
-    email: "hello@example.com",
-    bio: "I build at the intersection of biological signals, machine learning, and visual computing — turning messy data into useful instruments.",
+    name: "Prashant Umrekar",
+    role: "Bioprocessing Scientist",
+    location: "London, United Kingdom",
+    email: "p.umrekar@gmail.com",
+    bio: "Biotech professional with GMP-compliant manufacturing experience across gene therapy, diagnostic development, and scientific tooling, with a growing focus on browser-based computer vision and practical lab systems.",
   },
 
   social: {
-    github: "https://github.com/yourhandle",
-    linkedin: "https://www.linkedin.com/in/yourhandle",
-    twitter: "https://twitter.com/yourhandle",
-    instagram: "https://instagram.com/yourhandle",
-    scholar: "https://scholar.google.com/",
+    github: "https://github.com/prash-u",
+    linkedin: "",
+    twitter: "",
+    instagram: "",
+    scholar: "",
   },
 
   nav: [
@@ -60,7 +60,7 @@ export const siteConfig = {
   cv: {
     pdfPath: "/cv.pdf",
     summary:
-      "Researcher and engineer working across computational biology, machine learning, and visual computing. I prototype instruments, analysis pipelines, and interactive systems for scientific and creative work.",
+      "Biotech professional with GMP-compliant manufacturing experience supporting gene therapy programmes, upstream production, deviation management, and cross-functional delivery across Manufacturing, Quality, MSAT, and Supply Chain.",
   },
 } as const;
 

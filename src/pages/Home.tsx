@@ -38,7 +38,7 @@ export default function Home() {
     jobTitle: siteConfig.author.role,
     description: siteConfig.author.bio,
     url: siteConfig.url,
-    sameAs: Object.values(siteConfig.social),
+    sameAs: Object.values(siteConfig.social).filter(Boolean),
   };
 
   return (

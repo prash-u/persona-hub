@@ -8,7 +8,6 @@
       "tags": ["EEG", "Signal processing", "WebGL", "TypeScript"],
       "category": "biotech",
       "year": 2024,
-      "github": "https://github.com/yourhandle/eeg-viz",
       "featured": true,
       "status": "research"
     },
@@ -19,18 +18,16 @@
       "tags": ["Genomics", "RNA-seq", "Snakemake", "Python"],
       "category": "biotech",
       "year": 2023,
-      "github": "https://github.com/yourhandle/gene-expression",
       "status": "research"
     },
     {
       "id": "live-detect",
-      "title": "Live Video Object Detection",
-      "summary": "Edge-deployed YOLO variant for low-latency detection on lab microscopy video, with annotation export.",
-      "tags": ["Computer vision", "YOLO", "Edge", "PyTorch"],
+      "title": "Live Vision Model Lab",
+      "summary": "In-browser webcam demo with a live model switcher for COCO-SSD, MobileNet, Handpose, and Face API.",
+      "tags": ["Computer vision", "Webcam", "TensorFlow.js", "Browser ML"],
       "category": "biotech",
-      "year": 2024,
-      "github": "https://github.com/yourhandle/live-detect",
-      "demo": "https://example.com/demo",
+      "year": 2026,
+      "demo": "/biotech#live-detection-lab",
       "featured": true,
       "status": "live"
     }

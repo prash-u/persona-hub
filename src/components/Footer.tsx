@@ -8,7 +8,7 @@ const socials = [
   { href: siteConfig.social.twitter, icon: Twitter, label: "Twitter" },
   { href: siteConfig.social.instagram, icon: Instagram, label: "Instagram" },
   { href: `mailto:${siteConfig.author.email}`, icon: Mail, label: "Email" },
-];
+].filter((item) => Boolean(item.href));
 
 export function Footer() {
   return (

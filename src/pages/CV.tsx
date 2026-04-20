@@ -4,52 +4,93 @@ import { SectionHeader } from "@/components/SectionHeader";
 import { siteConfig } from "@/config/site";
 
 const skills = [
-  { group: "Languages", items: ["TypeScript", "Python", "Rust", "SQL", "R"] },
-  { group: "ML / Data", items: ["PyTorch", "scikit-learn", "JAX", "Polars", "DuckDB"] },
-  { group: "Bio", items: ["Snakemake", "Bioconductor", "Genomics", "EEG / signals"] },
-  { group: "Frontend", items: ["React", "Vite", "WebGL", "Three.js", "Tailwind"] },
-  { group: "Infra", items: ["Docker", "GitHub Actions", "Cloudflare", "Postgres"] },
+  {
+    group: "Bioprocessing",
+    items: [
+      "AAV upstream processing",
+      "Mammalian cell culture",
+      "Media & buffer preparation",
+      "Single-use bioreactors",
+    ],
+  },
+  {
+    group: "Quality & GMP",
+    items: ["Batch records", "Deviations", "CAPAs", "Technology transfer", "Inspection readiness"],
+  },
+  {
+    group: "Diagnostics & assays",
+    items: ["PCR", "RT-qPCR", "LAMP", "Method validation", "Gene expression analysis"],
+  },
+  {
+    group: "Operations",
+    items: ["BOM/BMR alignment", "Material traceability", "Cross-functional coordination", "Risk assessment"],
+  },
+  {
+    group: "Systems",
+    items: ["NetSuite", "UPMRs", "MIAFs", "IOQs", "Excel / VBA"],
+  },
 ];
 
 const experience = [
   {
-    role: "Senior Engineer / Researcher",
-    org: "Independent",
-    period: "2023 — present",
+    role: "Bioprocessing Scientist",
+    org: "MeiraGTx, London",
+    period: "December 2022 — Present",
     bullets: [
-      "Built EEG visualization tooling adopted in a small research consortium.",
-      "Shipped a TCG card-recognition PWA used by collectors weekly.",
-      "Contributed open-source pipelines for bulk RNA-seq analysis.",
+      "Execute upstream processing for AAV vector production, including cell expansion, media and buffer preparation, and bioreactor monitoring in a cGMP environment.",
+      "Lead process deviation investigations with root cause analysis and CAPAs to improve process robustness and compliance.",
+      "Support technology transfer activities for clinical-scale viral vector production and maintain continuous inspection readiness.",
+      "Led a cross-functional BOM and BMR alignment project to improve material traceability, reduce waste, and ensure accurate allocation.",
     ],
   },
   {
-    role: "Computer Vision Engineer",
-    org: "Previous Lab / Company",
-    period: "2021 — 2023",
+    role: "Senior Scientist",
+    org: "Cignpost Diagnostics, London",
+    period: "October 2021 — May 2022",
     bullets: [
-      "Edge-deployed detection models on lab microscopy streams.",
-      "Owned data labeling, training, and evaluation lifecycle.",
+      "Directed laboratory operations with GLP and GMP compliance while implementing quality management systems.",
+      "Spearheaded PCR-based diagnostic testing and supervised analytical method development and validation.",
+      "Trained and mentored laboratory staff on SOPs, quality control, and troubleshooting protocols.",
     ],
   },
   {
-    role: "Research Assistant",
-    org: "University",
-    period: "2019 — 2021",
+    role: "Scientist / Laboratory Technologist",
+    org: "Halo, London",
+    period: "November 2020 — October 2021",
     bullets: [
-      "Statistical modeling for behavioral and neural datasets.",
-      "Co-authored two conference posters and one journal paper.",
+      "Developed and optimised molecular diagnostic assays, including RT-qPCR and LAMP workflows.",
+      "Led R&D initiatives to improve throughput and diagnostic accuracy.",
+      "Maintained compliance with regulatory standards through SOP development and controlled process execution.",
+    ],
+  },
+  {
+    role: "Pharmacy MDU Chemotherapy Coordinator",
+    org: "The Royal Marsden NHS, London",
+    period: "December 2014 — July 2015",
+    bullets: [
+      "Coordinated chemotherapy preparation and delivery workflows across multiple hospital sites.",
+      "Created Excel and Visual Basic tools that reduced manual errors and improved operational efficiency.",
     ],
   },
 ];
 
 const education = [
-  { degree: "MSc, Computational Biology", org: "University", year: "2021" },
-  { degree: "BSc, Computer Science", org: "University", year: "2019" },
+  {
+    degree: "MSc, Nanotechnology and Regenerative Medicine",
+    org: "University College London",
+    year: "2020",
+  },
+  {
+    degree: "BSc, Biochemistry",
+    org: "Queen Mary University of London",
+    year: "2019",
+  },
 ];
 
-const awards = [
-  "Best Demo, Indie Hackers Showcase — 2024",
-  "Open Source Maintainer Grant — 2023",
+const credentials = [
+  "First Aid and Mental Health First Aid certification",
+  "Experience supporting FDA and EMA inspection readiness, audits, and quality systems",
+  "Hands-on work across manufacturing, quality, MSAT, and supply chain interfaces",
 ];
 
 export default function CV() {
@@ -140,11 +181,11 @@ export default function CV() {
 
             <div>
               <div className="text-mono mb-4 text-xs uppercase tracking-widest text-accent">
-                Awards
+                Highlights
               </div>
               <ul className="space-y-2 text-sm text-muted-foreground">
-                {awards.map((a) => (
-                  <li key={a}>· {a}</li>
+                {credentials.map((item) => (
+                  <li key={item}>· {item}</li>
                 ))}
               </ul>
             </div>

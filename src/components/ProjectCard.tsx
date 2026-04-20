@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { ArrowUpRight, Github, ExternalLink } from "lucide-react";
+import { Link } from "react-router-dom";
 import type { ProjectItem } from "@/lib/types";
 import { cn } from "@/lib/utils";
 
@@ -17,9 +18,18 @@ const statusLabel: Record<NonNullable<ProjectItem["status"]>, string> = {
 
 export function ProjectCard({ project, index = 0 }: ProjectCardProps) {
   const primary = project.demo || project.github || project.paper;
+  const isInternal = primary ? /^(\/|#)/.test(primary) : false;
 
   const Wrapper = ({ children }: { children: React.ReactNode }) =>
-    primary ? (
+    primary && isInternal ? (
+      <Link
+        to={primary}
+        className="block focus:outline-none"
+        aria-label={`${project.title} — open project`}
+      >
+        {children}
+      </Link>
+    ) : primary ? (
       <a
         href={primary}
         target="_blank"

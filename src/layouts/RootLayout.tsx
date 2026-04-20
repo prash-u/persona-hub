@@ -1,6 +1,7 @@
 import { Outlet } from "react-router-dom";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
+import { HashScrollManager } from "@/components/HashScrollManager";
 import { PwaUpdateToast } from "@/components/PwaUpdateToast";
 
 export function RootLayout() {
@@ -10,6 +11,7 @@ export function RootLayout() {
         Skip to content
       </a>
       <Navbar />
+      <HashScrollManager />
       <main id="main" className="flex-1 pt-16 md:pt-20">
         <Outlet />
       </main>

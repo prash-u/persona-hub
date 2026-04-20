@@ -2,22 +2,24 @@
   "biotech": [
     {
       "id": "eeg-viz",
-      "title": "Real-time EEG Visualization",
+      "title": "EEG Stream Visualizer",
       "summary": "Browser-based viewer for streamed EEG data with adjustable spectral bands and event markers.",
       "description": "A WebGL-based viewer that ingests OpenBCI / LSL streams, applies filtering and band-power decomposition in a Web Worker, and renders multi-channel traces at 60 fps.",
       "tags": ["EEG", "Signal processing", "WebGL", "TypeScript"],
       "category": "biotech",
       "year": 2024,
+      "github": "https://github.com/prash-u/eeg-stream-visualizer",
       "featured": true,
       "status": "research"
     },
     {
       "id": "gene-expression",
-      "title": "Gene Expression Profiling Pipeline",
+      "title": "Gene Expression QC Pipeline",
       "summary": "Reproducible Snakemake pipeline for bulk RNA-seq differential expression with QC and report generation.",
       "tags": ["Genomics", "RNA-seq", "Snakemake", "Python"],
       "category": "biotech",
       "year": 2023,
+      "github": "https://github.com/prash-u/gene-expression-qc-pipeline",
       "status": "research"
     },
     {
@@ -27,6 +29,7 @@
       "tags": ["Computer vision", "Webcam", "TensorFlow.js", "Browser ML"],
       "category": "biotech",
       "year": 2026,
+      "github": "https://github.com/prash-u/live-vision-model-lab",
       "demo": "/biotech#live-detection-lab",
       "featured": true,
       "status": "live"

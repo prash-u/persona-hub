@@ -1,8 +1,3 @@
-/**
- * Single source of truth for site branding, navigation, SEO, and links.
- * Update this file to personalize the portfolio.
- */
-
 export type NavItem = {
   label: string;
   href: string;
@@ -11,57 +6,82 @@ export type NavItem = {
 export const siteConfig = {
   name: "Prashant Umrekar",
   shortName: "Prashant",
-  title: "Prashant Umrekar — Biotech, ML, and Visual Systems",
-  tagline: "Bioprocessing · computer vision · scientific systems",
+  role: "Bioprocessing Scientist · Builder of scientific tools",
+  tagline:
+    "A portfolio spanning bioprocessing, browser-based computer vision, and scientific product thinking.",
   description:
-    "Selected work across bioprocessing, computer vision, biotech operations, and interactive systems for scientific work.",
-  url: import.meta.env.VITE_SITE_URL || "https://example.com",
-  basePath: import.meta.env.VITE_BASE_PATH || "/",
-  locale: "en_US",
-
-  author: {
-    name: "Prashant Umrekar",
-    role: "Bioprocessing Scientist",
-    location: "London, United Kingdom",
-    email: "p.umrekar@gmail.com",
-    bio: "Biotech professional with GMP-compliant manufacturing experience across gene therapy, diagnostic development, and scientific tooling, with a growing focus on browser-based computer vision and practical lab systems.",
-  },
-
-  social: {
-    github: "https://github.com/prash-u",
-    linkedin: "",
-    twitter: "",
-    instagram: "",
-    scholar: "",
-  },
-
-  nav: [
-    { label: "Work", href: "/projects" },
-    { label: "Biotech", href: "/biotech" },
+    "Premium portfolio PWA showcasing biotech projects, browser-based ML prototypes, and a digital CV anchored in real manufacturing and diagnostics experience.",
+  email: "p.umrekar@gmail.com",
+  siteUrl: import.meta.env.VITE_SITE_URL ?? "https://example.github.io/persona-hub/",
+  basePath: import.meta.env.VITE_BASE_PATH ?? "/",
+  location: "London, United Kingdom",
+  socialLinks: [
+    {
+      label: "GitHub",
+      href: "https://github.com/prash-u"
+    },
+    {
+      label: "Email",
+      href: "mailto:p.umrekar@gmail.com"
+    }
+  ],
+  navigation: [
+    { label: "Home", href: "/" },
     { label: "Photos", href: "/photos" },
+    { label: "Biotech", href: "/biotech" },
+    { label: "Projects", href: "/projects" },
     { label: "CV", href: "/cv" },
-    { label: "Contact", href: "/contact" },
-  ] as NavItem[],
-
+    { label: "Contact", href: "/contact" }
+  ] satisfies NavItem[],
+  repo: {
+    owner: "prash-u",
+    name: "persona-hub"
+  },
   seo: {
-    keywords: [
-      "portfolio",
-      "biotech",
-      "machine learning",
-      "computational biology",
-      "EEG",
-      "computer vision",
-      "creative engineering",
-    ],
-    ogImage: "/og-image.jpg",
-    twitterHandle: "@yourhandle",
+    image: "/seo/og-default.svg",
+    twitterHandle: ""
   },
-
-  cv: {
-    pdfPath: "/cv.pdf",
-    summary:
-      "Biotech professional with GMP-compliant manufacturing experience supporting gene therapy programmes, upstream production, deviation management, and cross-functional delivery across Manufacturing, Quality, MSAT, and Supply Chain.",
-  },
+  person: {
+    jobTitle: "Bioprocessing Scientist",
+    sameAs: [
+      "https://github.com/prash-u"
+    ]
+  }
 } as const;
 
-export type SiteConfig = typeof siteConfig;
+export const routeMeta = {
+  "/": {
+    title: "Portfolio",
+    description:
+      "A premium personal hub for bioprocessing, biotech tooling, and browser-based ML experiments."
+  },
+  "/photos": {
+    title: "Photo & Videography",
+    description:
+      "Editorial media gallery featuring curated stills, reels, and visual experiments."
+  },
+  "/biotech": {
+    title: "Biotech Projects",
+    description:
+      "A curated directory of standalone biotech repositories, experiments, and scientific prototypes."
+  },
+  "/projects": {
+    title: "Projects",
+    description:
+      "Selected ML/AI, software, and creative technical work with links to repositories and demos."
+  },
+  "/cv": {
+    title: "CV",
+    description:
+      "Digital CV summary aligned to the February 2026 CV with experience, education, and key skills."
+  },
+  "/contact": {
+    title: "Contact",
+    description:
+      "Professional contact page with direct links and a static-host friendly contact form."
+  },
+  "/offline": {
+    title: "Offline",
+    description: "Offline fallback experience for the portfolio PWA."
+  }
+} as const;

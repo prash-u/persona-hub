@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-label="Portfolio icon">
+  <defs>
+    <linearGradient id="g" x1="0%" x2="100%" y1="0%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8" />
+      <stop offset="100%" stop-color="#14b8a6" />
+    </linearGradient>
+  </defs>
+  <rect width="256" height="256" rx="56" fill="#08111f" />
+  <circle cx="78" cy="82" r="28" fill="url(#g)" opacity="0.9" />
+  <path d="M64 168c18-36 48-58 84-58 25 0 46 9 64 26" fill="none" stroke="url(#g)" stroke-linecap="round" stroke-width="22" />
+  <path d="M92 188V94h20l34 53V94h20v94h-20l-34-53v53z" fill="#f8fafc" />
+</svg>

@@ -1,22 +1,51 @@
-import raw from "@/data/projects.json";
-import type { ProjectsData, ProjectItem, MediaItem } from "./types";
+import { z } from "zod";
+import rawProjects from "@/data/projects.json";
+import rawGithubMeta from "@/data/github.generated.json";
+import type { GitHubEnrichedProject, ProjectCollection } from "@/lib/types";
 
-const data = raw as ProjectsData;
+const projectSchema = z.object({
+  title: z.string(),
+  summary: z.string(),
+  tags: z.array(z.string()),
+  repoUrl: z.string().optional(),
+  demoUrl: z.string().optional(),
+  thumb: z.string(),
+  featured: z.boolean().optional(),
+  type: z.enum(["biotech", "mlai", "other", "media"]),
+  year: z.number(),
+  githubRepo: z.string().optional()
+});
 
-export const projects = data;
+const mediaSchema = projectSchema.extend({
+  mediaKind: z.enum(["image", "video"]),
+  category: z.enum(["portrait", "travel", "reel", "lab", "editorial"])
+});
 
-export const allProjects: ProjectItem[] = [
-  ...data.biotech,
-  ...data.mlai,
-  ...data.other,
-];
+const collectionSchema = z.object({
+  biotech: z.array(projectSchema),
+  mlai: z.array(projectSchema),
+  other: z.array(projectSchema),
+  media: z.array(mediaSchema)
+});
 
-export const featuredProjects: ProjectItem[] = allProjects.filter((p) => p.featured);
+const githubMetaSchema = z.array(
+  z.object({
+    repo: z.string(),
+    stars: z.number().optional(),
+    topics: z.array(z.string()).optional(),
+    homepage: z.string().optional()
+  })
+);
 
-export const photos: MediaItem[] = data.media.filter((m) => m.kind === "photo");
-export const videos: MediaItem[] = data.media.filter((m) => m.kind === "video");
-export const allMedia: MediaItem[] = data.media;
+export const projects = collectionSchema.parse(rawProjects) as ProjectCollection;
+export const githubMeta = githubMetaSchema.parse(
+  rawGithubMeta
+) as GitHubEnrichedProject[];
 
-export const photoCategories = Array.from(
-  new Set(data.media.map((m) => m.category))
-).sort();
+export function getGithubMeta(repo?: string) {
+  if (!repo) {
+    return undefined;
+  }
+
+  return githubMeta.find((item) => item.repo === repo);
+}

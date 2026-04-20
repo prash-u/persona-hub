@@ -1,19 +1,19 @@
-# Portfolio — React + Vite PWA
+# Premium Portfolio PWA
 
-A premium personal portfolio scaffold: editorial design system, route-split pages, offline-capable PWA, and SEO out of the box. Static-host friendly — no backend required.
+A premium React + TypeScript portfolio PWA designed as a polished personal hub, digital CV, and directory to standalone biotech, ML/AI, and creative projects.
 
 ## Stack
 
-- **React 18 + TypeScript + Vite**
-- **Tailwind CSS** with a custom semantic design system (HSL tokens, light/dark)
-- **shadcn/ui** primitives (used selectively)
-- **React Router** with route-based code splitting
-- **Framer Motion** for tasteful, reduced-motion-aware animation
-- **React Helmet Async** for per-route SEO
-- **PhotoSwipe** lightbox for the photo gallery
-- **Hand-rolled service worker + Web App Manifest** (offline + install)
+- React + TypeScript + Vite
+- Tailwind CSS
+- shadcn/ui-style source components
+- React Router
+- Framer Motion
+- Vite Plugin PWA
+- React Helmet Async
+- ESLint + Prettier
 
-## Quick start
+## Local setup
 
 ```bash
 npm install
@@ -24,7 +24,7 @@ npm run dev
 
 This repo is intended to run in GitHub Codespaces with Node 20.9.0 or newer.
 
-If a Codespace was created before the lockfile or runtime config was updated, rebuild the container or run:
+If you opened the repository before these config files were present, rebuild the container or run:
 
 ```bash
 rm -rf node_modules package-lock.json
@@ -33,58 +33,74 @@ nvm use 20.9.0
 npm install
 ```
 
-This repository uses `npm install` in Codespaces because the previous issue was an out-of-sync `package-lock.json`. Once the lockfile is fresh and committed, installs should be stable across Linux and macOS.
+If `node_modules` or `dist` were previously committed from macOS, remove them from git tracking once and recommit:
 
-## Customizing
+```bash
+git rm -r --cached node_modules dist
+git add .gitignore package-lock.json
+git commit -m "Fix repo for cross-platform installs"
+```
 
-Almost everything you need to personalize lives in two files:
+## Scripts
 
-- `src/config/site.ts` — name, bio, social links, navigation, SEO defaults, CV PDF path
-- `src/data/projects.json` — biotech, ML/AI, other, and media entries
-
-Replace `public/cv.pdf`, `public/og-image.jpg`, and `public/icons/*.png` with your own assets.
+- `npm run dev` starts the Vite dev server
+- `npm run build` prepares optional GitHub metadata, builds the app, and writes `dist/sitemap.xml`
+- `npm run preview` previews the production build
+- `npm run lint` runs ESLint
+- `npm run format` formats the project with Prettier
 
 ## Environment variables
 
-| Variable | Purpose | Default |
-| --- | --- | --- |
-| `VITE_SITE_URL` | Canonical URL used in SEO / sitemap | `https://example.com` |
-| `VITE_BASE_PATH` | Vite `base` for subpath hosting (GitHub Pages project sites) | `/` |
-| `VITE_GH_TOKEN` | Optional — reserved for future build-time GitHub repo enrichment | — |
+Create a `.env` file if you need custom deployment settings:
 
-## Deployment
+```bash
+VITE_BASE_PATH=/PWACV/
+VITE_SITE_URL=https://your-username.github.io/PWACV/
+VITE_GH_TOKEN=github_personal_access_token_optional
+```
 
-### GitHub Pages (default)
+- `VITE_BASE_PATH`: use `/` for root hosting or `/<repo-name>/` for GitHub Pages project hosting
+- `VITE_SITE_URL`: canonical public URL used for SEO metadata and sitemap generation
+- `VITE_GH_TOKEN`: optional. If present at build time, project cards are enriched with GitHub stars, topics, and homepage metadata. If absent, the site works entirely from local JSON data.
 
-A workflow is included at `.github/workflows/deploy.yml`.
+## Content customization
+
+- Edit site-wide branding and links in `src/config/site.ts`
+- Update project and media data in `src/data/projects.json`
+- Replace placeholder media in `public/media`
+- Replace the placeholder CV at `public/cv.pdf`
+- Replace the default social/SEO image at `public/seo/og-default.svg`
+
+## Free deployment
+
+### GitHub Pages
 
 1. Push the repo to GitHub.
-2. **Settings → Pages → Build and deployment → Source: GitHub Actions.**
-3. If hosting at `https://<user>.github.io/<repo>/`, set repo variable `VITE_BASE_PATH=/<repo>/`.
-4. Set `VITE_SITE_URL` to your canonical URL.
+2. In repository settings, enable GitHub Pages and set the source to GitHub Actions.
+3. Update:
+   - `src/config/site.ts`
+   - `.github/workflows/deploy-pages.yml`
+   - repository secret `VITE_GH_TOKEN` if you want optional GitHub enrichment
+4. Push to `main` and the workflow deploys `dist`.
 
-The workflow builds, copies `index.html` → `404.html` for SPA fallback, and deploys `dist/`.
+If your repository name changes from `PWACV`, update `VITE_BASE_PATH` in the workflow accordingly.
 
 ### Netlify
 
-- Build: `npm run build` — Publish: `dist`
-- Add `public/_redirects` containing: `/* /index.html 200`
-- Forms work out of the box (`<form data-netlify="true" name="contact">` is wired).
+- Build command: `npm run build`
+- Publish directory: `dist`
+- Add `VITE_SITE_URL` in Netlify environment variables
+- Netlify Forms support is already wired into the contact form markup
 
 ### Vercel
 
-- Framework preset: **Vite** — Build: `npm run build`, Output: `dist`. SPA rewrites are automatic.
+- Framework preset: `Vite`
+- Build command: `npm run build`
+- Output directory: `dist`
+- Add `VITE_SITE_URL` and optional `VITE_GH_TOKEN`
 
-## PWA notes
+## Notes
 
-The service worker is **disabled in development and inside iframes / Lovable preview hosts** (see `src/lib/registerSW.ts`). Install prompt and offline fallback only activate on your published site.
-
-## Accessibility
-
-- Skip-to-content link, semantic landmarks
-- Visible `:focus-visible` rings, keyboard-safe menu and gallery
-- `prefers-reduced-motion` honored globally
-
-## License
-
-MIT — make it yours.
+- The portfolio is intentionally a curated directory to standalone repositories and demos rather than a single repo dump.
+- The app is static-host friendly and client-side first, with PWA caching for improved offline resilience and privacy.
+- The visual system is designed to look strong with placeholder content, so the first pass is already presentation-ready.

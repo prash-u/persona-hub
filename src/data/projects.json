@@ -1,164 +1,138 @@
 {
   "biotech": [
     {
-      "id": "eeg-viz",
       "title": "EEG Stream Visualizer",
-      "summary": "Browser-based viewer for streamed EEG data with adjustable spectral bands and event markers.",
-      "description": "A WebGL-based viewer that ingests OpenBCI / LSL streams, applies filtering and band-power decomposition in a Web Worker, and renders multi-channel traces at 60 fps.",
-      "tags": ["EEG", "Signal processing", "WebGL", "TypeScript"],
-      "category": "biotech",
-      "year": 2024,
-      "github": "https://github.com/prash-u/eeg-stream-visualizer",
+      "summary": "A browser-based EEG streaming viewer concept for inspecting traces, event markers, and future spectral overlays in a research-friendly interface.",
+      "tags": ["EEG", "Signal processing", "Browser UI", "WebGL"],
+      "repoUrl": "https://github.com/prash-u/eeg-stream-visualizer",
+      "thumb": "/media/biotech-eeg.svg",
       "featured": true,
-      "status": "research"
-    },
-    {
-      "id": "gene-expression",
-      "title": "Gene Expression QC Pipeline",
-      "summary": "Reproducible Snakemake pipeline for bulk RNA-seq differential expression with QC and report generation.",
-      "tags": ["Genomics", "RNA-seq", "Snakemake", "Python"],
-      "category": "biotech",
-      "year": 2023,
-      "github": "https://github.com/prash-u/gene-expression-qc-pipeline",
-      "status": "research"
-    },
-    {
-      "id": "live-detect",
-      "title": "Live Vision Model Lab",
-      "summary": "In-browser webcam demo with a live model switcher for COCO-SSD, MobileNet, Handpose, and Face API.",
-      "tags": ["Computer vision", "Webcam", "TensorFlow.js", "Browser ML"],
-      "category": "biotech",
+      "type": "biotech",
       "year": 2026,
-      "github": "https://github.com/prash-u/live-vision-model-lab",
-      "demo": "/biotech#live-detection-lab",
+      "githubRepo": "prash-u/eeg-stream-visualizer"
+    },
+    {
+      "title": "Gene Expression QC Pipeline",
+      "summary": "A reproducible genomics pipeline scaffold for bulk RNA-seq quality control, expression profiling, and downstream reporting.",
+      "tags": ["Genomics", "RNA-seq", "Snakemake", "Bioinformatics"],
+      "repoUrl": "https://github.com/prash-u/gene-expression-qc-pipeline",
+      "thumb": "/media/biotech-gene.svg",
       "featured": true,
-      "status": "live"
+      "type": "biotech",
+      "year": 2025,
+      "githubRepo": "prash-u/gene-expression-qc-pipeline"
+    },
+    {
+      "title": "Live Vision Model Lab",
+      "summary": "A real-time browser-based computer vision demo with switchable COCO-SSD, MobileNet, Handpose, and Face API inference.",
+      "tags": ["TensorFlow.js", "Computer vision", "Realtime", "Browser ML"],
+      "repoUrl": "https://github.com/prash-u/live-vision-model-lab",
+      "demoUrl": "/biotech#live-detection-lab",
+      "thumb": "/media/biotech-vision.svg",
+      "featured": true,
+      "type": "biotech",
+      "year": 2026,
+      "githubRepo": "prash-u/live-vision-model-lab"
     }
   ],
   "mlai": [
     {
-      "id": "pokemon-scanner",
-      "title": "Pokémon Card Scanner & Deck Valuation",
-      "summary": "Phone-camera card recognition with set/edition disambiguation and a live market-value index for full decks.",
-      "description": "Combines a fine-tuned image embedding model with a fuzzy text matcher over a TCG database. Includes an offline-first PWA frontend.",
-      "tags": ["Computer vision", "Embeddings", "PWA", "Pricing"],
-      "category": "mlai",
-      "year": 2025,
-      "github": "https://github.com/yourhandle/pokemon-scanner",
-      "demo": "https://example.com/pokemon",
+      "title": "Protein Signal Classifier",
+      "summary": "An experimental ML workflow for classifying signal patterns across biological datasets with emphasis on lightweight inference and interpretable outputs.",
+      "tags": ["ML", "Classification", "Interpretability", "Python"],
+      "repoUrl": "https://github.com/your-username/protein-signal-classifier",
+      "thumb": "/media/project-protein.svg",
       "featured": true,
-      "status": "live"
+      "type": "mlai",
+      "year": 2026,
+      "githubRepo": "your-username/protein-signal-classifier"
     },
     {
-      "id": "doc-rag",
-      "title": "Document RAG for Research Notebooks",
-      "summary": "Local-first retrieval over markdown/notebook corpora with citation-grounded answers.",
-      "tags": ["RAG", "LLM", "Local-first", "Embeddings"],
-      "category": "mlai",
-      "year": 2024,
-      "github": "https://github.com/yourhandle/doc-rag",
-      "status": "wip"
+      "title": "Clinical Note Summariser",
+      "summary": "A privacy-aware summarisation interface for transforming dense research or healthcare notes into concise structured summaries directly in the browser.",
+      "tags": ["NLP", "Privacy", "Healthcare", "LLM UX"],
+      "repoUrl": "https://github.com/your-username/clinical-note-summariser",
+      "thumb": "/media/project-notes.svg",
+      "type": "mlai",
+      "year": 2025,
+      "githubRepo": "your-username/clinical-note-summariser"
     }
   ],
   "other": [
     {
-      "id": "generative-prints",
-      "title": "Generative Print Series",
-      "summary": "A small SDF-based plotter pipeline producing pen-plotter-ready SVGs from procedural fields.",
-      "tags": ["Creative coding", "SVG", "Plotter"],
-      "category": "other",
-      "year": 2024,
-      "github": "https://github.com/yourhandle/generative-prints",
-      "status": "live"
+      "title": "Pokemon Card Scanner & Deck Valuation",
+      "summary": "A polished client-side scanner and valuation helper for identifying Pokemon cards, estimating deck value, and comparing collection snapshots over time.",
+      "tags": ["Computer Vision", "Collectors", "OCR", "PWA"],
+      "repoUrl": "https://github.com/your-username/pokemon-card-scanner",
+      "demoUrl": "https://pokemon-scanner.example.com",
+      "thumb": "/media/project-pokemon.svg",
+      "featured": true,
+      "type": "other",
+      "year": 2026,
+      "githubRepo": "your-username/pokemon-card-scanner"
     },
     {
-      "id": "lab-notebook",
-      "title": "Personal Lab Notebook",
-      "summary": "A markdown-first research notebook with embedded plots, slash commands, and timeline navigation.",
-      "tags": ["Tools", "Markdown", "Research"],
-      "category": "other",
-      "year": 2023,
-      "github": "https://github.com/yourhandle/lab-notebook",
-      "status": "archive"
+      "title": "Offline Privacy Workbench",
+      "summary": "A browser-based toolkit exploring what serious client-side software can feel like when privacy, local inference, and offline-first operation are the defaults.",
+      "tags": ["Offline First", "Privacy", "Edge UX", "TypeScript"],
+      "repoUrl": "https://github.com/your-username/offline-privacy-workbench",
+      "thumb": "/media/project-privacy.svg",
+      "type": "other",
+      "year": 2025,
+      "githubRepo": "your-username/offline-privacy-workbench"
+    },
+    {
+      "title": "Research Media Archive",
+      "summary": "A compact media archiving system for linking experiments, visuals, and lab documentation into a cohesive narrative record.",
+      "tags": ["Archival", "Media", "Design Systems", "Documentation"],
+      "repoUrl": "https://github.com/your-username/research-media-archive",
+      "thumb": "/media/project-archive.svg",
+      "type": "other",
+      "year": 2024,
+      "githubRepo": "your-username/research-media-archive"
     }
   ],
   "media": [
     {
-      "id": "m1",
-      "kind": "photo",
-      "title": "Tide pool, low light",
-      "category": "Nature",
+      "title": "Monochrome Lab Portrait",
+      "summary": "A quiet portrait study with minimal palette and directional light.",
+      "tags": ["Portrait", "Lighting"],
+      "thumb": "/media/photo-portrait.svg",
+      "type": "media",
+      "year": 2026,
+      "mediaKind": "image",
+      "category": "portrait"
+    },
+    {
+      "title": "Field Notes in Motion",
+      "summary": "A short-form reel style sequence balancing travel atmosphere with research textures.",
+      "tags": ["Video", "Reel"],
+      "thumb": "/media/video-reel.svg",
+      "demoUrl": "https://example.com/reel",
+      "type": "media",
+      "year": 2025,
+      "mediaKind": "video",
+      "category": "reel"
+    },
+    {
+      "title": "Coastal Editorial Frame",
+      "summary": "Editorial still with cinematic color treatment and spatial negative space.",
+      "tags": ["Travel", "Editorial"],
+      "thumb": "/media/photo-coastal.svg",
+      "type": "media",
+      "year": 2025,
+      "mediaKind": "image",
+      "category": "travel"
+    },
+    {
+      "title": "Lab Bench Sequence",
+      "summary": "Textural frames from biotech experimentation and instrumentation details.",
+      "tags": ["Lab", "Process"],
+      "thumb": "/media/photo-lab.svg",
+      "type": "media",
       "year": 2024,
-      "src": "https://images.unsplash.com/photo-1505142468610-359e7d316be0?auto=format&fit=crop&w=1600&q=80",
-      "thumbnail": "https://images.unsplash.com/photo-1505142468610-359e7d316be0?auto=format&fit=crop&w=600&q=70",
-      "width": 1600,
-      "height": 1067
-    },
-    {
-      "id": "m2",
-      "kind": "photo",
-      "title": "Spectral lines, kitchen",
-      "category": "Still life",
-      "year": 2024,
-      "src": "https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1600&q=80",
-      "thumbnail": "https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=600&q=70",
-      "width": 1600,
-      "height": 1067
-    },
-    {
-      "id": "m3",
-      "kind": "photo",
-      "title": "Concrete, morning",
-      "category": "Architecture",
-      "year": 2023,
-      "src": "https://images.unsplash.com/photo-1487958449943-2429e8be8625?auto=format&fit=crop&w=1600&q=80",
-      "thumbnail": "https://images.unsplash.com/photo-1487958449943-2429e8be8625?auto=format&fit=crop&w=600&q=70",
-      "width": 1600,
-      "height": 1067
-    },
-    {
-      "id": "m4",
-      "kind": "photo",
-      "title": "Field study",
-      "category": "Nature",
-      "year": 2023,
-      "src": "https://images.unsplash.com/photo-1426604966848-d7adac402bff?auto=format&fit=crop&w=1600&q=80",
-      "thumbnail": "https://images.unsplash.com/photo-1426604966848-d7adac402bff?auto=format&fit=crop&w=600&q=70",
-      "width": 1600,
-      "height": 1067
-    },
-    {
-      "id": "m5",
-      "kind": "photo",
-      "title": "Late dialogue",
-      "category": "Portrait",
-      "year": 2024,
-      "src": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=1600&q=80",
-      "thumbnail": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=600&q=70",
-      "width": 1600,
-      "height": 1067
-    },
-    {
-      "id": "m6",
-      "kind": "photo",
-      "title": "Interior weather",
-      "category": "Architecture",
-      "year": 2024,
-      "src": "https://images.unsplash.com/photo-1496307653780-42ee777d4833?auto=format&fit=crop&w=1600&q=80",
-      "thumbnail": "https://images.unsplash.com/photo-1496307653780-42ee777d4833?auto=format&fit=crop&w=600&q=70",
-      "width": 1600,
-      "height": 1067
-    },
-    {
-      "id": "m7",
-      "kind": "video",
-      "title": "Field recording — coastline",
-      "category": "Motion",
-      "year": 2024,
-      "src": "https://example.com/videos/coast.mp4",
-      "poster": "https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=1600&q=80",
-      "thumbnail": "https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=600&q=70",
-      "external": "https://example.com/coast"
+      "mediaKind": "image",
+      "category": "lab"
     }
   ]
 }

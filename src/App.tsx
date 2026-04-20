@@ -1,54 +1,50 @@
 import { lazy, Suspense } from "react";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { HelmetProvider } from "react-helmet-async";
-import { Toaster as Sonner } from "@/components/ui/sonner";
-import { Toaster } from "@/components/ui/toaster";
-import { TooltipProvider } from "@/components/ui/tooltip";
-import { RootLayout } from "@/layouts/RootLayout";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { RootLayout } from "@/layouts/root-layout";
 
-const Home = lazy(() => import("./pages/Home"));
-const Photos = lazy(() => import("./pages/Photos"));
-const Biotech = lazy(() => import("./pages/Biotech"));
-const Projects = lazy(() => import("./pages/Projects"));
-const CV = lazy(() => import("./pages/CV"));
-const Contact = lazy(() => import("./pages/Contact"));
-const NotFound = lazy(() => import("./pages/NotFound"));
+const HomePage = lazy(() => import("@/pages/home-page"));
+const PhotosPage = lazy(() => import("@/pages/photos-page"));
+const BiotechPage = lazy(() => import("@/pages/biotech-page"));
+const ProjectsPage = lazy(() => import("@/pages/projects-page"));
+const CvPage = lazy(() => import("@/pages/cv-page"));
+const ContactPage = lazy(() => import("@/pages/contact-page"));
+const OfflinePage = lazy(() => import("@/pages/offline-page"));
+const NotFoundPage = lazy(() => import("@/pages/not-found-page"));
 
-const queryClient = new QueryClient();
-
-const PageFallback = () => (
-  <div className="container-editorial py-24">
-    <div className="h-6 w-32 animate-pulse rounded bg-muted" />
-    <div className="mt-6 h-12 w-3/4 animate-pulse rounded bg-muted" />
-    <div className="mt-4 h-5 w-1/2 animate-pulse rounded bg-muted" />
-  </div>
+const router = createBrowserRouter(
+  [
+    {
+      path: "/",
+      element: <RootLayout />,
+      children: [
+        { index: true, element: <HomePage /> },
+        { path: "photos", element: <PhotosPage /> },
+        { path: "biotech", element: <BiotechPage /> },
+        { path: "projects", element: <ProjectsPage /> },
+        { path: "cv", element: <CvPage /> },
+        { path: "contact", element: <ContactPage /> },
+        { path: "offline", element: <OfflinePage /> },
+        { path: "*", element: <NotFoundPage /> }
+      ]
+    }
+  ],
+  {
+    basename: import.meta.env.BASE_URL
+  }
 );
 
-const App = () => (
-  <HelmetProvider>
-    <QueryClientProvider client={queryClient}>
-      <TooltipProvider>
-        <Toaster />
-        <Sonner />
-        <BrowserRouter>
-          <Suspense fallback={<PageFallback />}>
-            <Routes>
-              <Route element={<RootLayout />}>
-                <Route path="/" element={<Home />} />
-                <Route path="/photos" element={<Photos />} />
-                <Route path="/biotech" element={<Biotech />} />
-                <Route path="/projects" element={<Projects />} />
-                <Route path="/cv" element={<CV />} />
-                <Route path="/contact" element={<Contact />} />
-                <Route path="*" element={<NotFound />} />
-              </Route>
-            </Routes>
-          </Suspense>
-        </BrowserRouter>
-      </TooltipProvider>
-    </QueryClientProvider>
-  </HelmetProvider>
-);
-
-export default App;
+export default function App() {
+  return (
+    <Suspense
+      fallback={
+        <div className="shell flex min-h-screen items-center justify-center py-20">
+          <div className="surface px-6 py-4 text-sm text-muted-foreground">
+            Loading portfolio…
+          </div>
+        </div>
+      }
+    >
+      <RouterProvider router={router} />
+    </Suspense>
+  );
+}

@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Redirecting…</title>
+    <script>
+      const baseSegments = window.location.pathname.split("/").filter(Boolean);
+      const repoBase = baseSegments.length > 0 ? `/${baseSegments[0]}` : "";
+      const redirectPath = window.location.pathname.replace(repoBase, "");
+      sessionStorage.setItem("redirect-path", redirectPath + window.location.search + window.location.hash);
+      window.location.replace(`${repoBase}/`);
+    </script>
+  </head>
+  <body></body>
+  </html>

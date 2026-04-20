@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900">
+  <defs>
+    <linearGradient id="a" x1="0%" x2="100%" y1="0%" y2="100%">
+      <stop offset="0%" stop-color="#07121d" />
+      <stop offset="100%" stop-color="#113149" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="900" fill="url(#a)" />
+  <g opacity="0.25" stroke="#67e8f9">
+    <path d="M120 420h120l70-90 90 210 90-280 100 360 90-260 90 150h130" fill="none" stroke-width="8" />
+    <path d="M120 520h960" stroke-width="1.5" />
+  </g>
+  <circle cx="830" cy="360" r="176" fill="#0b1d2d" stroke="#22d3ee" stroke-width="3" />
+  <path d="M767 286c58-30 147-10 191 56" fill="none" stroke="#5eead4" stroke-width="6" />
+  <path d="M721 395c36-96 143-151 244-100" fill="none" stroke="#bae6fd" stroke-width="4" />
+  <text x="88" y="120" fill="#f8fafc" font-family="Manrope, sans-serif" font-size="26" letter-spacing="5">EEG VISUALISATION</text>
+</svg>

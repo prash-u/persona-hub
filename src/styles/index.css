@@ -1,0 +1,116 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 213 44% 97%;
+    --foreground: 222 39% 12%;
+    --card: 0 0% 100%;
+    --card-foreground: 222 39% 12%;
+    --primary: 220 54% 19%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 205 32% 92%;
+    --secondary-foreground: 219 34% 22%;
+    --muted: 210 26% 93%;
+    --muted-foreground: 217 15% 40%;
+    --accent: 184 50% 36%;
+    --accent-foreground: 210 40% 98%;
+    --border: 214 29% 84%;
+    --input: 214 29% 84%;
+    --ring: 185 67% 38%;
+    color-scheme: light;
+  }
+
+  .dark {
+    --background: 220 42% 8%;
+    --foreground: 210 40% 96%;
+    --card: 218 36% 11%;
+    --card-foreground: 210 40% 96%;
+    --primary: 191 69% 62%;
+    --primary-foreground: 222 47% 11%;
+    --secondary: 219 28% 18%;
+    --secondary-foreground: 210 40% 96%;
+    --muted: 219 21% 16%;
+    --muted-foreground: 216 15% 72%;
+    --accent: 186 73% 51%;
+    --accent-foreground: 222 47% 11%;
+    --border: 218 22% 22%;
+    --input: 218 22% 22%;
+    --ring: 186 73% 51%;
+    color-scheme: dark;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    background-image:
+      radial-gradient(circle at top left, rgba(56, 189, 248, 0.12), transparent 34%),
+      radial-gradient(circle at top right, rgba(20, 184, 166, 0.1), transparent 28%),
+      linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(245, 248, 252, 0.88));
+    min-height: 100vh;
+  }
+
+  .dark body {
+    background-image:
+      radial-gradient(circle at top left, rgba(34, 211, 238, 0.14), transparent 34%),
+      radial-gradient(circle at top right, rgba(45, 212, 191, 0.1), transparent 30%),
+      linear-gradient(180deg, rgba(5, 10, 20, 0.98), rgba(8, 15, 28, 1));
+  }
+
+  a {
+    @apply transition-colors duration-200;
+  }
+
+  ::selection {
+    background: rgba(13, 148, 136, 0.18);
+  }
+}
+
+@layer components {
+  .shell {
+    @apply container relative;
+  }
+
+  .surface {
+    @apply bg-card/75 border-border/70 rounded-[28px] border backdrop-blur-xl;
+  }
+
+  .section-space {
+    @apply py-14 md:py-20;
+  }
+
+  .eyebrow {
+    @apply text-muted-foreground text-xs font-semibold uppercase tracking-[0.24em];
+  }
+
+  .display-title {
+    @apply font-display text-4xl leading-tight md:text-6xl lg:text-7xl;
+  }
+
+  .focus-ring {
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

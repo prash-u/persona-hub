@@ -61,6 +61,27 @@ export function WorkDirectory({ mode }: WorkDirectoryProps) {
     archive: biotechProjects.filter((project) => project.id !== neuralPulse?.id)
   };
 
+  const neuralSystems = biotechProjects.filter((project) =>
+    ["neural-pulse"].includes(project.id)
+  );
+  const molecularSystems = biotechProjects.filter((project) =>
+    [
+      "biobody-insights",
+      "gene-expression-profiling",
+      "bioinformatics-sequence-alignment-tool",
+      "microarray-data-processor"
+    ].includes(project.id)
+  );
+  const labSystems = biotechProjects.filter((project) =>
+    [
+      "virtual-lab-simulator",
+      "drug-interaction-predictor",
+      "environmental-impact-calculator",
+      "disease-outbreak-prediction-model",
+      "tissue-engineering-visualization"
+    ].includes(project.id)
+  );
+
   const groupedPersonal = {
     featured: personalProjects.filter((project) => project.featured && project.id !== personalLead?.id),
     archive: personalProjects.filter((project) => project.id !== personalLead?.id)
@@ -146,8 +167,8 @@ export function WorkDirectory({ mode }: WorkDirectoryProps) {
     <section id="biotech" className="space-y-8">
       <SectionHeader
         eyebrow="BioTech & scientific projects"
-        title="Interactive scientific tools grounded in bioprocessing, diagnostics, signal workflows, and bioinformatics."
-        description="These projects are presented as extensions of scientific practice rather than generic software demos. Neural Pulse is the EEG flagship, and AI-style methods appear only where they support a scientific workflow."
+        title="An ecosystem of scientific tools organised around neural, molecular, and lab systems."
+        description="This is the strongest framing for the portfolio: not a list of disconnected ideas, but a set of interface-led tools solving different classes of scientific problems."
       />
       {neuralPulse ? (
         <EditorialProjectSpotlight
@@ -156,14 +177,27 @@ export function WorkDirectory({ mode }: WorkDirectoryProps) {
           title="Neural Pulse · EEG visualisation"
         />
       ) : null}
-      {groupedBiotech.featured.length ? (
+      {neuralSystems.length > 1 ? (
         <EditorialProjectList
-          items={groupedBiotech.featured}
-          heading="Supporting scientific tools"
-          description="Gene expression, systems biology, training interfaces, and additional scientific concepts that reinforce the biotech profile."
+          items={neuralSystems.slice(1)}
+          heading="Neural systems"
+          description="Signal-first tools focused on EEG review, filtering, interpretation, and neural visualisation."
         />
       ) : null}
-      <ProjectGrid items={groupedBiotech.archive} />
+      {molecularSystems.length ? (
+        <EditorialProjectList
+          items={molecularSystems}
+          heading="Molecular systems"
+          description="Gene expression, biological mapping, sequence comparison, and matrix-style analysis concepts built around interpretable data workflows."
+        />
+      ) : null}
+      {labSystems.length ? (
+        <EditorialProjectList
+          items={labSystems}
+          heading="Lab systems"
+          description="Training, workflow, and operational concepts shaped by real exposure to GMP, diagnostics, documentation, and process thinking."
+        />
+      ) : null}
     </section>
   );
 

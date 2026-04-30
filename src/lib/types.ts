@@ -10,6 +10,11 @@ export type ProjectItem = {
   longDescription: string;
   tags: string[];
   methods: string[];
+  problem?: string;
+  approach?: string;
+  limitations?: string;
+  nextSteps?: string;
+  credibility?: string[];
   highlights?: string[];
   repoUrl?: string;
   demoUrl?: string;

@@ -72,6 +72,22 @@ export function EditorialProjectSpotlight({
               ))}
             </div>
           ) : null}
+          {(item.problem || item.approach) ? (
+            <div className="grid gap-3 md:grid-cols-2">
+              {item.problem ? (
+                <div className="rounded-[22px] border border-border/70 bg-background/60 px-4 py-4">
+                  <p className="eyebrow">Problem</p>
+                  <p className="mt-3 text-sm leading-6">{item.problem}</p>
+                </div>
+              ) : null}
+              {item.approach ? (
+                <div className="rounded-[22px] border border-border/70 bg-background/60 px-4 py-4">
+                  <p className="eyebrow">Approach</p>
+                  <p className="mt-3 text-sm leading-6">{item.approach}</p>
+                </div>
+              ) : null}
+            </div>
+          ) : null}
           <div className="grid gap-3 md:grid-cols-2">
             {item.methods.slice(0, 4).map((method) => (
               <div
@@ -82,6 +98,18 @@ export function EditorialProjectSpotlight({
               </div>
             ))}
           </div>
+          {item.credibility?.length ? (
+            <div className="flex flex-wrap gap-2">
+              {item.credibility.map((itemValue) => (
+                <span
+                  key={itemValue}
+                  className="rounded-full border border-cyan-400/20 bg-cyan-400/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.22em] text-cyan-700 dark:text-cyan-200"
+                >
+                  {itemValue}
+                </span>
+              ))}
+            </div>
+          ) : null}
           <TagBadges tags={item.tags} />
           <div className="flex flex-wrap gap-3 pt-2">
             {item.repoUrl ? (
@@ -106,6 +134,22 @@ export function EditorialProjectSpotlight({
             <p className="text-muted-foreground text-sm leading-6">
               {item.privacyNote}
             </p>
+          ) : null}
+          {(item.limitations || item.nextSteps) ? (
+            <div className="grid gap-3 md:grid-cols-2">
+              {item.limitations ? (
+                <div className="rounded-[22px] border border-border/70 bg-background/60 px-4 py-4">
+                  <p className="eyebrow">Limitations</p>
+                  <p className="mt-3 text-sm leading-6">{item.limitations}</p>
+                </div>
+              ) : null}
+              {item.nextSteps ? (
+                <div className="rounded-[22px] border border-border/70 bg-background/60 px-4 py-4">
+                  <p className="eyebrow">Next steps</p>
+                  <p className="mt-3 text-sm leading-6">{item.nextSteps}</p>
+                </div>
+              ) : null}
+            </div>
           ) : null}
         </div>
       </div>

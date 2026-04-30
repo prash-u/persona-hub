@@ -48,6 +48,13 @@ const featuredProjects = [
   )
 ];
 
+const credibilityStats = [
+  { value: "10+", label: "Scientific tool concepts" },
+  { value: "GMP / GLP / GCP", label: "Regulated environment literacy" },
+  { value: "Client-side first", label: "Privacy-aware workflow bias" },
+  { value: "Biotech + data", label: "Cross-domain practice" }
+];
+
 export default function HomePage() {
   const reelItem = projects.media.find((item) => item.category === "reel") ?? projects.media[0];
 
@@ -61,6 +68,15 @@ export default function HomePage() {
       <HeroSection />
       <div className="shell section-space space-y-16">
         <InstallPrompt />
+
+        <section className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+          {credibilityStats.map((item) => (
+            <article key={item.label} className="surface p-5">
+              <p className="font-display text-2xl">{item.value}</p>
+              <p className="text-muted-foreground mt-2 text-sm leading-6">{item.label}</p>
+            </article>
+          ))}
+        </section>
 
         <section className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
           <div className="surface p-6 md:p-8">
@@ -130,8 +146,8 @@ export default function HomePage() {
         <section className="space-y-8">
           <SectionHeader
             eyebrow="Featured projects"
-            title="A selective project strip focused on scientific credibility and useful interfaces."
-            description="These highlighted projects are the strongest entry points into the portfolio and are framed honestly as live tools, prototypes, or planned concepts."
+            title="A selective project strip anchored by one flagship and a few high-signal supporting tools."
+            description="Top portfolios do not show everything at once. This shortlist prioritises the projects that best communicate scientific thinking, technical taste, and product direction."
           />
           <ProjectGrid items={featuredProjects} />
         </section>

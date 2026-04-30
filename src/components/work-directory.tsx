@@ -201,10 +201,10 @@ export function WorkDirectory({ mode }: WorkDirectoryProps) {
             <div className="max-w-3xl">
               <p className="eyebrow">Project view</p>
               <p className="mt-3 text-lg font-semibold">
-                This project hub prioritises clarity, scientific credibility, and honest maturity labels.
+                This project hub is selective on purpose.
               </p>
               <p className="text-muted-foreground mt-3 text-sm leading-7">
-                Live and prototype work links outward to dedicated apps or repositories. Planned tools stay clearly marked as concepts so the portfolio remains trustworthy.
+                Live and prototype work link outward to dedicated apps or repositories. Planned tools stay clearly marked as concepts so the portfolio stays trustworthy rather than feeling padded.
               </p>
             </div>
             <div className="flex flex-wrap gap-2 rounded-full border border-border/60 bg-background/65 p-1.5">

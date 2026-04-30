@@ -14,6 +14,7 @@ export const siteConfig = {
   email: "p.umrekar@gmail.com",
   siteUrl: import.meta.env.VITE_SITE_URL ?? "https://prash-u.github.io/persona-hub/",
   basePath: import.meta.env.VITE_BASE_PATH ?? "/",
+  profileImage: "https://github.com/prash-u.png?size=400",
   location: "London, United Kingdom",
   socialLinks: [
     {
@@ -32,8 +33,7 @@ export const siteConfig = {
   navigation: [
     { label: "Home", href: "/" },
     { label: "Projects", href: "/projects" },
-    { label: "Experience", href: "/#experience" },
-    { label: "Skills", href: "/#skills" },
+    { label: "CV", href: "/cv" },
     { label: "Contact", href: "/contact" }
   ] satisfies NavItem[],
   repo: {

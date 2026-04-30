@@ -16,56 +16,6 @@ const aboutPoints = [
   "Former NHS Pharmacy MDU Chemotherapy Coordinator at The Royal Marsden with cross-site coordination, SOP development, Excel macro automation, and a strong patient-safety culture."
 ];
 
-const experience = [
-  {
-    role: "Bioprocessing Scientist",
-    company: "MeiraGTx",
-    period: "Dec 2022 — Present",
-    copy: "Upstream viral processing, cell culture, bioreactor workflows, solution preparation, Material Impact Assessments, Quality Events, and GMP compliance."
-  },
-  {
-    role: "Senior Scientist",
-    company: "Cignpost Diagnostics",
-    period: "Oct 2021 — May 2022",
-    copy: "PCR and diagnostic workflows, analytical method development, staff training, and quality-led lab operations."
-  },
-  {
-    role: "Scientist / Laboratory Technologist",
-    company: "Halo",
-    period: "Nov 2020 — Oct 2021",
-    copy: "RT-qPCR, LAMP, DNA extraction, screening workflows, documentation, and process optimisation."
-  },
-  {
-    role: "Pharmacy MDU Chemotherapy Coordinator",
-    company: "The Royal Marsden NHS",
-    period: "Dec 2014 — Jul 2015",
-    copy: "Cross-site coordination, SOP development, ordering and invoicing workflows, and Visual Basic macro automation."
-  }
-];
-
-const skillGroups = [
-  {
-    title: "Lab",
-    items: ["Bioprocessing", "Viral vector upstream processing", "Cell culture", "Bioreactor workflows", "Solution preparation"]
-  },
-  {
-    title: "Quality",
-    items: ["GMP / GLP / GCP", "Quality Events", "Material Impact Assessments", "SOP writing", "QC / QA"]
-  },
-  {
-    title: "Molecular",
-    items: ["PCR", "RT-qPCR", "LAMP", "DNA extraction", "Gene expression analysis"]
-  },
-  {
-    title: "Data",
-    items: ["EEG data processing", "Large dataset analysis", "Bioinformatics", "Process optimisation"]
-  },
-  {
-    title: "Engineering",
-    items: ["Python", "Visual Basic", "3D printing in biology", "Tissue engineering", "Client-side scientific tools"]
-  }
-];
-
 const education = [
   {
     title: "UCL — MSc Nanotechnology and Regenerative Medicine",
@@ -99,6 +49,8 @@ const featuredProjects = [
 ];
 
 export default function HomePage() {
+  const reelItem = projects.media.find((item) => item.category === "reel") ?? projects.media[0];
+
   return (
     <>
       <Seo
@@ -136,24 +88,41 @@ export default function HomePage() {
               </Button>
             </div>
           </div>
-          <div className="surface grid gap-4 p-6 md:p-8">
-            <div>
-              <p className="eyebrow">Current position</p>
-              <h3 className="mt-3 text-2xl font-semibold">MeiraGTx · Old Street / London</h3>
-              <p className="text-muted-foreground mt-3 text-sm leading-7">
-                Bioprocessing Scientist working across upstream viral processing, GMP systems, and cross-functional manufacturing support.
-              </p>
+          <div className="surface grid gap-5 overflow-hidden p-6 md:p-8">
+            <div className="flex items-center gap-4">
+              <img
+                src={siteConfig.profileImage}
+                alt="Prashant Umrekar profile portrait"
+                className="size-20 rounded-[24px] object-cover ring-1 ring-border/70"
+              />
+              <div>
+                <p className="eyebrow">About me</p>
+                <h3 className="mt-2 text-2xl font-semibold">Scientist first. Builder by extension.</h3>
+              </div>
             </div>
-            <div>
-              <p className="eyebrow">Degrees</p>
-              <p className="mt-3 text-sm font-semibold">MSc Nanotechnology and Regenerative Medicine · UCL</p>
-              <p className="mt-2 text-sm font-semibold">BSc Biochemistry · Queen Mary University of London</p>
+            <p className="text-muted-foreground text-sm leading-7">
+              The personal side of the site is there to add texture, not noise. Visual work, experimental tools, and browser-based ideas live here as supporting signals around the main biotech identity.
+            </p>
+            <div className="overflow-hidden rounded-[24px] border border-border/70">
+              <img
+                src={reelItem?.image}
+                alt={reelItem?.title ?? "Instagram reel showcase preview"}
+                className="h-48 w-full object-cover"
+              />
             </div>
-            <div>
-              <p className="eyebrow">Scientific methods</p>
-              <p className="text-muted-foreground mt-3 text-sm leading-7">
-                Viral vector processing, PCR / RT-qPCR / LAMP, gene expression, EEG workflows, bioinformatics, and quality-led scientific operations.
-              </p>
+            <div className="flex flex-wrap gap-3">
+              <Button onClick={() => (window.location.href = withBasePath("/photos"))}>
+                Open visual showcase
+              </Button>
+              {reelItem?.demoUrl ? (
+                <Button
+                  variant="outline"
+                  onClick={() => window.open(reelItem.demoUrl, "_blank", "noopener,noreferrer")}
+                >
+                  Open reel
+                  <ExternalLink className="size-4" aria-hidden="true" />
+                </Button>
+              ) : null}
             </div>
           </div>
         </section>
@@ -192,51 +161,6 @@ export default function HomePage() {
           <ProjectGrid items={projects.personal} />
         </section>
 
-        <section id="experience" className="space-y-8">
-          <SectionHeader
-            eyebrow="Experience snapshot"
-            title="A concise timeline of regulated biotech, diagnostics, and NHS experience."
-            description="Compact role cards keep the career story readable on-screen while the downloadable CV carries the fuller detail."
-          />
-          <div className="grid gap-4 lg:grid-cols-2">
-            {experience.map((item) => (
-              <article key={`${item.company}-${item.role}`} className="surface p-6">
-                <p className="eyebrow">{item.period}</p>
-                <h3 className="mt-3 text-xl font-semibold">{item.company}</h3>
-                <p className="mt-1 text-sm font-semibold text-cyan-700 dark:text-cyan-300">{item.role}</p>
-                <p className="text-muted-foreground mt-3 text-sm leading-7">{item.copy}</p>
-              </article>
-            ))}
-          </div>
-        </section>
-
-        <section id="skills" className="space-y-8">
-          <SectionHeader
-            eyebrow="Skills & technical stack"
-            title="Grouped around lab practice, quality systems, molecular workflows, data work, and engineering."
-            description="The emphasis stays on scientific work first, with coding and automation presented as tools that extend that practice."
-          />
-          <div className="grid gap-4 lg:grid-cols-2 xl:grid-cols-5">
-            {skillGroups.map((group) => (
-              <article key={group.title} className="surface p-5">
-                <h3 className="text-sm font-semibold uppercase tracking-[0.18em] text-muted-foreground">
-                  {group.title}
-                </h3>
-                <div className="mt-4 flex flex-wrap gap-2">
-                  {group.items.map((item) => (
-                    <span
-                      key={item}
-                      className="rounded-full border border-border/70 bg-background/70 px-3 py-1 text-xs font-medium"
-                    >
-                      {item}
-                    </span>
-                  ))}
-                </div>
-              </article>
-            ))}
-          </div>
-        </section>
-
         <section className="space-y-8">
           <SectionHeader
             eyebrow="Education"
@@ -255,13 +179,14 @@ export default function HomePage() {
 
         <section className="surface flex flex-col gap-6 p-6 md:flex-row md:items-center md:justify-between">
           <div>
-            <p className="eyebrow">Contact & links</p>
-            <h2 className="mt-3 text-2xl font-semibold">Open the project hub, CV, or contact route from here.</h2>
+            <p className="eyebrow">CV & contact</p>
+            <h2 className="mt-3 text-2xl font-semibold">Experience and skills stay in the CV where they belong.</h2>
             <p className="text-muted-foreground mt-3 max-w-2xl text-sm leading-7">
-              The portfolio is designed to work well as a direct link, an installable PWA, or a QR destination from the PDF CV.
+              The homepage stays lighter and more curated. For the full professional timeline, grouped skills, and QR-ready summary, the dedicated CV route remains the better handoff.
             </p>
           </div>
           <div className="flex flex-wrap gap-3">
+            <Button onClick={() => (window.location.href = withBasePath("/cv"))}>Open CV</Button>
             <Button onClick={() => (window.location.href = withBasePath("/contact"))}>Contact</Button>
             <Button
               variant="outline"

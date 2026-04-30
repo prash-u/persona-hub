@@ -14,8 +14,8 @@ export default function ProjectsPage() {
       <div className="shell section-space space-y-14">
         <SectionHeader
           eyebrow="Work directory"
-          title="A single portfolio index for biotech, audio / visual systems, and lighter experimental work."
-          description="This route is now the main cross-disciplinary directory. It keeps the strongest live projects visible, shows what is still in progress, and leaves room for upcoming concepts without making the portfolio feel unfinished."
+          title="A curated showcase first, then a deeper directory."
+          description="This route now behaves more like a premium portfolio front than a repo list: lead work first, category tabs second, and the full archive only after the strongest impression has already been made."
         />
         <WorkDirectory mode="all" />
       </div>

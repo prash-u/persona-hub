@@ -1,44 +1,73 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
+import { withBasePath } from "@/lib/site";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { Button } from "@/components/ui/button";
 
 export function Navbar() {
   const [open, setOpen] = useState(false);
+  const location = useLocation();
 
   return (
-    <header className="sticky top-0 z-50 border-b border-border/40 bg-background/80 backdrop-blur-xl">
+    <header className="sticky top-0 z-50 border-b border-border/40 bg-background/78 backdrop-blur-2xl">
       <div className="shell flex h-20 items-center justify-between gap-6">
         <Link
           to="/"
-          className="focus-ring font-display text-2xl"
+          className="focus-ring flex flex-col rounded-2xl px-1 py-1"
         >
-          {siteConfig.shortName}
+          <span className="text-[10px] font-semibold uppercase tracking-[0.26em] text-muted-foreground">
+            Prashant Umrekar
+          </span>
+          <span className="font-display text-xl tracking-tight md:text-2xl">
+            Persona Hub
+          </span>
         </Link>
-        <nav
-          aria-label="Primary"
-          className="hidden items-center gap-2 lg:flex"
-        >
-          {siteConfig.navigation.map((item) => (
-            <NavLink
-              key={item.href}
-              to={item.href}
-              className={({ isActive }) =>
-                cn(
-                  "focus-ring rounded-full px-4 py-2 text-sm font-semibold text-muted-foreground hover:text-foreground",
-                  isActive && "bg-secondary text-foreground"
-                )
-              }
-            >
-              {item.label}
-            </NavLink>
-          ))}
-        </nav>
+        <div className="hidden flex-1 justify-center lg:flex">
+          <nav
+            aria-label="Primary"
+            className="flex items-center gap-1 rounded-full border border-border/60 bg-background/78 p-1.5 shadow-soft"
+          >
+            {siteConfig.navigation.map((item) => {
+              const active =
+                item.href === "/"
+                  ? location.pathname === "/"
+                  : location.pathname.startsWith(item.href);
+
+              return (
+                <NavLink
+                  key={item.href}
+                  to={item.href}
+                  className={cn(
+                    "focus-ring relative rounded-full px-4 py-2.5 text-sm font-semibold transition",
+                    active ? "text-foreground" : "text-muted-foreground hover:text-foreground"
+                  )}
+                >
+                  {active ? (
+                    <motion.span
+                      layoutId="nav-pill"
+                      className="absolute inset-0 rounded-full bg-secondary"
+                      transition={{ type: "spring", stiffness: 420, damping: 34 }}
+                    />
+                  ) : null}
+                  <span className="relative z-10">{item.label}</span>
+                </NavLink>
+              );
+            })}
+          </nav>
+        </div>
         <div className="flex items-center gap-2">
+          <Button
+            variant="outline"
+            size="sm"
+            className="hidden lg:inline-flex"
+            onClick={() => (window.location.href = withBasePath("/cv"))}
+          >
+            View CV
+          </Button>
           <ThemeToggle />
           <Button
             variant="outline"
@@ -61,7 +90,7 @@ export function Navbar() {
           >
             <nav
               aria-label="Mobile"
-              className="shell flex flex-col gap-2 py-4"
+              className="shell flex flex-col gap-3 py-4"
             >
               {siteConfig.navigation.map((item) => (
                 <NavLink
@@ -70,7 +99,7 @@ export function Navbar() {
                   onClick={() => setOpen(false)}
                   className={({ isActive }) =>
                     cn(
-                      "focus-ring rounded-2xl px-4 py-3 text-sm font-semibold text-muted-foreground hover:bg-secondary/60 hover:text-foreground",
+                      "focus-ring rounded-2xl border border-border/60 px-4 py-3 text-sm font-semibold text-muted-foreground hover:bg-secondary/60 hover:text-foreground",
                       isActive && "bg-secondary text-foreground"
                     )
                   }
@@ -78,6 +107,16 @@ export function Navbar() {
                   {item.label}
                 </NavLink>
               ))}
+              <Button
+                variant="outline"
+                className="mt-1"
+                onClick={() => {
+                  setOpen(false);
+                  window.location.href = withBasePath("/cv");
+                }}
+              >
+                View CV
+              </Button>
             </nav>
           </motion.div>
         ) : null}

@@ -45,11 +45,11 @@
       "githubRepo": "prash-u/network-pulse-analyzer"
     },
     {
-      "title": "Disease Target Atlas",
-      "summary": "A planned interface for comparing candidate causal pathways, expression shifts, and intervention opportunities across disease programs without requiring a heavyweight local analysis stack.",
-      "tags": ["Target discovery", "Disease biology", "Roadmap", "Scientific UI"],
-      "highlights": ["Future decision-support layer", "Candidate pathway comparison"],
-      "thumb": "/media/project-protein.svg",
+      "title": "GMP Batch Insight Console",
+      "summary": "A planned operations-facing interface for tracing batch readiness, deviations, material alignment, and manufacturing documentation through a clearer, lower-friction review layer.",
+      "tags": ["GMP", "Manufacturing ops", "Deviation review", "Documentation"],
+      "highlights": ["Batch-readiness visibility", "Deviation and material traceability"],
+      "thumb": "/media/project-notes.svg",
       "featured": false,
       "type": "biotech",
       "section": "biotech",
@@ -106,9 +106,9 @@
   "other": [
     {
       "title": "Instagram Photo Reel Archive",
-      "summary": "A planned editorial gallery and reel companion for turning social-first visual work into a cleaner, portfolio-grade archive with stronger sequencing and presentation.",
-      "tags": ["Photography", "Videography", "Editorial", "Archive"],
-      "highlights": ["Portfolio-grade reel curation", "Instagram-to-editorial archive concept"],
+      "summary": "A curated reel and stills archive designed to pull selected Instagram-native work into a more composed, portfolio-grade showcase with stronger pacing and captions.",
+      "tags": ["Photography", "Videography", "Editorial", "Showcase"],
+      "highlights": ["Instagram-native reel curation", "Cleaner portfolio sequencing"],
       "thumb": "/media/project-archive.svg",
       "featured": false,
       "type": "other",
@@ -122,6 +122,18 @@
       "tags": ["Computer Vision", "Collections", "Consumer Tooling", "Playful UX"],
       "highlights": ["Card recognition concept", "Deck-level valuation workflow"],
       "thumb": "/media/project-pokemon.svg",
+      "featured": false,
+      "type": "other",
+      "section": "fun",
+      "status": "upcoming",
+      "year": 2026
+    },
+    {
+      "title": "Assay Validation Companion",
+      "summary": "A diagnostics-oriented concept for tracking validation runs, method changes, and evidence trails in a way that is easier for scientific teams to review and communicate.",
+      "tags": ["Diagnostics", "Validation", "Method development", "Scientific ops"],
+      "highlights": ["Validation evidence snapshots", "Cleaner method-change review"],
+      "thumb": "/media/project-notes.svg",
       "featured": false,
       "type": "other",
       "section": "fun",

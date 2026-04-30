@@ -31,9 +31,8 @@ export const siteConfig = {
   ],
   navigation: [
     { label: "Home", href: "/" },
-    { label: "Photos", href: "/photos" },
-    { label: "Scientific", href: "/biotech" },
     { label: "Work", href: "/projects" },
+    { label: "Scientific", href: "/biotech" },
     { label: "CV", href: "/cv" },
     { label: "Contact", href: "/contact" }
   ] satisfies NavItem[],

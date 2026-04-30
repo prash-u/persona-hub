@@ -1,13 +1,17 @@
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ExternalLink, Film, Grid2X2, Sparkles } from "lucide-react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { EditorialProjectList } from "@/components/editorial-project-list";
 import { EditorialProjectSpotlight } from "@/components/editorial-project-spotlight";
 import { ProjectGrid } from "@/components/project-grid";
 import { SectionHeader } from "@/components/section-header";
-import { allProjects } from "@/lib/projects";
+import { Button } from "@/components/ui/button";
+import { allProjects, projects } from "@/lib/projects";
+import { withBasePath } from "@/lib/site";
 import type { ProjectItem } from "@/lib/types";
 
 type WorkDirectoryMode = "all" | "scientific";
+type WorkTab = "showcase" | "biotech" | "audiovisual" | "fun";
 
 type WorkDirectoryProps = {
   mode: WorkDirectoryMode;
@@ -67,6 +71,7 @@ function getStatusItems(items: ProjectItem[], status: keyof typeof statusMeta, l
 }
 
 export function WorkDirectory({ mode }: WorkDirectoryProps) {
+  const [activeTab, setActiveTab] = useState<WorkTab>(mode === "scientific" ? "biotech" : "showcase");
   const overviewItems = [
     {
       value: allProjects.filter((item) => item.status === "working").length,
@@ -98,6 +103,61 @@ export function WorkDirectory({ mode }: WorkDirectoryProps) {
     { key: "audiovisual", items: audiovisualItems, lead: audiovisualLead },
     { key: "fun", items: funItems, lead: funLead }
   ] as const;
+  const featured = allProjects.filter((item) => item.featured);
+  const showcaseLead = biotechLead ?? featured[0];
+  const showcaseSupporting = featured.filter((item) => item.title !== showcaseLead?.title).slice(0, 3);
+  const reelItem = projects.media.find((item) => item.category === "reel") ?? projects.media[0];
+  const tabItems = [
+    { key: "showcase", label: "Showcase", icon: Sparkles },
+    { key: "biotech", label: "Biotech", icon: Grid2X2 },
+    { key: "audiovisual", label: "Audio / Visual", icon: Film },
+    { key: "fun", label: "Fun", icon: Sparkles }
+  ] as const;
+
+  const renderCategory = (key: keyof typeof sectionMeta, lead: ProjectItem | undefined, items: ProjectItem[]) => {
+    const content = sectionMeta[key];
+    const leadTitle = lead?.title;
+    const workingItems = getStatusItems(items, "working", leadTitle);
+    const wipItems = getStatusItems(items, "wip", leadTitle);
+    const upcomingItems = getStatusItems(items, "upcoming", leadTitle);
+
+    return (
+      <section key={key} id={key} className="space-y-8">
+        <SectionHeader
+          eyebrow={content.eyebrow}
+          title={content.title}
+          description={content.description}
+        />
+        {lead ? (
+          <EditorialProjectSpotlight
+            item={lead}
+            eyebrow={mode === "scientific" && key === "biotech" ? "Lead scientific case study" : "Lead project"}
+          />
+        ) : null}
+        {workingItems.length ? (
+          <EditorialProjectList
+            items={workingItems}
+            heading={statusMeta.working.label}
+            description={statusMeta.working.description}
+          />
+        ) : null}
+        {wipItems.length ? (
+          <EditorialProjectList
+            items={wipItems}
+            heading={statusMeta.wip.label}
+            description={statusMeta.wip.description}
+          />
+        ) : null}
+        {upcomingItems.length ? (
+          <EditorialProjectList
+            items={upcomingItems}
+            heading={statusMeta.upcoming.label}
+            description={statusMeta.upcoming.description}
+          />
+        ) : null}
+      </section>
+    );
+  };
 
   return (
     <div className="space-y-14">
@@ -144,60 +204,123 @@ export function WorkDirectory({ mode }: WorkDirectoryProps) {
         )}
       </section>
 
-      {categories.map(({ key, items, lead }) => {
-        if (!items.length) {
-          return null;
-        }
+      {mode === "all" ? (
+        <>
+          <section className="space-y-6">
+            <div className="flex flex-wrap gap-2 rounded-[28px] border border-border/60 bg-background/65 p-2">
+              {tabItems.map((item) => {
+                const Icon = item.icon;
+                const active = activeTab === item.key;
 
-        const content = sectionMeta[key];
-        const leadTitle = lead?.title;
-        const workingItems = getStatusItems(items, "working", leadTitle);
-        const wipItems = getStatusItems(items, "wip", leadTitle);
-        const upcomingItems = getStatusItems(items, "upcoming", leadTitle);
-
-        return (
-          <section key={key} id={key} className="space-y-8">
-            <SectionHeader
-              eyebrow={content.eyebrow}
-              title={content.title}
-              description={content.description}
-            />
-            {lead ? (
-              <EditorialProjectSpotlight
-                item={lead}
-                eyebrow={mode === "scientific" && key === "biotech" ? "Lead scientific case study" : "Lead project"}
-              />
-            ) : null}
-            {workingItems.length ? (
-              <EditorialProjectList
-                items={workingItems}
-                heading={statusMeta.working.label}
-                description={statusMeta.working.description}
-              />
-            ) : null}
-            {wipItems.length ? (
-              <EditorialProjectList
-                items={wipItems}
-                heading={statusMeta.wip.label}
-                description={statusMeta.wip.description}
-              />
-            ) : null}
-            {upcomingItems.length ? (
-              <EditorialProjectList
-                items={upcomingItems}
-                heading={statusMeta.upcoming.label}
-                description={statusMeta.upcoming.description}
-              />
-            ) : null}
+                return (
+                  <button
+                    key={item.key}
+                    type="button"
+                    onClick={() => setActiveTab(item.key)}
+                    className={`focus-ring inline-flex items-center gap-2 rounded-full px-4 py-2.5 text-sm font-semibold transition ${
+                      active ? "bg-secondary text-foreground" : "text-muted-foreground hover:text-foreground"
+                    }`}
+                    aria-pressed={active}
+                  >
+                    <Icon className="size-4" aria-hidden="true" />
+                    {item.label}
+                  </button>
+                );
+              })}
+            </div>
           </section>
-        );
-      })}
+
+          {activeTab === "showcase" ? (
+            <section className="space-y-8">
+              <SectionHeader
+                eyebrow="Showcase"
+                title="A sharper front door for the strongest work, with room for media and upcoming concepts."
+                description="This tab works like the curated first impression used by top portfolio sites: a few strong lead pieces, a visual reel hook, and only the most relevant ideas surfaced up front."
+              />
+              {showcaseLead ? (
+                <div className="grid gap-6 xl:grid-cols-[1.15fr_0.85fr]">
+                  <EditorialProjectSpotlight
+                    item={showcaseLead}
+                    eyebrow="Flagship project"
+                  />
+                  <div className="grid gap-4">
+                    <article className="surface overflow-hidden p-6">
+                      <p className="eyebrow">Photo reel from Instagram</p>
+                      <h3 className="mt-3 text-2xl font-semibold">
+                        Selected stills and motion studies, reframed as a cleaner editorial showcase.
+                      </h3>
+                      <p className="text-muted-foreground mt-3 text-sm leading-7">
+                        The media side should feel like part of the personal brand, not a separate hobby dump. This route is ready to become the curated home for your reel and selected visual frames.
+                      </p>
+                      <div className="mt-5 overflow-hidden rounded-[24px] border border-border/70">
+                        <img
+                          src={reelItem?.thumb}
+                          alt={reelItem?.title ?? "Photo reel preview"}
+                          className="h-52 w-full object-cover"
+                        />
+                      </div>
+                      <div className="mt-5 flex flex-wrap gap-3">
+                        <Button
+                          onClick={() => (window.location.href = withBasePath("/photos"))}
+                        >
+                          Open showcase
+                          <ArrowRight className="size-4" aria-hidden="true" />
+                        </Button>
+                        {reelItem?.demoUrl ? (
+                          <Button
+                            variant="outline"
+                            onClick={() => window.open(reelItem.demoUrl, "_blank", "noopener,noreferrer")}
+                          >
+                            Open reel
+                            <ExternalLink className="size-4" aria-hidden="true" />
+                          </Button>
+                        ) : null}
+                      </div>
+                    </article>
+                    {showcaseSupporting.map((item, index) => (
+                      <article key={item.title} className="surface p-5">
+                        <p className="eyebrow">0{index + 2} / Selected</p>
+                        <h3 className="mt-3 text-xl font-semibold">{item.title}</h3>
+                        <p className="text-muted-foreground mt-3 text-sm leading-7">{item.summary}</p>
+                      </article>
+                    ))}
+                  </div>
+                </div>
+              ) : null}
+              <section className="space-y-6">
+                <SectionHeader
+                  eyebrow="Selected work"
+                  title="A tighter, less repetitive shortlist."
+                  description="These are the projects that currently earn the most attention on a first pass."
+                />
+                <ProjectGrid items={featured} />
+              </section>
+            </section>
+          ) : null}
+
+          {activeTab === "biotech" ? renderCategory("biotech", biotechLead, biotechItems) : null}
+          {activeTab === "audiovisual" ? renderCategory("audiovisual", audiovisualLead, audiovisualItems) : null}
+          {activeTab === "fun" ? renderCategory("fun", funLead, funItems) : null}
+        </>
+      ) : (
+        <>
+          {renderCategory("biotech", biotechLead, biotechItems)}
+          <section className="space-y-8">
+            <SectionHeader
+              eyebrow="Adjacent work"
+              title="Selected supporting interfaces that reinforce the scientific story."
+              description="A couple of adjacent projects stay visible here so the scientific route still reflects your broader product and interface range."
+            />
+            <ProjectGrid items={[...audiovisualItems.slice(0, 2), ...funItems.slice(0, 1)]} />
+          </section>
+        </>
+      )}
 
       <section className="space-y-6">
         <SectionHeader
-          eyebrow="Directory grid"
-          title="A compact index remains available for quick scanning."
-          description="Once the narrative sections have done their job, this grid acts as the repeat-visit layer: fast to scan, easy to compare, and direct to open."
+          eyebrow="Archive"
+          title="The full project index still exists for repeat visits."
+          description="This layer is intentionally secondary now: useful for scanning, but no longer carrying the burden of the first impression."
         />
         <ProjectGrid items={allProjects} />
       </section>

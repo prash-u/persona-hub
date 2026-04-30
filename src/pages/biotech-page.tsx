@@ -14,8 +14,8 @@ export default function BiotechPage() {
       <div className="shell section-space space-y-12">
         <SectionHeader
           eyebrow="Scientific work"
-          title="The biotech route now acts as a scientific entry point into the full portfolio."
-          description="Rather than splitting biotech away from the rest of the work, this page frames the same directory through a research and translational-science lens, then keeps adjacent audio / visual and experimental work visible where it adds context."
+          title="A more focused scientific index for the strongest biotech-facing work."
+          description="This route stays leaner than the main showcase and emphasises the systems biology, pathway, diagnostics, and operations-adjacent parts of the portfolio without losing the broader context."
         />
         <WorkDirectory mode="scientific" />
       </div>

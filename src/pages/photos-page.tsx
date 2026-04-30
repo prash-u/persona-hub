@@ -27,9 +27,9 @@ export default function PhotosPage() {
       />
       <div className="shell section-space space-y-8">
         <SectionHeader
-          eyebrow="Media portfolio"
-          title="An editorial photo reel with room for stills, reels, and moving image studies."
-          description="The current gallery uses local assets and placeholders for offline use and privacy. It can later be adapted to import curated Instagram-export content without making the live site depend on external services."
+          eyebrow="Visual showcase"
+          title="A curated reel and stills archive shaped for portfolio use, not social sprawl."
+          description="This route is designed to become the cleaner home for selected Instagram-derived reels, stills, and visual studies. The current build keeps local assets and placeholders for privacy, offline support, and easy later replacement."
         />
         <div className="flex flex-wrap gap-3">
           {filters.map((value) => (

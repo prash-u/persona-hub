@@ -8,8 +8,8 @@
       "featured": true,
       "status": "Prototype",
       "maturity": "In progress",
-      "description": "Browser-based EEG and neural signal visualisation playground using demo or uploaded data.",
-      "longDescription": "Neural Pulse is the EEG and signal visualisation flagship: a client-side scientific interface for exploring brainwave traces, band power, noise, simulated rhythms, and future 3D brain-view workflows without sending sensitive data off-device.",
+      "description": "Clinical-style EEG review and neural signal playground for exploring demo or uploaded EEG-style data.",
+      "longDescription": "Neural Pulse is the EEG flagship: a clinical-style review playground for demo and uploaded EEG-style data, with playback, band modes, referencing, montage controls, smoothing, and a roadmap toward artifact classification and exportable sessions.",
       "tags": [
         "EEG",
         "Signal processing",
@@ -29,10 +29,12 @@
       "problem": "Most neural data tools feel either too academic, too static, or too infrastructure-heavy for fast exploratory review.",
       "approach": "Use browser-native signal visualisation and client-side processing to make EEG inspection, filtering, and interpretation feel immediate and private.",
       "whatWorksNow": [
-        "Simulated neural signal exploration",
-        "Visual waveform review",
-        "Client-side browser interaction model",
-        "Foundation for uploaded data workflows"
+        "Demo EEG datasets covering alpha, beta, theta, and spike-heavy activity",
+        "Upload-first ingest flow",
+        "Playback controls with scrubbing and speed control",
+        "Band modes: delta, theta, alpha, beta, and gamma",
+        "Reference modes and montage modes",
+        "Smoothing and artifact threshold controls"
       ],
       "whatILearned": [
         "Signal tools need clarity more than complexity",
@@ -40,13 +42,13 @@
         "Scientific interfaces work better when they feel exploratory rather than dashboard-like"
       ],
       "limitations": "Current scope is still prototype-level and relies on demo or uploaded data rather than a broader validated clinical workflow.",
-      "nextSteps": "Add richer upload support, better annotation workflows, frequency summaries, and optional 3D brain-view mapping.",
+      "nextSteps": "Add richer artifact classification, channel quality scoring, saved review presets, and shareable session exports.",
       "relatedSkills": [
         "EEG data processing",
         "Large dataset analysis",
-        "Python",
-        "Data visualisation",
-        "Bioinformatics thinking"
+        "Neuroscience",
+        "Signal visualisation",
+        "Python/data thinking"
       ],
       "credibility": [
         "Privacy-aware client-side workflow",
@@ -73,10 +75,10 @@
       "title": "BioBody Insights",
       "category": "biotech",
       "featured": false,
-      "status": "Live",
-      "maturity": "Demo-ready",
-      "description": "Interactive whole-body systems biology atlas for exploring genes, proteins, pathways, and tissues.",
-      "longDescription": "A visual organ-anchored interface for tracing biological programmes across tissues and systems, built to make complex pathway and translational biology stories easier to inspect and present.",
+      "status": "Prototype",
+      "maturity": "Active prototype",
+      "description": "Interactive whole-body systems biology atlas for exploring how genes, pathways, tissues, and metabolic flux connect across disease programs.",
+      "longDescription": "BioBody Insights maps genes, pathways, tissue effects, metabolic flux, and disease programs onto an anatomical body interface so complex systems biology can be explored as a spatial story rather than a disconnected table.",
       "tags": ["Systems Biology", "Translational Biology", "Atlas UI", "React"],
       "methods": [
         "Knowledge mapping",
@@ -88,9 +90,12 @@
       "problem": "Cross-functional teams often struggle to reason through pathway or tissue-level biology when the information is buried in static diagrams and disconnected notes.",
       "approach": "Use a body-mapped interface to anchor pathway and programme exploration in a more intuitive scientific narrative.",
       "whatWorksNow": [
-        "Body-mapped pathway exploration",
-        "Organ-anchored interaction model",
-        "Cross-functional visual storytelling layer"
+        "Interactive SVG body model",
+        "Disease program selector",
+        "Tissue effect ranking",
+        "Pathway and gene panels",
+        "Metabolic pathway layer view",
+        "Responsive glassmorphism interface"
       ],
       "whatILearned": [
         "Biology interfaces benefit from spatial anchors",
@@ -98,12 +103,13 @@
         "Scientific storytelling can be a product skill"
       ],
       "limitations": "It is a visual interpretation layer, not a full knowledgebase or validated biomedical decision-support system.",
-      "nextSteps": "Deepen the biological dataset, strengthen query flows, and add richer tissue or pathway comparisons.",
+      "nextSteps": "Add richer disease programs, search across genes/pathways/tissues, evidence and confidence metadata, import support for omics or assay data, and exportable reports.",
       "relatedSkills": [
         "Gene expression analysis",
         "Bioinformatics",
-        "Large dataset analysis",
-        "Process optimisation"
+        "Systems biology",
+        "Pathway interpretation",
+        "Translational biology"
       ],
       "credibility": [
         "Translational biology framing",
@@ -131,7 +137,7 @@
       "featured": true,
       "status": "Planned",
       "maturity": "Concept",
-      "description": "Client-side gene expression exploration concept for comparing expression patterns and disease-linked signals.",
+      "description": "Client-side tool concept for exploring gene expression patterns, fold-change, clustering, and disease-linked signals.",
       "longDescription": "A browser-first concept for comparing expression patterns, surfacing potential therapeutic targets, and turning raw expression tables into interpretable heatmaps, fold-change views, and target-prioritisation narratives.",
       "tags": [
         "Gene expression",
@@ -233,8 +239,8 @@
       "featured": false,
       "status": "Planned",
       "maturity": "Concept",
-      "description": "Interactive lab workflow simulator covering PCR, qPCR, LAMP, electrophoresis, solution prep, and GMP checkpoints.",
-      "longDescription": "A training-oriented simulator for lab and manufacturing-adjacent workflows, combining procedural steps, documentation checkpoints, and decision points that reflect real scientific practice.",
+      "description": "Interactive simulation of PCR, qPCR, LAMP, solution preparation, and GMP-style workflow decisions.",
+      "longDescription": "A training-oriented simulator for lab and manufacturing-adjacent workflows, combining PCR, qPCR, LAMP, solution preparation, documentation checkpoints, and GMP-style decision points that reflect real scientific practice.",
       "tags": ["Lab training", "PCR", "qPCR", "LAMP", "GMP", "Simulation"],
       "methods": [
         "Workflow simulation",
@@ -403,8 +409,8 @@
       "featured": true,
       "status": "Prototype",
       "maturity": "Demo-ready",
-      "description": "Browser-based webcam model playground for live object detection and computer vision experiments.",
-      "longDescription": "A privacy-first client-side computer vision playground for running live object detection and related experiments directly in the browser, with an emphasis on local inference and interactive overlays.",
+      "description": "Installable browser vision playground for real-time webcam, image, and video inference using switchable client-side models.",
+      "longDescription": "Live Vision Model Lab is a standalone installable browser playground for real-time webcam, image, and video inference with switchable TensorFlow.js and face-api.js models, exportable inference payloads, local face-api weights, and a privacy-first local inference stance.",
       "tags": [
         "Computer vision",
         "TensorFlow.js",
@@ -413,19 +419,24 @@
         "Privacy"
       ],
       "methods": [
-        "COCO-SSD style detection",
-        "Camera feed",
-        "Overlays",
-        "Model switching",
-        "Mobile constraints"
+        "COCO-SSD",
+        "MobileNet",
+        "Handpose",
+        "Face detection",
+        "Face expression",
+        "JSON/CSV export"
       ],
       "whyBuilt": "I wanted to see how far useful computer vision could go in the browser without sending a camera feed to an external service.",
       "problem": "Most quick vision demos either send data to a backend or feel too toy-like to evaluate seriously.",
       "approach": "Keep the inference in-browser and focus on direct interaction so model behaviour is legible without sacrificing privacy.",
       "whatWorksNow": [
-        "Realtime browser detection",
-        "Client-side model execution",
-        "Interactive overlays and demo flow"
+        "PWA shell",
+        "Webcam, image upload, and video upload modes",
+        "Lazy-loaded model catalog",
+        "Cached model instances",
+        "Export latest inference payload to JSON/CSV",
+        "Local face-api weights",
+        "Models: COCO-SSD, MobileNet, Handpose, face detection, face expression"
       ],
       "whatILearned": [
         "Privacy-first positioning matters",
@@ -433,12 +444,13 @@
         "Small demos can still feel like real products"
       ],
       "limitations": "Model scope and mobile performance still limit the breadth of tasks that feel robust.",
-      "nextSteps": "Refine model switching, performance handling, and more focused demo narratives for individual use cases.",
+      "nextSteps": "Polish mobile performance, clarify the model comparison UI, and improve privacy/offline messaging.",
       "relatedSkills": [
-        "Python",
-        "Large dataset analysis",
-        "Process optimisation",
-        "Client-side scientific tools"
+        "Browser ML",
+        "Client-side privacy",
+        "TensorFlow.js",
+        "Visual overlays",
+        "Experimental interfaces"
       ],
       "credibility": [
         "Client-side inference",
@@ -467,7 +479,7 @@
       "featured": false,
       "status": "Planned",
       "maturity": "Concept",
-      "description": "Tool concept for scanning Pokemon cards, identifying card details, and estimating deck or collection value.",
+      "description": "Fun computer-vision/OCR concept for identifying Pokemon cards and estimating collection/deck value.",
       "longDescription": "A playful but credible scanning and lookup concept for recognising cards from uploads, matching them to known inventory, and estimating collection or deck-level value through a cleaner interface.",
       "tags": ["Computer vision", "OCR", "Collectibles", "Valuation"],
       "methods": [

@@ -49,7 +49,7 @@ export const siteConfig = {
   navigation: [
     { label: "Home", href: "/" },
     { label: "Projects", href: "/projects" },
-    { label: "CV", href: "/cv" },
+    { label: "About", href: "/#about" },
     { label: "Contact", href: "/contact" }
   ] satisfies NavItem[],
   repo: {

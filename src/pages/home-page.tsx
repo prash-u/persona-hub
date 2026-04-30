@@ -12,6 +12,7 @@ import { withBasePath } from "@/lib/site";
 
 const featuredIds = new Set([
   "neural-pulse",
+  "biobody-insights",
   "gene-expression-profiling",
   "live-vision-model-lab"
 ]);
@@ -53,6 +54,70 @@ export default function HomePage() {
       <HeroSection />
       <div className="shell section-space space-y-16 md:space-y-20">
         <InstallPrompt />
+
+        <section
+          id="about"
+          className="grid gap-6 lg:grid-cols-[0.8fr_1.2fr]"
+        >
+          <div className="surface overflow-hidden p-4">
+            <img
+              src={siteConfig.profileImage}
+              alt="Prashant Umrekar portrait"
+              className="h-80 w-full rounded-[24px] object-cover"
+              loading="lazy"
+            />
+          </div>
+          <div className="flex flex-col justify-center gap-5">
+            <SectionHeader
+              eyebrow="Short about me"
+              title="Biotech is the day job. Systems thinking is the through-line."
+              description="I am drawn to work where messy biological, operational, or signal-heavy systems become clearer through better tools. Persona Hub is the front door to that ecosystem: scientific prototypes, standalone browser apps, photo work, and notes from the edge of biology, data, and interaction."
+            />
+            <div className="flex flex-wrap gap-3">
+              <Button
+                variant="outline"
+                onClick={() =>
+                  window.open(
+                    "https://github.com/prash-u",
+                    "_blank",
+                    "noopener,noreferrer"
+                  )
+                }
+              >
+                GitHub
+                <ExternalLink className="size-4" aria-hidden="true" />
+              </Button>
+              <Button
+                variant="outline"
+                onClick={() =>
+                  window.open(
+                    "https://www.linkedin.com/in/prashant-umrekar/",
+                    "_blank",
+                    "noopener,noreferrer"
+                  )
+                }
+              >
+                LinkedIn
+                <ExternalLink className="size-4" aria-hidden="true" />
+              </Button>
+              {siteConfig.instagramUrl ? (
+                <Button
+                  variant="outline"
+                  onClick={() =>
+                    window.open(
+                      siteConfig.instagramUrl,
+                      "_blank",
+                      "noopener,noreferrer"
+                    )
+                  }
+                >
+                  Instagram
+                  <ExternalLink className="size-4" aria-hidden="true" />
+                </Button>
+              ) : null}
+            </div>
+          </div>
+        </section>
 
         <section className="space-y-8">
           <SectionHeader
@@ -147,8 +212,8 @@ export default function HomePage() {
         <section className="space-y-8">
           <SectionHeader
             eyebrow="Selected work"
-            title="Three projects that best capture the overlap between biology, data, and interaction."
-            description="Neural Pulse anchors the scientific side, Gene Expression Profiling frames the molecular direction, and Live Vision Model Lab shows how far privacy-first browser tooling can go."
+            title="A few projects that best capture the overlap between biology, data, and interaction."
+            description="Neural Pulse anchors the signal side, BioBody Insights shows the body-atlas direction, Live Vision Model Lab proves the privacy-first browser-tooling angle, and Gene Expression Profiling frames the molecular roadmap."
           />
           <ProjectGrid items={featuredProjects} />
         </section>

@@ -3,13 +3,13 @@ import {
   ArrowRight,
   BrainCircuit,
   FileDown,
+  Github,
   Linkedin,
   Microscope,
   ScanEye,
   ScanLine
 } from "lucide-react";
 import { siteConfig } from "@/config/site";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { withBasePath } from "@/lib/site";
 
@@ -79,24 +79,22 @@ export function HeroSection() {
               transition={{ duration: 0.7 }}
               className="max-w-3xl"
             >
-              <Badge variant="accent">About me</Badge>
-              <p className="eyebrow mt-6">
-                Biotech, signals, systems, and visual thinking
-              </p>
               <h1 className="display-title mt-4">{siteConfig.name}</h1>
               <p className="mt-5 text-lg font-semibold tracking-wide text-cyan-700 dark:text-cyan-300">
-                {siteConfig.role}
+                Bioprocessing Scientist · Builder · Signal &amp; Data Explorer
               </p>
               <p className="mt-6 max-w-2xl text-base leading-8 text-muted-foreground md:text-lg">
-                I work in biotechnology, but I tend to think in systems. Most of
-                what interests me lives somewhere between biological processes,
-                signal interpretation, and the tools we use to make difficult
-                things easier to see.
+                I work in biotechnology, but I think in systems.
               </p>
               <p className="mt-4 max-w-2xl text-base leading-8 text-muted-foreground md:text-lg">
-                Outside the lab, that usually becomes browser-based experiments,
-                scientific interfaces, and privacy-first tools that are
-                practical, slightly strange, and sometimes just fun to build.
+                Most of my work revolves around understanding complex biological
+                processes and making them easier to visualise, analyse, and
+                interact with, whether that is viral vector production, gene
+                expression data, or simulated neural signals.
+              </p>
+              <p className="mt-4 max-w-2xl text-base leading-8 text-muted-foreground md:text-lg">
+                This site is a place for the tools, experiments, photos, and
+                ideas I am building around biology, data, and interaction.
               </p>
               <div className="mt-8 flex flex-wrap gap-3">
                 <Button
@@ -117,6 +115,20 @@ export function HeroSection() {
                 >
                   <FileDown className="size-4" aria-hidden="true" />
                   Download CV
+                </Button>
+                <Button
+                  variant="ghost"
+                  size="lg"
+                  onClick={() =>
+                    window.open(
+                      "https://github.com/prash-u",
+                      "_blank",
+                      "noopener,noreferrer"
+                    )
+                  }
+                >
+                  <Github className="size-4" aria-hidden="true" />
+                  GitHub
                 </Button>
                 <Button
                   variant="outline"
@@ -206,7 +218,11 @@ export function HeroSection() {
                 {siteConfig.socialLinks.map((link) => (
                   <a
                     key={link.label}
-                    href={link.href}
+                    href={
+                      link.href.startsWith("/")
+                        ? withBasePath(link.href)
+                        : link.href
+                    }
                     target={link.href.startsWith("http") ? "_blank" : undefined}
                     rel={
                       link.href.startsWith("http") ? "noreferrer" : undefined

@@ -1,7 +1,10 @@
+import { useState } from "react";
 import { SectionHeader } from "@/components/section-header";
 import { Seo } from "@/components/seo";
 import { ProjectStoryCard } from "@/components/project-story-card";
+import { Button } from "@/components/ui/button";
 import { projects } from "@/lib/projects";
+import type { ProjectItem } from "@/lib/types";
 
 const featuredIds = new Set([
   "neural-pulse",
@@ -9,11 +12,52 @@ const featuredIds = new Set([
   "live-vision-model-lab"
 ]);
 
+type ProjectFilter =
+  | "all"
+  | "biotech"
+  | "personal"
+  | "live"
+  | "prototype"
+  | "planned";
+
+const filters: Array<{ label: string; value: ProjectFilter }> = [
+  { label: "All", value: "all" },
+  { label: "BioTech & Scientific", value: "biotech" },
+  { label: "Personal & Experimental", value: "personal" },
+  { label: "Live", value: "live" },
+  { label: "Prototype", value: "prototype" },
+  { label: "Planned", value: "planned" }
+];
+
+function applyFilter(project: ProjectItem, filter: ProjectFilter) {
+  if (filter === "all") {
+    return true;
+  }
+
+  if (filter === "biotech" || filter === "personal") {
+    return project.category === filter;
+  }
+
+  return project.status.toLowerCase() === filter;
+}
+
 export default function ProjectsPage() {
+  const [activeFilter, setActiveFilter] = useState<ProjectFilter>("all");
+
   const biotechProjects = [
     ...projects.biotech.filter((project) => featuredIds.has(project.id)),
     ...projects.biotech.filter((project) => !featuredIds.has(project.id))
   ];
+  const personalProjects = projects.personal;
+
+  const visibleBiotechProjects = biotechProjects.filter((project) =>
+    applyFilter(project, activeFilter)
+  );
+  const visiblePersonalProjects = personalProjects.filter((project) =>
+    applyFilter(project, activeFilter)
+  );
+  const hasProjects =
+    visibleBiotechProjects.length > 0 || visiblePersonalProjects.length > 0;
 
   return (
     <>
@@ -40,31 +84,64 @@ export default function ProjectsPage() {
           </div>
         </section>
 
-        <section className="space-y-8">
-          <SectionHeader
-            eyebrow="BioTech & scientific"
-            title="Signal, molecular, and lab-facing work."
-            description="This is the core archive: scientific tools shaped by biotech practice, diagnostics, EEG workflows, data interpretation, and interface design."
-          />
-          <div className="space-y-5">
-            {biotechProjects.map((project) => (
-              <ProjectStoryCard key={project.id} item={project} />
-            ))}
-          </div>
+        <section className="flex flex-wrap gap-2">
+          {filters.map((filter) => (
+            <Button
+              key={filter.value}
+              variant={activeFilter === filter.value ? "default" : "outline"}
+              size="sm"
+              onClick={() => setActiveFilter(filter.value)}
+            >
+              {filter.label}
+            </Button>
+          ))}
         </section>
 
-        <section className="space-y-8">
-          <SectionHeader
-            eyebrow="Personal & experimental"
-            title="Playful tools, visual ideas, and browser-first experiments."
-            description="These are lighter in tone, but they still come from the same habit of making systems more interactive, privacy-aware, legible, and slightly more fun to use."
-          />
-          <div className="space-y-5">
-            {projects.personal.map((project) => (
-              <ProjectStoryCard key={project.id} item={project} />
-            ))}
-          </div>
-        </section>
+        {hasProjects ? (
+          <>
+            {visibleBiotechProjects.length ? (
+              <section className="space-y-8">
+                <SectionHeader
+                  eyebrow="BioTech & scientific"
+                  title="Signal, molecular, and lab-facing work."
+                  description="This is the core archive: scientific tools shaped by biotech practice, diagnostics, EEG workflows, data interpretation, and interface design."
+                />
+                <div className="space-y-5">
+                  {visibleBiotechProjects.map((project) => (
+                    <ProjectStoryCard key={project.id} item={project} />
+                  ))}
+                </div>
+              </section>
+            ) : null}
+
+            {visiblePersonalProjects.length ? (
+              <section className="space-y-8">
+                <SectionHeader
+                  eyebrow="Personal & experimental"
+                  title="Playful tools, visual ideas, and browser-first experiments."
+                  description="These are lighter in tone, but they still come from the same habit of making systems more interactive, privacy-aware, legible, and slightly more fun to use."
+                />
+                <div className="space-y-5">
+                  {visiblePersonalProjects.map((project) => (
+                    <ProjectStoryCard key={project.id} item={project} />
+                  ))}
+                </div>
+              </section>
+            ) : null}
+          </>
+        ) : (
+          <section className="surface p-8 text-center">
+            <p className="eyebrow">No matching projects</p>
+            <h2 className="mt-3 text-2xl font-semibold">
+              Nothing in this slice yet.
+            </h2>
+            <p className="mx-auto mt-3 max-w-xl text-sm leading-7 text-muted-foreground">
+              Try another filter to move back across the archive. Planned work,
+              prototypes, and live demos are intentionally separated so the
+              maturity of each idea stays clear.
+            </p>
+          </section>
+        )}
       </div>
     </>
   );

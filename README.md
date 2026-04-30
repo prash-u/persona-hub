@@ -1,6 +1,28 @@
-# Premium Portfolio PWA
+# Persona Hub
 
-A premium React + TypeScript portfolio PWA designed as a polished personal hub, digital CV, and directory to standalone biotech, ML/AI, and creative projects.
+Personal site and project ecosystem for Prashant Umrekar: a bioprocessing scientist building privacy-aware browser tools around biology, data, signal review, visual systems, and creative experiments.
+
+This is not intended to be a repo dump or a generic developer portfolio. Persona Hub is the front door to the standalone project ecosystem and the place where each project gets a clearer story: why it exists, what works now, what is still planned, and where the live demo or repo lives.
+
+## Ecosystem
+
+Recommended GitHub profile pinning order:
+
+1. `persona-hub` — personal front door, CV hub, project story archive, PWA.
+2. `neural-pulse-play` — EEG review and neural signal playground with demo/upload workflows, playback, band modes, reference/montage modes, smoothing, artifact controls, and export roadmap.
+3. `biobody-insights` — interactive whole-body systems biology atlas for genes, pathways, tissues, metabolic flux, and disease programs.
+4. `live-vision-model-lab` — installable browser vision playground with webcam/image/video inference, switchable TensorFlow.js and face-api.js models, local weights, and JSON/CSV export.
+5. Gene Expression Profiling — upcoming client-side expression analysis concept for fold-change, clustering, and disease-linked signal exploration.
+6. Pokemon Card Scanner — upcoming playful computer-vision/OCR tool for identifying cards and estimating collection or deck value.
+
+Major standalone repos should keep their README structure consistent:
+
+- Why this exists
+- What works now
+- Roadmap
+- Safety or scientific note where relevant
+- Demo link
+- Tech stack
 
 ## Stack
 
@@ -54,8 +76,8 @@ git commit -m "Fix repo for cross-platform installs"
 Create a `.env` file if you need custom deployment settings:
 
 ```bash
-VITE_BASE_PATH=/PWACV/
-VITE_SITE_URL=https://your-username.github.io/PWACV/
+VITE_BASE_PATH=/persona-hub/
+VITE_SITE_URL=https://your-username.github.io/persona-hub/
 VITE_GH_TOKEN=github_personal_access_token_optional
 ```
 
@@ -83,7 +105,7 @@ VITE_GH_TOKEN=github_personal_access_token_optional
    - repository secret `VITE_GH_TOKEN` if you want optional GitHub enrichment
 4. Push to `main` and the workflow deploys `dist`.
 
-If your repository name changes from `PWACV`, update `VITE_BASE_PATH` in the workflow accordingly.
+If your repository name changes from `persona-hub`, update `VITE_BASE_PATH` in the workflow accordingly.
 
 ### Netlify
 
@@ -101,6 +123,6 @@ If your repository name changes from `PWACV`, update `VITE_BASE_PATH` in the wor
 
 ## Notes
 
-- The portfolio is intentionally a curated directory to standalone repositories and demos rather than a single repo dump.
+- The hub is intentionally a curated directory to standalone repositories and demos rather than a single repo dump.
 - The app is static-host friendly and client-side first, with PWA caching for improved offline resilience and privacy.
 - The visual system is designed to look strong with placeholder content, so the first pass is already presentation-ready.

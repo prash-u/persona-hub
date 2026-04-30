@@ -10,7 +10,13 @@ const projectSchema = z.object({
   category: z.enum(["biotech", "personal"]),
   featured: z.boolean(),
   status: z.enum(["Live", "Prototype", "Planned"]),
-  maturity: z.enum(["Concept", "MVP", "In progress", "Demo-ready"]),
+  maturity: z.enum([
+    "Concept",
+    "MVP",
+    "In progress",
+    "Active prototype",
+    "Demo-ready"
+  ]),
   description: z.string(),
   longDescription: z.string(),
   tags: z.array(z.string()),

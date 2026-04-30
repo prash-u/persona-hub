@@ -1,4 +1,5 @@
 import { siteConfig } from "@/config/site";
+import { withBasePath } from "@/lib/site";
 
 export function Footer() {
   return (
@@ -15,7 +16,9 @@ export function Footer() {
           {siteConfig.socialLinks.map((link) => (
             <a
               key={link.label}
-              href={link.href}
+              href={
+                link.href.startsWith("/") ? withBasePath(link.href) : link.href
+              }
               target={link.href.startsWith("http") ? "_blank" : undefined}
               rel={link.href.startsWith("http") ? "noreferrer" : undefined}
               className="focus-ring rounded-full text-muted-foreground hover:text-foreground"

@@ -11,6 +11,10 @@ type ProjectStoryCardProps = {
 
 export function ProjectStoryCard({ item }: ProjectStoryCardProps) {
   const [open, setOpen] = useState(false);
+  const categoryLabel =
+    item.category === "biotech"
+      ? "BioTech & Scientific"
+      : "Personal & Experimental";
 
   return (
     <article className="surface overflow-hidden">
@@ -25,6 +29,9 @@ export function ProjectStoryCard({ item }: ProjectStoryCardProps) {
           <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 to-transparent" />
           <div className="absolute left-5 top-5 flex flex-wrap gap-2">
             <span className="rounded-full border border-white/15 bg-slate-950/65 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.22em] text-white/90">
+              {categoryLabel}
+            </span>
+            <span className="rounded-full border border-white/15 bg-slate-950/65 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.22em] text-white/90">
               {item.status}
             </span>
             <span className="rounded-full border border-white/15 bg-slate-950/65 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.22em] text-white/90">
@@ -33,9 +40,11 @@ export function ProjectStoryCard({ item }: ProjectStoryCardProps) {
           </div>
           <div className="absolute inset-x-0 bottom-0 p-5">
             <p className="text-xs font-semibold uppercase tracking-[0.22em] text-cyan-100/80">
-              {item.category === "biotech" ? "BioTech & scientific" : "Personal & experimental"}
+              {item.methods.slice(0, 2).join(" / ")}
             </p>
-            <h3 className="mt-2 text-2xl font-semibold text-white">{item.title}</h3>
+            <h3 className="mt-2 text-2xl font-semibold text-white">
+              {item.title}
+            </h3>
           </div>
         </div>
 
@@ -49,19 +58,39 @@ export function ProjectStoryCard({ item }: ProjectStoryCardProps) {
               {item.demoUrl ? (
                 <Button
                   size="sm"
-                  onClick={() => window.open(withBasePath(item.demoUrl!), "_blank", "noopener,noreferrer")}
+                  onClick={() =>
+                    window.open(
+                      withBasePath(item.demoUrl!),
+                      "_blank",
+                      "noopener,noreferrer"
+                    )
+                  }
                 >
                   Try Demo
                   <ExternalLink className="size-4" aria-hidden="true" />
                 </Button>
-              ) : null}
+              ) : (
+                <Button
+                  size="sm"
+                  variant="outline"
+                  disabled
+                >
+                  Demo planned
+                </Button>
+              )}
               {item.repoUrl ? (
                 <Button
                   size="sm"
                   variant="outline"
-                  onClick={() => window.open(withBasePath(item.repoUrl!), "_blank", "noopener,noreferrer")}
+                  onClick={() =>
+                    window.open(
+                      withBasePath(item.repoUrl!),
+                      "_blank",
+                      "noopener,noreferrer"
+                    )
+                  }
                 >
-                  GitHub
+                  View standalone repo
                   <Github className="size-4" aria-hidden="true" />
                 </Button>
               ) : null}
@@ -90,16 +119,29 @@ export function ProjectStoryCard({ item }: ProjectStoryCardProps) {
           </div>
 
           <div className="flex items-center justify-between gap-4 border-t border-border/60 pt-4">
-            <p className="text-muted-foreground text-sm leading-6">
-              {item.privacyNote ?? "Project details expand into a fuller story of intent, methods, and next steps."}
-            </p>
+            <div className="space-y-2">
+              <p className="text-muted-foreground text-sm leading-6">
+                {item.privacyNote ??
+                  "Project details expand into a fuller story of intent, methods, and next steps."}
+              </p>
+              {item.category === "biotech" ? (
+                <p className="text-xs font-medium text-muted-foreground">
+                  Scientific note: Educational/prototyping tool only. Not
+                  diagnostic or clinical guidance.
+                </p>
+              ) : null}
+            </div>
             <Button
               variant="ghost"
               size="sm"
               onClick={() => setOpen((value) => !value)}
             >
               {open ? "Hide Details" : "View Details"}
-              {open ? <ChevronUp className="size-4" aria-hidden="true" /> : <ChevronDown className="size-4" aria-hidden="true" />}
+              {open ? (
+                <ChevronUp className="size-4" aria-hidden="true" />
+              ) : (
+                <ChevronDown className="size-4" aria-hidden="true" />
+              )}
             </Button>
           </div>
 

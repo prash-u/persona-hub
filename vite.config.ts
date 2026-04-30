@@ -19,9 +19,10 @@ export default defineConfig({
         "icons/icon-512.png"
       ],
       manifest: {
-        name: "Prashant Umrekar Portfolio",
+        name: "Persona Hub",
         short_name: "Prashant",
-        description: "A premium portfolio PWA for biotech, ML/AI, and creative work.",
+        description:
+          "A personal PWA for biotech systems, signal exploration, creative media, and privacy-first browser tools.",
         theme_color: "#0f172a",
         background_color: "#f4f7fb",
         display: "standalone",

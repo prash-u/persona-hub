@@ -3,10 +3,9 @@ import path from "node:path";
 
 const cwd = process.cwd();
 const distDir = path.join(cwd, "dist");
-const siteUrl = (process.env.VITE_SITE_URL ?? "https://example.github.io/PWACV/").replace(
-  /\/$/,
-  ""
-);
+const siteUrl = (
+  process.env.VITE_SITE_URL ?? "https://prash-u.github.io/persona-hub/"
+).replace(/\/$/, "");
 const basePath = (process.env.VITE_BASE_PATH ?? "/").replace(/\/$/, "");
 
 const routes = ["/", "/photos", "/biotech", "/projects", "/cv", "/contact", "/offline"];

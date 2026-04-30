@@ -5,7 +5,12 @@ export type ProjectItem = {
   category: "biotech" | "personal";
   featured: boolean;
   status: "Live" | "Prototype" | "Planned";
-  maturity: "Concept" | "MVP" | "In progress" | "Demo-ready";
+  maturity:
+    | "Concept"
+    | "MVP"
+    | "In progress"
+    | "Active prototype"
+    | "Demo-ready";
   description: string;
   longDescription: string;
   tags: string[];

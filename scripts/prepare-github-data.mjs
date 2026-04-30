@@ -8,7 +8,7 @@ const token = process.env.VITE_GH_TOKEN;
 
 async function main() {
   const projectFile = JSON.parse(await fs.readFile(projectsPath, "utf8"));
-  const repos = [...projectFile.biotech, ...projectFile.mlai, ...projectFile.other]
+  const repos = [...projectFile.biotech, ...projectFile.personal]
     .map((item) => item.githubRepo)
     .filter(Boolean);
 

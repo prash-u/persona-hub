@@ -32,10 +32,10 @@ export default function ProjectsPage() {
           />
           <div className="surface space-y-3 p-6">
             <p className="eyebrow">A note on scope</p>
-            <p className="text-muted-foreground text-sm leading-7">
-              I would rather show the shape of the work honestly than pretend every idea is
-              finished. Most of the projects here are prototypes, concepts, or evolving
-              browser-first tools.
+            <p className="text-sm leading-7 text-muted-foreground">
+              I would rather show the shape of the work honestly than pretend
+              every idea is finished. Most of the projects here are prototypes,
+              concepts, or evolving browser-first tools.
             </p>
           </div>
         </section>

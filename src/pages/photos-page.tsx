@@ -6,14 +6,23 @@ import { SectionHeader } from "@/components/section-header";
 import { Button } from "@/components/ui/button";
 import { projects } from "@/lib/projects";
 
-const filters = ["all", "portrait", "travel", "reel", "lab", "editorial"] as const;
+const filters = [
+  "all",
+  "portrait",
+  "travel",
+  "reel",
+  "lab",
+  "editorial"
+] as const;
 
 export default function PhotosPage() {
   const [filter, setFilter] = useState<(typeof filters)[number]>("all");
 
   const items = useMemo(
     () =>
-      projects.media.filter((item) => filter === "all" || item.category === filter),
+      projects.media.filter(
+        (item) => filter === "all" || item.category === filter
+      ),
     [filter]
   );
 
@@ -48,10 +57,7 @@ export default function PhotosPage() {
           className="columns-1 gap-6 space-y-6 md:columns-2 xl:columns-3"
         >
           {items.map((item) => (
-            <div
-              key={item.title}
-              className="break-inside-avoid"
-            >
+            <div key={item.title} className="break-inside-avoid">
               {item.mediaKind === "image" ? (
                 <a
                   href={item.image}

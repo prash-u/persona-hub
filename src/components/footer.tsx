@@ -6,8 +6,9 @@ export function Footer() {
       <div className="shell flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
         <div>
           <p className="font-display text-2xl">{siteConfig.shortName}</p>
-          <p className="text-muted-foreground mt-2 text-sm">
-            A personal hub for biotech work, visual curiosity, and privacy-first tools built in the browser.
+          <p className="mt-2 text-sm text-muted-foreground">
+            A personal hub for biotech work, visual curiosity, and privacy-first
+            tools built in the browser.
           </p>
         </div>
         <div className="flex flex-wrap gap-4 text-sm">
@@ -17,7 +18,7 @@ export function Footer() {
               href={link.href}
               target={link.href.startsWith("http") ? "_blank" : undefined}
               rel={link.href.startsWith("http") ? "noreferrer" : undefined}
-              className="focus-ring text-muted-foreground rounded-full hover:text-foreground"
+              className="focus-ring rounded-full text-muted-foreground hover:text-foreground"
             >
               {link.label}
             </a>

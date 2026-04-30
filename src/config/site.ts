@@ -14,7 +14,8 @@ export const siteConfig = {
   description:
     "Personal CV and project hub for Prashant Umrekar, combining biotechnology, signal exploration, creative media, and privacy-first browser-based tools.",
   email: "p.umrekar@gmail.com",
-  siteUrl: import.meta.env.VITE_SITE_URL ?? "https://prash-u.github.io/persona-hub/",
+  siteUrl:
+    import.meta.env.VITE_SITE_URL ?? "https://prash-u.github.io/persona-hub/",
   basePath: import.meta.env.VITE_BASE_PATH ?? "/",
   profileImage: "https://github.com/prash-u.png?size=400",
   instagramUrl,
@@ -77,8 +78,7 @@ export const routeMeta = {
   },
   "/photos": {
     title: "Photo Reel",
-    description:
-      "Curated stills, reels, and visual notes from outside the lab."
+    description: "Curated stills, reels, and visual notes from outside the lab."
   },
   "/biotech": {
     title: "Scientific Work",

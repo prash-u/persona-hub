@@ -7,6 +7,7 @@ const projectSchema = z.object({
   title: z.string(),
   summary: z.string(),
   tags: z.array(z.string()),
+  highlights: z.array(z.string()).optional(),
   repoUrl: z.string().optional(),
   demoUrl: z.string().optional(),
   thumb: z.string(),

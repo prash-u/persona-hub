@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900">
+  <rect width="1200" height="900" fill="#07111d" />
+  <g fill="none" stroke-linecap="round">
+    <path d="M154 655C296 482 438 388 606 388c163 0 286 86 440 265" stroke="#22d3ee" stroke-opacity="0.42" stroke-width="7" />
+    <path d="M150 564c106 0 106-148 212-148 106 0 106 214 212 214 106 0 106-247 212-247 106 0 106 178 212 178" stroke="#5eead4" stroke-width="12" />
+    <path d="M150 272h900" stroke="#334155" stroke-width="2" />
+    <path d="M150 360h900" stroke="#1e293b" stroke-width="1.5" />
+  </g>
+  <g fill="#dffcf8">
+    <circle cx="362" cy="416" r="12" />
+    <circle cx="574" cy="631" r="12" />
+    <circle cx="786" cy="384" r="12" />
+  </g>
+  <text x="90" y="122" fill="#f8fafc" font-family="Manrope, sans-serif" font-size="25" letter-spacing="5">NETWORK PULSE ANALYZER</text>
+</svg>

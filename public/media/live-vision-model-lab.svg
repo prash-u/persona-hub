@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900">
+  <rect width="1200" height="900" fill="#0a1321" />
+  <rect x="182" y="168" width="836" height="564" rx="38" fill="#0f1f33" stroke="#334155" stroke-width="4" />
+  <rect x="258" y="246" width="220" height="150" rx="18" fill="none" stroke="#67e8f9" stroke-width="8" />
+  <rect x="658" y="286" width="206" height="226" rx="24" fill="none" stroke="#2dd4bf" stroke-width="8" />
+  <circle cx="568" cy="468" r="68" fill="#22d3ee" opacity="0.16" />
+  <g fill="#f0fdfa">
+    <circle cx="367" cy="320" r="8" />
+    <circle cx="748" cy="352" r="8" />
+    <circle cx="782" cy="448" r="8" />
+    <circle cx="730" cy="532" r="8" />
+  </g>
+  <path d="M236 642c108-82 198-123 272-123 101 0 182 55 356 123" fill="none" stroke="#5eead4" stroke-opacity="0.46" stroke-width="8" />
+  <text x="90" y="122" fill="#f8fafc" font-family="Manrope, sans-serif" font-size="25" letter-spacing="5">LIVE VISION MODEL LAB</text>
+</svg>

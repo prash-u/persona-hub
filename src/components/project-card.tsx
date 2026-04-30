@@ -57,6 +57,18 @@ export function ProjectCard({ item }: ProjectCardProps) {
             {item.summary}
           </p>
         </div>
+        {item.highlights?.length ? (
+          <div className="grid gap-2">
+            {item.highlights.slice(0, 2).map((highlight) => (
+              <p
+                key={highlight}
+                className="rounded-2xl border border-border/60 bg-background/55 px-3 py-2 text-xs font-medium text-foreground/90"
+              >
+                {highlight}
+              </p>
+            ))}
+          </div>
+        ) : null}
         <TagBadges
           tags={[...(meta?.topics?.slice(0, 2) ?? []), ...item.tags].slice(0, 5)}
         />

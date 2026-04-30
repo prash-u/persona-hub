@@ -2,6 +2,7 @@ export type ProjectItem = {
   title: string;
   summary: string;
   tags: string[];
+  highlights?: string[];
   repoUrl?: string;
   demoUrl?: string;
   thumb: string;

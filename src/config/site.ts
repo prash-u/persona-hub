@@ -6,19 +6,23 @@ export type NavItem = {
 export const siteConfig = {
   name: "Prashant Umrekar",
   shortName: "Prashant",
-  role: "Bioprocessing Scientist · Builder of scientific tools",
+  role: "Bioprocessing Scientist · Scientific Interface Builder · Browser ML Prototyper",
   tagline:
-    "A portfolio spanning bioprocessing, browser-based computer vision, and scientific product thinking.",
+    "A portfolio spanning bioprocessing operations, neural interfaces, browser-based vision systems, and scientific product thinking.",
   description:
-    "Premium portfolio PWA showcasing biotech projects, browser-based ML prototypes, and a digital CV anchored in real manufacturing and diagnostics experience.",
+    "Premium portfolio PWA showcasing biotech systems, browser-based neurotechnology and vision prototypes, and a digital CV grounded in manufacturing, diagnostics, and scientific operations.",
   email: "p.umrekar@gmail.com",
-  siteUrl: import.meta.env.VITE_SITE_URL ?? "https://example.github.io/persona-hub/",
+  siteUrl: import.meta.env.VITE_SITE_URL ?? "https://prash-u.github.io/persona-hub/",
   basePath: import.meta.env.VITE_BASE_PATH ?? "/",
   location: "London, United Kingdom",
   socialLinks: [
     {
       label: "GitHub",
       href: "https://github.com/prash-u"
+    },
+    {
+      label: "LinkedIn",
+      href: "https://www.linkedin.com/in/prashant-umrekar/"
     },
     {
       label: "Email",
@@ -42,9 +46,10 @@ export const siteConfig = {
     twitterHandle: ""
   },
   person: {
-    jobTitle: "Bioprocessing Scientist",
+    jobTitle: "Bioprocessing Scientist and Scientific Interface Builder",
     sameAs: [
-      "https://github.com/prash-u"
+      "https://github.com/prash-u",
+      "https://www.linkedin.com/in/prashant-umrekar/"
     ]
   }
 } as const;

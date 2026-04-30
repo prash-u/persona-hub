@@ -4,9 +4,10 @@
       "title": "EEG Stream Visualizer",
       "summary": "A browser-based EEG streaming viewer concept for inspecting traces, event markers, and future spectral overlays in a research-friendly interface.",
       "tags": ["EEG", "Signal processing", "Browser UI", "WebGL"],
+      "highlights": ["Streaming-first review concept", "Research-friendly signal inspection"],
       "repoUrl": "https://github.com/prash-u/eeg-stream-visualizer",
       "thumb": "/media/biotech-eeg.svg",
-      "featured": true,
+      "featured": false,
       "type": "biotech",
       "year": 2026,
       "githubRepo": "prash-u/eeg-stream-visualizer"
@@ -15,20 +16,35 @@
       "title": "Gene Expression QC Pipeline",
       "summary": "A reproducible genomics pipeline scaffold for bulk RNA-seq quality control, expression profiling, and downstream reporting.",
       "tags": ["Genomics", "RNA-seq", "Snakemake", "Bioinformatics"],
+      "highlights": ["Reproducible QC pipeline", "Downstream reporting workflow"],
       "repoUrl": "https://github.com/prash-u/gene-expression-qc-pipeline",
       "thumb": "/media/biotech-gene.svg",
-      "featured": true,
+      "featured": false,
       "type": "biotech",
       "year": 2025,
       "githubRepo": "prash-u/gene-expression-qc-pipeline"
     },
     {
+      "title": "BioBody Insights",
+      "summary": "An interactive whole-body systems biology atlas for exploring how genes, proteins, pathways, and metabolic flux map onto tissues through a visual organ-anchored interface.",
+      "tags": ["Systems Biology", "Atlas UI", "Translational Biology", "React"],
+      "highlights": ["Body-mapped pathway narratives", "Executive-friendly scientific interface"],
+      "repoUrl": "https://github.com/prash-u/biobody-insights",
+      "demoUrl": "https://biobody-insights.vercel.app",
+      "thumb": "/media/biobody-insights.svg",
+      "featured": true,
+      "type": "biotech",
+      "year": 2026,
+      "githubRepo": "prash-u/biobody-insights"
+    },
+    {
       "title": "Live Vision Model Lab",
-      "summary": "A real-time browser-based computer vision demo with switchable COCO-SSD, MobileNet, Handpose, and Face API inference.",
-      "tags": ["TensorFlow.js", "Computer vision", "Realtime", "Browser ML"],
+      "summary": "A standalone installable browser vision playground for realtime webcam, image, and video inference with switchable TensorFlow.js and face-api.js models.",
+      "tags": ["TensorFlow.js", "Computer Vision", "Realtime", "PWA"],
+      "highlights": ["Local-first inference playground", "Installable demo for webcam and uploads"],
       "repoUrl": "https://github.com/prash-u/live-vision-model-lab",
-      "demoUrl": "/biotech#live-detection-lab",
-      "thumb": "/media/biotech-vision.svg",
+      "demoUrl": "https://live-vision-model-lab.vercel.app",
+      "thumb": "/media/live-vision-model-lab.svg",
       "featured": true,
       "type": "biotech",
       "year": 2026,
@@ -37,59 +53,32 @@
   ],
   "mlai": [
     {
-      "title": "Protein Signal Classifier",
-      "summary": "An experimental ML workflow for classifying signal patterns across biological datasets with emphasis on lightweight inference and interpretable outputs.",
-      "tags": ["ML", "Classification", "Interpretability", "Python"],
-      "repoUrl": "https://github.com/your-username/protein-signal-classifier",
-      "thumb": "/media/project-protein.svg",
+      "title": "Neural Pulse Play",
+      "summary": "A browser-based neurotechnology sandbox combining EEG review, topographic brain visualization, and a DBS-inspired stimulation playground for interactive neural system exploration.",
+      "tags": ["EEG", "DBS", "Neurotechnology", "3D Visualization"],
+      "highlights": ["EEG review plus DBS sandbox", "Interactive neural systems exploration"],
+      "repoUrl": "https://github.com/prash-u/neural-pulse-play",
+      "demoUrl": "https://neural-pulse-play.vercel.app",
+      "thumb": "/media/neural-pulse-play.svg",
       "featured": true,
       "type": "mlai",
       "year": 2026,
-      "githubRepo": "your-username/protein-signal-classifier"
-    },
-    {
-      "title": "Clinical Note Summariser",
-      "summary": "A privacy-aware summarisation interface for transforming dense research or healthcare notes into concise structured summaries directly in the browser.",
-      "tags": ["NLP", "Privacy", "Healthcare", "LLM UX"],
-      "repoUrl": "https://github.com/your-username/clinical-note-summariser",
-      "thumb": "/media/project-notes.svg",
-      "type": "mlai",
-      "year": 2025,
-      "githubRepo": "your-username/clinical-note-summariser"
+      "githubRepo": "prash-u/neural-pulse-play"
     }
   ],
   "other": [
     {
-      "title": "Pokemon Card Scanner & Deck Valuation",
-      "summary": "A polished client-side scanner and valuation helper for identifying Pokemon cards, estimating deck value, and comparing collection snapshots over time.",
-      "tags": ["Computer Vision", "Collectors", "OCR", "PWA"],
-      "repoUrl": "https://github.com/your-username/pokemon-card-scanner",
-      "demoUrl": "https://pokemon-scanner.example.com",
-      "thumb": "/media/project-pokemon.svg",
+      "title": "Network Pulse Analyzer",
+      "summary": "A translational biological network intelligence interface for tracing disease-linked pathways, tissue effects, and signaling relationships across connected biological programs.",
+      "tags": ["Biological Networks", "Pathway Analysis", "Disease Programs", "Visualization"],
+      "highlights": ["Connected disease program views", "Signal and pathway relationship mapping"],
+      "repoUrl": "https://github.com/prash-u/network-pulse-analyzer",
+      "demoUrl": "https://network-pulse-analyzer.vercel.app",
+      "thumb": "/media/network-pulse-analyzer.svg",
       "featured": true,
       "type": "other",
       "year": 2026,
-      "githubRepo": "your-username/pokemon-card-scanner"
-    },
-    {
-      "title": "Offline Privacy Workbench",
-      "summary": "A browser-based toolkit exploring what serious client-side software can feel like when privacy, local inference, and offline-first operation are the defaults.",
-      "tags": ["Offline First", "Privacy", "Edge UX", "TypeScript"],
-      "repoUrl": "https://github.com/your-username/offline-privacy-workbench",
-      "thumb": "/media/project-privacy.svg",
-      "type": "other",
-      "year": 2025,
-      "githubRepo": "your-username/offline-privacy-workbench"
-    },
-    {
-      "title": "Research Media Archive",
-      "summary": "A compact media archiving system for linking experiments, visuals, and lab documentation into a cohesive narrative record.",
-      "tags": ["Archival", "Media", "Design Systems", "Documentation"],
-      "repoUrl": "https://github.com/your-username/research-media-archive",
-      "thumb": "/media/project-archive.svg",
-      "type": "other",
-      "year": 2024,
-      "githubRepo": "your-username/research-media-archive"
+      "githubRepo": "prash-u/network-pulse-analyzer"
     }
   ],
   "media": [

@@ -104,6 +104,17 @@ export function ContactForm() {
             <span className="font-semibold">Email:</span> {siteConfig.email}
           </p>
           <p>
+            <span className="font-semibold">LinkedIn:</span>{" "}
+            <a
+              href="https://www.linkedin.com/in/prashant-umrekar/"
+              target="_blank"
+              rel="noreferrer"
+              className="text-accent font-medium"
+            >
+              prashant-umrekar
+            </a>
+          </p>
+          <p>
             <span className="font-semibold">Location:</span> {siteConfig.location}
           </p>
           <p>

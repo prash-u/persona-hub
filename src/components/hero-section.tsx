@@ -3,9 +3,9 @@ import {
   ArrowRight,
   BrainCircuit,
   FileDown,
-  Github,
-  Mail,
+  Linkedin,
   Microscope,
+  ScanEye,
   ScanLine
 } from "lucide-react";
 import { siteConfig } from "@/config/site";
@@ -24,7 +24,7 @@ export function HeroSection() {
     <section className="relative overflow-hidden pt-6 md:pt-10">
       <div className="absolute inset-0 -z-10 bg-grid bg-[length:44px_44px] opacity-25" />
       <div className="shell">
-        <div className="surface relative overflow-hidden px-6 py-10 shadow-glow md:px-10 md:py-14 lg:px-14 lg:py-18">
+        <div className="surface lg:py-18 relative overflow-hidden px-6 py-10 shadow-glow md:px-10 md:py-14 lg:px-14">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(34,211,238,0.18),transparent_24%),radial-gradient(circle_at_80%_18%,rgba(20,184,166,0.14),transparent_22%),linear-gradient(135deg,rgba(8,15,28,0.02),rgba(8,15,28,0.16))]" />
           <div className="absolute inset-x-0 top-0 h-[260px] overflow-hidden opacity-90">
             <svg
@@ -41,18 +41,9 @@ export function HeroSection() {
                   y1="0%"
                   y2="0%"
                 >
-                  <stop
-                    offset="0%"
-                    stopColor="rgba(103, 232, 249, 0.15)"
-                  />
-                  <stop
-                    offset="45%"
-                    stopColor="rgba(45, 212, 191, 0.65)"
-                  />
-                  <stop
-                    offset="100%"
-                    stopColor="rgba(186, 230, 253, 0.18)"
-                  />
+                  <stop offset="0%" stopColor="rgba(103, 232, 249, 0.15)" />
+                  <stop offset="45%" stopColor="rgba(45, 212, 191, 0.65)" />
+                  <stop offset="100%" stopColor="rgba(186, 230, 253, 0.18)" />
                 </linearGradient>
               </defs>
               {waveformPaths.map((path, index) => (
@@ -64,7 +55,11 @@ export function HeroSection() {
                   strokeWidth={index === 1 ? 3.5 : 2}
                   strokeLinecap="round"
                   initial={{ pathLength: 0.35, opacity: 0.18, x: 0 }}
-                  animate={{ pathLength: 1, opacity: [0.16, 0.5, 0.16], x: [0, -18, 0] }}
+                  animate={{
+                    pathLength: 1,
+                    opacity: [0.16, 0.5, 0.16],
+                    x: [0, -18, 0]
+                  }}
                   transition={{
                     duration: 7 + index * 1.5,
                     repeat: Infinity,
@@ -74,7 +69,7 @@ export function HeroSection() {
               ))}
             </svg>
           </div>
-          <div className="absolute inset-y-0 right-0 hidden w-[50%] bg-gradient-to-l from-cyan-400/10 via-sky-400/6 to-transparent lg:block" />
+          <div className="via-sky-400/6 absolute inset-y-0 right-0 hidden w-[50%] bg-gradient-to-l from-cyan-400/10 to-transparent lg:block" />
           <div className="absolute -left-12 top-8 size-48 rounded-full bg-cyan-400/15 blur-3xl" />
           <div className="absolute -bottom-8 right-6 size-56 rounded-full bg-teal-400/10 blur-3xl" />
           <div className="relative grid items-end gap-10 lg:grid-cols-[1.08fr_0.92fr]">
@@ -84,60 +79,68 @@ export function HeroSection() {
               transition={{ duration: 0.7 }}
               className="max-w-3xl"
             >
-              <Badge variant="accent">Scientist-engineer project hub</Badge>
-              <p className="eyebrow mt-6">Bioprocessing, biotech systems, and signal visualisation</p>
+              <Badge variant="accent">About me</Badge>
+              <p className="eyebrow mt-6">
+                Biotech, signals, systems, and visual thinking
+              </p>
               <h1 className="display-title mt-4">{siteConfig.name}</h1>
               <p className="mt-5 text-lg font-semibold tracking-wide text-cyan-700 dark:text-cyan-300">
                 {siteConfig.role}
               </p>
-              <p className="text-muted-foreground mt-6 max-w-2xl text-base leading-8 md:text-lg">
-                Bioprocessing scientist with experience in viral vector processing, GMP/GLP quality systems,
-                cell culture, molecular diagnostics, gene expression analysis, and EEG/signal data workflows.
-                I build client-side scientific tools that make complex biological and technical data easier to explore.
+              <p className="mt-6 max-w-2xl text-base leading-8 text-muted-foreground md:text-lg">
+                I work in biotechnology, but I tend to think in systems. Most of
+                what interests me lives somewhere between biological processes,
+                signal interpretation, and the tools we use to make difficult
+                things easier to see.
+              </p>
+              <p className="mt-4 max-w-2xl text-base leading-8 text-muted-foreground md:text-lg">
+                Outside the lab, that usually becomes browser-based experiments,
+                scientific interfaces, and privacy-first tools that are
+                practical, slightly strange, and sometimes just fun to build.
               </p>
               <div className="mt-8 flex flex-wrap gap-3">
                 <Button
                   size="lg"
-                  onClick={() => (window.location.href = withBasePath("/projects"))}
+                  onClick={() =>
+                    (window.location.href = withBasePath("/projects"))
+                  }
                 >
-                  View Projects
-                  <ArrowRight
-                    className="size-4"
-                    aria-hidden="true"
-                  />
+                  Explore Projects
+                  <ArrowRight className="size-4" aria-hidden="true" />
                 </Button>
                 <Button
                   variant="outline"
                   size="lg"
-                  onClick={() => window.open(withBasePath("/cv.pdf"), "_blank", "noopener")}
+                  onClick={() =>
+                    window.open(withBasePath("/cv.pdf"), "_blank", "noopener")
+                  }
                 >
-                  <FileDown
-                    className="size-4"
-                    aria-hidden="true"
-                  />
+                  <FileDown className="size-4" aria-hidden="true" />
                   Download CV
                 </Button>
                 <Button
-                  variant="ghost"
+                  variant="outline"
                   size="lg"
-                  onClick={() => (window.location.href = withBasePath("/contact"))}
+                  onClick={() =>
+                    (window.location.href = withBasePath("/photos"))
+                  }
                 >
-                  <Mail
-                    className="size-4"
-                    aria-hidden="true"
-                  />
-                  Contact
+                  <ScanEye className="size-4" aria-hidden="true" />
+                  Photo Reel
                 </Button>
                 <Button
                   variant="ghost"
                   size="lg"
-                  onClick={() => window.open("https://github.com/prash-u", "_blank", "noopener,noreferrer")}
+                  onClick={() =>
+                    window.open(
+                      "https://www.linkedin.com/in/prashant-umrekar/",
+                      "_blank",
+                      "noopener,noreferrer"
+                    )
+                  }
                 >
-                  <Github
-                    className="size-4"
-                    aria-hidden="true"
-                  />
-                  GitHub
+                  <Linkedin className="size-4" aria-hidden="true" />
+                  LinkedIn
                 </Button>
               </div>
             </motion.div>
@@ -147,34 +150,54 @@ export function HeroSection() {
               transition={{ delay: 0.12, duration: 0.7 }}
               className="grid gap-4"
             >
-              <div className="rounded-[28px] border border-white/10 bg-slate-950/92 p-6 text-white shadow-glow">
-                <p className="eyebrow text-cyan-200/70">Flagship directions</p>
+              <div className="bg-slate-950/92 rounded-[28px] border border-white/10 p-6 text-white shadow-glow">
+                <p className="eyebrow text-cyan-200/70">
+                  What tends to pull me in
+                </p>
                 <div className="mt-6 grid gap-4">
                   <div className="rounded-[22px] border border-white/10 bg-white/5 p-4">
                     <div className="flex items-center gap-3">
-                      <Microscope className="size-5 text-cyan-300" aria-hidden="true" />
-                      <p className="text-sm text-cyan-100/70">Biological systems</p>
+                      <Microscope
+                        className="size-5 text-cyan-300"
+                        aria-hidden="true"
+                      />
+                      <p className="text-sm text-cyan-100/70">
+                        Biological systems
+                      </p>
                     </div>
                     <p className="mt-3 text-xl font-semibold">
-                      Viral vector processing, pathway-centred interfaces, and research-facing scientific systems.
+                      Lab processes, biological workflows, and the challenge of
+                      turning complex science into something more legible.
                     </p>
                   </div>
                   <div className="rounded-[22px] border border-white/10 bg-white/5 p-4">
                     <div className="flex items-center gap-3">
-                      <BrainCircuit className="size-5 text-cyan-300" aria-hidden="true" />
-                      <p className="text-sm text-cyan-100/70">Neural interfaces</p>
+                      <BrainCircuit
+                        className="size-5 text-cyan-300"
+                        aria-hidden="true"
+                      />
+                      <p className="text-sm text-cyan-100/70">
+                        Neural interfaces
+                      </p>
                     </div>
                     <p className="mt-3 text-xl font-semibold">
-                      EEG review, signal analysis, and neural visualisation made legible in the browser.
+                      EEG-style signals, hidden patterns, and interactive ways
+                      of making abstract data feel intuitive.
                     </p>
                   </div>
                   <div className="rounded-[22px] border border-white/10 bg-white/5 p-4">
                     <div className="flex items-center gap-3">
-                      <ScanLine className="size-5 text-cyan-300" aria-hidden="true" />
-                      <p className="text-sm text-cyan-100/70">Scientific tool building</p>
+                      <ScanLine
+                        className="size-5 text-cyan-300"
+                        aria-hidden="true"
+                      />
+                      <p className="text-sm text-cyan-100/70">
+                        Scientific tool building
+                      </p>
                     </div>
                     <p className="mt-3 text-xl font-semibold">
-                      Privacy-aware diagnostics, data visualisation, and client-side interaction design for technical workflows.
+                      Privacy-first browser tools, visual experiments, and
+                      interfaces that feel more curious than corporate.
                     </p>
                   </div>
                 </div>
@@ -185,7 +208,9 @@ export function HeroSection() {
                     key={link.label}
                     href={link.href}
                     target={link.href.startsWith("http") ? "_blank" : undefined}
-                    rel={link.href.startsWith("http") ? "noreferrer" : undefined}
+                    rel={
+                      link.href.startsWith("http") ? "noreferrer" : undefined
+                    }
                     className="surface focus-ring rounded-[22px] px-4 py-4 text-sm font-semibold hover:-translate-y-0.5"
                   >
                     {link.label}

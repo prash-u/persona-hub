@@ -1,28 +1,43 @@
 export type ProjectItem = {
+  id: string;
+  slug: string;
   title: string;
-  summary: string;
+  category: "biotech" | "personal";
+  featured: boolean;
+  status: "Live" | "Prototype" | "Planned";
+  maturity: "Concept" | "MVP" | "In progress" | "Demo-ready";
+  description: string;
+  longDescription: string;
   tags: string[];
+  methods: string[];
   highlights?: string[];
-  section?: "biotech" | "audiovisual" | "fun";
-  status?: "working" | "wip" | "upcoming";
   repoUrl?: string;
   demoUrl?: string;
-  thumb: string;
-  featured?: boolean;
-  type: "biotech" | "mlai" | "other" | "media";
+  image: string;
+  accent: string;
+  privacyNote?: string;
+  offlineCapable: boolean;
+  clientSideOnly: boolean;
   year: number;
   githubRepo?: string;
 };
 
-export type MediaItem = ProjectItem & {
+export type MediaItem = {
+  id: string;
+  slug: string;
+  title: string;
+  description: string;
+  tags: string[];
+  image: string;
+  year: number;
   mediaKind: "image" | "video";
   category: "portrait" | "travel" | "reel" | "lab" | "editorial";
+  demoUrl?: string;
 };
 
 export type ProjectCollection = {
   biotech: ProjectItem[];
-  mlai: ProjectItem[];
-  other: ProjectItem[];
+  personal: ProjectItem[];
   media: MediaItem[];
 };
 

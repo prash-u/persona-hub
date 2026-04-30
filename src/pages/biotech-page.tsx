@@ -7,15 +7,15 @@ export default function BiotechPage() {
     <>
       <Seo
         title="Scientific Work"
-        description="A scientific lens on the broader work directory, spanning biotech systems, pathway interfaces, and adjacent visual tooling."
+        description="BioTech and scientific projects spanning EEG visualisation, gene expression concepts, bioinformatics, and training-oriented scientific interfaces."
         path="/biotech"
         breadcrumbLabel="Scientific Work"
       />
       <div className="shell section-space space-y-12">
         <SectionHeader
           eyebrow="Scientific work"
-          title="A more focused scientific index for the strongest biotech-facing work."
-          description="This route stays leaner than the main showcase and emphasises the systems biology, pathway, diagnostics, and operations-adjacent parts of the portfolio without losing the broader context."
+          title="A focused index for the strongest biotech-facing work."
+          description="This route keeps the emphasis on EEG visualisation, gene expression, bioinformatics, diagnostics, and scientific training concepts while still linking naturally back to the wider project hub."
         />
         <WorkDirectory mode="scientific" />
       </div>

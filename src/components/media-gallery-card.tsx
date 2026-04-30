@@ -19,7 +19,7 @@ export function MediaGalleryCard({ item, onSelect }: MediaGalleryCardProps) {
     >
       <div className="relative">
         <img
-          src={item.thumb}
+          src={item.image}
           alt={item.title}
           loading="lazy"
           className="h-80 w-full object-cover transition duration-500 group-hover:scale-[1.02]"
@@ -39,7 +39,7 @@ export function MediaGalleryCard({ item, onSelect }: MediaGalleryCardProps) {
       <div className="p-5">
         <h3 className="text-lg font-semibold">{item.title}</h3>
         <p className="text-muted-foreground mt-2 text-sm leading-6">
-          {item.summary}
+          {item.description}
         </p>
       </div>
     </motion.button>

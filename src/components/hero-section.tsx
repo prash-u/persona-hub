@@ -3,6 +3,7 @@ import {
   ArrowRight,
   BrainCircuit,
   FileDown,
+  Github,
   Mail,
   Microscope,
   ScanLine
@@ -83,40 +84,38 @@ export function HeroSection() {
               transition={{ duration: 0.7 }}
               className="max-w-3xl"
             >
-              <Badge variant="accent">Scientific portfolio hub</Badge>
-              <p className="eyebrow mt-6">Biotech, neural systems, and browser-native ML</p>
+              <Badge variant="accent">Scientist-engineer project hub</Badge>
+              <p className="eyebrow mt-6">Bioprocessing, biotech systems, and signal visualisation</p>
               <h1 className="display-title mt-4">{siteConfig.name}</h1>
               <p className="mt-5 text-lg font-semibold tracking-wide text-cyan-700 dark:text-cyan-300">
                 {siteConfig.role}
               </p>
               <p className="text-muted-foreground mt-6 max-w-2xl text-base leading-8 md:text-lg">
-                I work across GMP manufacturing, diagnostics, and scientific systems
-                while building browser-based tools that make technical work easier to
-                inspect, explain, and prototype. This site is the main portfolio hub
-                for my biotech projects, neural interfaces, live vision demos, and
-                professional CV.
+                Bioprocessing scientist with experience in viral vector processing, GMP/GLP quality systems,
+                cell culture, molecular diagnostics, gene expression analysis, and EEG/signal data workflows.
+                I build client-side scientific tools that make complex biological and technical data easier to explore.
               </p>
               <div className="mt-8 flex flex-wrap gap-3">
                 <Button
                   size="lg"
-                  onClick={() => (window.location.href = withBasePath("/cv"))}
+                  onClick={() => (window.location.href = withBasePath("/projects"))}
+                >
+                  View Projects
+                  <ArrowRight
+                    className="size-4"
+                    aria-hidden="true"
+                  />
+                </Button>
+                <Button
+                  variant="outline"
+                  size="lg"
+                  onClick={() => window.open(withBasePath("/cv.pdf"), "_blank", "noopener")}
                 >
                   <FileDown
                     className="size-4"
                     aria-hidden="true"
                   />
-                  View CV
-                </Button>
-                <Button
-                  variant="outline"
-                  size="lg"
-                  onClick={() => (window.location.href = withBasePath("/projects"))}
-                >
-                  Explore Projects
-                  <ArrowRight
-                    className="size-4"
-                    aria-hidden="true"
-                  />
+                  Download CV
                 </Button>
                 <Button
                   variant="ghost"
@@ -128,6 +127,17 @@ export function HeroSection() {
                     aria-hidden="true"
                   />
                   Contact
+                </Button>
+                <Button
+                  variant="ghost"
+                  size="lg"
+                  onClick={() => window.open("https://github.com/prash-u", "_blank", "noopener,noreferrer")}
+                >
+                  <Github
+                    className="size-4"
+                    aria-hidden="true"
+                  />
+                  GitHub
                 </Button>
               </div>
             </motion.div>
@@ -146,7 +156,7 @@ export function HeroSection() {
                       <p className="text-sm text-cyan-100/70">Biological systems</p>
                     </div>
                     <p className="mt-3 text-xl font-semibold">
-                      Body-mapped pathway intelligence, translational biology narratives, and research-facing interfaces.
+                      Viral vector processing, pathway-centred interfaces, and research-facing scientific systems.
                     </p>
                   </div>
                   <div className="rounded-[22px] border border-white/10 bg-white/5 p-4">
@@ -155,16 +165,16 @@ export function HeroSection() {
                       <p className="text-sm text-cyan-100/70">Neural interfaces</p>
                     </div>
                     <p className="mt-3 text-xl font-semibold">
-                      EEG review surfaces, signal exploration, and neurotechnology concepts made legible in the browser.
+                      EEG review, signal analysis, and neural visualisation made legible in the browser.
                     </p>
                   </div>
                   <div className="rounded-[22px] border border-white/10 bg-white/5 p-4">
                     <div className="flex items-center gap-3">
                       <ScanLine className="size-5 text-cyan-300" aria-hidden="true" />
-                      <p className="text-sm text-cyan-100/70">Live browser ML</p>
+                      <p className="text-sm text-cyan-100/70">Scientific tool building</p>
                     </div>
                     <p className="mt-3 text-xl font-semibold">
-                      Client-side vision models, installable demos, and privacy-aware interaction design for technical tools.
+                      Privacy-aware diagnostics, data visualisation, and client-side interaction design for technical workflows.
                     </p>
                   </div>
                 </div>

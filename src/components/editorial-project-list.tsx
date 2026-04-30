@@ -39,7 +39,7 @@ export function EditorialProjectList({
             <div>
               <h3 className="text-2xl font-semibold">{item.title}</h3>
               <p className="text-muted-foreground mt-2 text-sm leading-7">
-                {item.summary}
+                {item.description}
               </p>
             </div>
             {item.highlights?.length ? (
@@ -57,26 +57,19 @@ export function EditorialProjectList({
           </div>
           <div className="space-y-4">
             <div className="flex flex-wrap gap-2">
-              {item.status ? (
-                <span className="rounded-full border border-border/70 bg-background/70 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.22em] text-muted-foreground">
-                  {item.status === "working"
-                    ? "Working now"
-                    : item.status === "wip"
-                      ? "In progress"
-                      : "Upcoming"}
-                </span>
-              ) : null}
-              {item.section ? (
-                <span className="rounded-full border border-border/70 bg-background/70 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.22em] text-muted-foreground">
-                  {item.section === "audiovisual"
-                    ? "Audio / visual"
-                    : item.section === "fun"
-                      ? "Fun / experimental"
-                      : "Biotech"}
-                </span>
-              ) : null}
+              <span className="rounded-full border border-border/70 bg-background/70 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.22em] text-muted-foreground">
+                {item.status}
+              </span>
+              <span className="rounded-full border border-border/70 bg-background/70 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.22em] text-muted-foreground">
+                {item.maturity}
+              </span>
             </div>
             <TagBadges tags={item.tags} />
+            {item.privacyNote ? (
+              <p className="rounded-2xl border border-border/70 bg-background/70 px-3 py-2 text-xs font-medium">
+                {item.privacyNote}
+              </p>
+            ) : null}
             <div className="flex flex-wrap gap-2">
               {item.repoUrl ? (
                 <Button

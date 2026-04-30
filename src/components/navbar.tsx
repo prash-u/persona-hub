@@ -32,10 +32,13 @@ export function Navbar() {
             className="flex items-center gap-1 rounded-full border border-border/60 bg-background/78 p-1.5 shadow-soft"
           >
             {siteConfig.navigation.map((item) => {
+              const [itemPath, itemHash] = item.href.split("#");
               const active =
                 item.href === "/"
                   ? location.pathname === "/"
-                  : location.pathname.startsWith(item.href);
+                  : itemHash
+                    ? location.pathname === (itemPath || "/") && location.hash === `#${itemHash}`
+                    : location.pathname.startsWith(item.href);
 
               return (
                 <NavLink

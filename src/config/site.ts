@@ -6,11 +6,11 @@ export type NavItem = {
 export const siteConfig = {
   name: "Prashant Umrekar",
   shortName: "Prashant",
-  role: "Bioprocessing Scientist · Scientific Interface Builder · Browser ML Prototyper",
+  role: "Bioprocessing Scientist · Biotech Systems Builder · Signal & Data Visualisation",
   tagline:
-    "A portfolio spanning bioprocessing operations, neural interfaces, browser-based vision systems, and scientific product thinking.",
+    "Scientist-engineer project hub spanning viral vector processing, molecular diagnostics, gene expression, EEG workflows, and client-side scientific tooling.",
   description:
-    "Premium portfolio PWA showcasing biotech systems, browser-based neurotechnology and vision prototypes, and a digital CV grounded in manufacturing, diagnostics, and scientific operations.",
+    "Premium CV and project hub for Prashant Umrekar, presenting bioprocessing, diagnostics, bioinformatics, signal visualisation, and privacy-aware scientific tools.",
   email: "p.umrekar@gmail.com",
   siteUrl: import.meta.env.VITE_SITE_URL ?? "https://prash-u.github.io/persona-hub/",
   basePath: import.meta.env.VITE_BASE_PATH ?? "/",
@@ -31,9 +31,9 @@ export const siteConfig = {
   ],
   navigation: [
     { label: "Home", href: "/" },
-    { label: "Work", href: "/projects" },
-    { label: "Scientific", href: "/biotech" },
-    { label: "CV", href: "/cv" },
+    { label: "Projects", href: "/projects" },
+    { label: "Experience", href: "/#experience" },
+    { label: "Skills", href: "/#skills" },
     { label: "Contact", href: "/contact" }
   ] satisfies NavItem[],
   repo: {
@@ -45,7 +45,7 @@ export const siteConfig = {
     twitterHandle: ""
   },
   person: {
-    jobTitle: "Bioprocessing Scientist and Scientific Interface Builder",
+    jobTitle: "Bioprocessing Scientist and Biotech Systems Builder",
     sameAs: [
       "https://github.com/prash-u",
       "https://www.linkedin.com/in/prashant-umrekar/"
@@ -57,7 +57,7 @@ export const routeMeta = {
   "/": {
     title: "Portfolio",
     description:
-      "A premium personal hub for bioprocessing, biotech tooling, and browser-based ML experiments."
+      "A premium scientist-engineer hub for biotech systems, diagnostics, signal visualisation, and client-side scientific tools."
   },
   "/photos": {
     title: "Photo & Videography",
@@ -67,12 +67,12 @@ export const routeMeta = {
   "/biotech": {
     title: "Scientific Work",
     description:
-      "A scientific lens on the wider work directory, spanning biotech systems, research tooling, and adjacent interfaces."
+      "BioTech and scientific projects spanning EEG visualisation, gene expression concepts, bioinformatics, and lab training interfaces."
   },
   "/projects": {
-    title: "Work Directory",
+    title: "Projects",
     description:
-      "A cross-disciplinary directory of biotech, audio-visual, and experimental software projects with clear status and standalone links."
+      "Curated biotech and personal experimental projects presented as a premium scientist-engineer showcase."
   },
   "/cv": {
     title: "CV",

@@ -17,21 +17,13 @@ export function EditorialProjectSpotlight({
   title
 }: EditorialProjectSpotlightProps) {
   const meta = getGithubMeta(item.githubRepo);
-  const statusLabel =
-    item.status === "working"
-      ? "Working now"
-      : item.status === "wip"
-        ? "In progress"
-        : item.status === "upcoming"
-          ? "Upcoming"
-          : undefined;
 
   return (
     <section className="surface overflow-hidden">
       <div className="grid gap-0 xl:grid-cols-[1.05fr_0.95fr]">
         <div className="relative min-h-[320px]">
           <img
-            src={item.thumb}
+            src={item.image}
             alt={`${item.title} cover`}
             className="h-full w-full object-cover"
             loading="lazy"
@@ -43,23 +35,20 @@ export function EditorialProjectSpotlight({
               {title ?? item.title}
             </h2>
             <p className="mt-4 max-w-2xl text-sm leading-7 text-slate-200 md:text-base">
-              {item.summary}
+              {item.longDescription}
             </p>
           </div>
         </div>
         <div className="flex flex-col gap-6 p-6 md:p-8">
           <div className="flex flex-wrap gap-2">
-            {statusLabel ? (
-              <span className="rounded-full border border-border/70 bg-background/70 px-3 py-1 text-xs font-semibold uppercase tracking-[0.22em] text-muted-foreground">
-                {statusLabel}
-              </span>
-            ) : null}
             <span className="rounded-full border border-border/70 bg-background/70 px-3 py-1 text-xs font-semibold uppercase tracking-[0.22em] text-muted-foreground">
-              {item.section === "audiovisual"
-                ? "audio / visual"
-                : item.section === "fun"
-                  ? "fun / experimental"
-                  : item.section ?? item.type}
+              {item.category === "biotech" ? "BioTech & scientific" : "Personal & experimental"}
+            </span>
+            <span className="rounded-full border border-border/70 bg-background/70 px-3 py-1 text-xs font-semibold uppercase tracking-[0.22em] text-muted-foreground">
+              {item.status}
+            </span>
+            <span className="rounded-full border border-border/70 bg-background/70 px-3 py-1 text-xs font-semibold uppercase tracking-[0.22em] text-muted-foreground">
+              {item.maturity}
             </span>
             <span className="rounded-full border border-border/70 bg-background/70 px-3 py-1 text-xs font-semibold uppercase tracking-[0.22em] text-muted-foreground">
               {item.year}
@@ -83,6 +72,16 @@ export function EditorialProjectSpotlight({
               ))}
             </div>
           ) : null}
+          <div className="grid gap-3 md:grid-cols-2">
+            {item.methods.slice(0, 4).map((method) => (
+              <div
+                key={method}
+                className="rounded-[22px] border border-border/70 bg-background/60 px-4 py-4 text-xs font-semibold uppercase tracking-[0.16em] text-muted-foreground"
+              >
+                {method}
+              </div>
+            ))}
+          </div>
           <TagBadges tags={item.tags} />
           <div className="flex flex-wrap gap-3 pt-2">
             {item.repoUrl ? (
@@ -103,9 +102,9 @@ export function EditorialProjectSpotlight({
               </Button>
             ) : null}
           </div>
-          {item.demoUrl ? (
+          {item.privacyNote ? (
             <p className="text-muted-foreground text-sm leading-6">
-              Interactive demos open in their own dedicated app so this CV site stays lightweight, private, and installable offline.
+              {item.privacyNote}
             </p>
           ) : null}
         </div>

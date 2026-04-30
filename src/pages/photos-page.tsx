@@ -54,7 +54,7 @@ export default function PhotosPage() {
             >
               {item.mediaKind === "image" ? (
                 <a
-                  href={item.thumb}
+                  href={item.image}
                   data-pswp-width="1600"
                   data-pswp-height="1200"
                   className="hidden"
@@ -69,7 +69,7 @@ export default function PhotosPage() {
                     window.open(item.demoUrl, "_blank", "noopener,noreferrer");
                   } else {
                     const anchor = document.querySelector(
-                      `a[href='${item.thumb}']`
+                      `a[href='${item.image}']`
                     ) as HTMLAnchorElement | null;
                     anchor?.click();
                   }

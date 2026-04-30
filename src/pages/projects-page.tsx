@@ -6,16 +6,16 @@ export default function ProjectsPage() {
   return (
     <>
       <Seo
-        title="Work Directory"
-        description="A cross-disciplinary work directory spanning biotech systems, audio / visual interfaces, and lighter experimental concepts."
+        title="Projects"
+        description="Curated BioTech and personal experimental projects presented as a scientist-engineer showcase."
         path="/projects"
-        breadcrumbLabel="Work Directory"
+        breadcrumbLabel="Projects"
       />
       <div className="shell section-space space-y-14">
         <SectionHeader
-          eyebrow="Work directory"
-          title="A curated showcase first, then a deeper directory."
-          description="This route now behaves more like a premium portfolio front than a repo list: lead work first, category tabs second, and the full archive only after the strongest impression has already been made."
+          eyebrow="Projects"
+          title="A curated project hub for scientific tools and personal experiments."
+          description="The strongest scientific work appears first, planned tools stay clearly marked, and supporting experimental projects show range without diluting the biotech identity."
         />
         <WorkDirectory mode="all" />
       </div>

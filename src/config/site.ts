@@ -3,18 +3,21 @@ export type NavItem = {
   href: string;
 };
 
+const instagramUrl = import.meta.env.VITE_INSTAGRAM_URL ?? "";
+
 export const siteConfig = {
   name: "Prashant Umrekar",
   shortName: "Prashant",
-  role: "Bioprocessing Scientist · Biotech Systems Builder · Signal & Data Visualisation",
+  role: "Bioprocessing Scientist · Signal & Data Explorer · Builder of Interactive Systems",
   tagline:
-    "Scientist-engineer project hub spanning viral vector processing, molecular diagnostics, gene expression, EEG workflows, and client-side scientific tooling.",
+    "A personal hub for scientific work, visual thinking, and privacy-first browser tools shaped by biotech practice.",
   description:
-    "Premium CV and project hub for Prashant Umrekar, presenting bioprocessing, diagnostics, bioinformatics, signal visualisation, and privacy-aware scientific tools.",
+    "Personal CV and project hub for Prashant Umrekar, combining biotechnology, signal exploration, creative media, and privacy-first browser-based tools.",
   email: "p.umrekar@gmail.com",
   siteUrl: import.meta.env.VITE_SITE_URL ?? "https://prash-u.github.io/persona-hub/",
   basePath: import.meta.env.VITE_BASE_PATH ?? "/",
   profileImage: "https://github.com/prash-u.png?size=400",
+  instagramUrl,
   location: "London, United Kingdom",
   socialLinks: [
     {
@@ -24,6 +27,18 @@ export const siteConfig = {
     {
       label: "LinkedIn",
       href: "https://www.linkedin.com/in/prashant-umrekar/"
+    },
+    ...(instagramUrl
+      ? [
+          {
+            label: "Instagram",
+            href: instagramUrl
+          }
+        ]
+      : []),
+    {
+      label: "Photo Reel",
+      href: "/photos"
     },
     {
       label: "Email",
@@ -45,24 +60,25 @@ export const siteConfig = {
     twitterHandle: ""
   },
   person: {
-    jobTitle: "Bioprocessing Scientist and Biotech Systems Builder",
+    jobTitle: "Bioprocessing Scientist and Builder of Interactive Systems",
     sameAs: [
       "https://github.com/prash-u",
-      "https://www.linkedin.com/in/prashant-umrekar/"
+      "https://www.linkedin.com/in/prashant-umrekar/",
+      ...(instagramUrl ? [instagramUrl] : [])
     ]
   }
 } as const;
 
 export const routeMeta = {
   "/": {
-    title: "Portfolio",
+    title: "About",
     description:
-      "A premium scientist-engineer hub for biotech systems, diagnostics, signal visualisation, and client-side scientific tools."
+      "A personal landing page for biotech work, scientific curiosity, creative media, and privacy-first browser tools."
   },
   "/photos": {
-    title: "Photo & Videography",
+    title: "Photo Reel",
     description:
-      "Editorial media gallery featuring curated stills, reels, and visual experiments."
+      "Curated stills, reels, and visual notes from outside the lab."
   },
   "/biotech": {
     title: "Scientific Work",
@@ -72,7 +88,7 @@ export const routeMeta = {
   "/projects": {
     title: "Projects",
     description:
-      "Curated biotech and personal experimental projects presented as a premium scientist-engineer showcase."
+      "A story archive of biotech and personal experimental projects shaped by scientific curiosity and privacy-first browser tooling."
   },
   "/cv": {
     title: "CV",

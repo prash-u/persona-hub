@@ -7,7 +7,7 @@ export function Footer() {
         <div>
           <p className="font-display text-2xl">{siteConfig.shortName}</p>
           <p className="text-muted-foreground mt-2 text-sm">
-            Final portfolio hub for biotech systems, neural interfaces, browser-based ML prototypes, and a QR-ready digital CV.
+            A personal hub for biotech work, visual curiosity, and privacy-first tools built in the browser.
           </p>
         </div>
         <div className="flex flex-wrap gap-4 text-sm">

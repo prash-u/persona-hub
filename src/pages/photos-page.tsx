@@ -27,9 +27,9 @@ export default function PhotosPage() {
       />
       <div className="shell section-space space-y-8">
         <SectionHeader
-          eyebrow="Visual showcase"
-          title="A curated reel and stills archive shaped for portfolio use, not social sprawl."
-          description="This route is designed to become the cleaner home for selected Instagram-derived reels, stills, and visual studies. The current build keeps local assets and placeholders for privacy, offline support, and easy later replacement."
+          eyebrow="Life outside the lab"
+          title="A curated photo reel shaped more like a visual notebook than a social feed."
+          description="This route keeps the media side of the site local-first and easy to curate. It is the quieter, more personal counterpart to the project archive."
         />
         <div className="flex flex-wrap gap-3">
           {filters.map((value) => (

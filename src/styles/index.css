@@ -81,7 +81,8 @@
   }
 
   .surface {
-    @apply bg-card/78 border-border/70 rounded-[28px] border backdrop-blur-xl shadow-[0_18px_60px_rgba(2,8,23,0.12)];
+    @apply border-border/70 rounded-[28px] border backdrop-blur-xl shadow-[0_18px_60px_rgba(2,8,23,0.12)];
+    background-color: hsl(var(--card) / 0.78);
   }
 
   .section-space {

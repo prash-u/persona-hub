@@ -32,8 +32,8 @@ export const siteConfig = {
   navigation: [
     { label: "Home", href: "/" },
     { label: "Photos", href: "/photos" },
-    { label: "Biotech", href: "/biotech" },
-    { label: "Projects", href: "/projects" },
+    { label: "Scientific", href: "/biotech" },
+    { label: "Work", href: "/projects" },
     { label: "CV", href: "/cv" },
     { label: "Contact", href: "/contact" }
   ] satisfies NavItem[],
@@ -66,14 +66,14 @@ export const routeMeta = {
       "Editorial media gallery featuring curated stills, reels, and visual experiments."
   },
   "/biotech": {
-    title: "Biotech Projects",
+    title: "Scientific Work",
     description:
-      "A curated directory of standalone biotech repositories, experiments, and scientific prototypes."
+      "A scientific lens on the wider work directory, spanning biotech systems, research tooling, and adjacent interfaces."
   },
   "/projects": {
-    title: "Projects",
+    title: "Work Directory",
     description:
-      "Selected ML/AI, software, and creative technical work with links to repositories and demos."
+      "A cross-disciplinary directory of biotech, audio-visual, and experimental software projects with clear status and standalone links."
   },
   "/cv": {
     title: "CV",

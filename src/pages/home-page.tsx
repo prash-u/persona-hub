@@ -6,9 +6,9 @@ import { ProjectGrid } from "@/components/project-grid";
 import { SectionHeader } from "@/components/section-header";
 import { Seo } from "@/components/seo";
 import { siteConfig } from "@/config/site";
-import { projects } from "@/lib/projects";
+import { allProjects } from "@/lib/projects";
 
-const featured = [...projects.biotech, ...projects.mlai, ...projects.other].filter(
+const featured = allProjects.filter(
   (item) => item.featured
 );
 const marqueeProject = featured.find((item) => item.title === "BioBody Insights") ?? featured[0];
@@ -101,15 +101,15 @@ export default function HomePage() {
             },
             {
               href: "/biotech",
-              title: "Biotech Projects",
+              title: "Scientific Work",
               copy:
-                "Curated biotech systems, translational interfaces, live browser vision models, and signal-heavy scientific tooling."
+                "A research-led view of the portfolio, with systems biology, disease-program interfaces, and translational scientific tooling."
             },
             {
               href: "/projects",
-              title: "ML/AI + Other Projects",
+              title: "Work Directory",
               copy:
-                "Applied machine learning, client-side demos, and technical projects shaped for useful real-world workflows."
+                "One unified index for biotech, audio / visual interfaces, and playful upcoming ideas that still show strong product thinking."
             }
           ].map((item) => (
             <Link

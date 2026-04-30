@@ -17,6 +17,14 @@ export function EditorialProjectSpotlight({
   title
 }: EditorialProjectSpotlightProps) {
   const meta = getGithubMeta(item.githubRepo);
+  const statusLabel =
+    item.status === "working"
+      ? "Working now"
+      : item.status === "wip"
+        ? "In progress"
+        : item.status === "upcoming"
+          ? "Upcoming"
+          : undefined;
 
   return (
     <section className="surface overflow-hidden">
@@ -41,8 +49,17 @@ export function EditorialProjectSpotlight({
         </div>
         <div className="flex flex-col gap-6 p-6 md:p-8">
           <div className="flex flex-wrap gap-2">
+            {statusLabel ? (
+              <span className="rounded-full border border-border/70 bg-background/70 px-3 py-1 text-xs font-semibold uppercase tracking-[0.22em] text-muted-foreground">
+                {statusLabel}
+              </span>
+            ) : null}
             <span className="rounded-full border border-border/70 bg-background/70 px-3 py-1 text-xs font-semibold uppercase tracking-[0.22em] text-muted-foreground">
-              {item.type}
+              {item.section === "audiovisual"
+                ? "audio / visual"
+                : item.section === "fun"
+                  ? "fun / experimental"
+                  : item.section ?? item.type}
             </span>
             <span className="rounded-full border border-border/70 bg-background/70 px-3 py-1 text-xs font-semibold uppercase tracking-[0.22em] text-muted-foreground">
               {item.year}
@@ -73,7 +90,7 @@ export function EditorialProjectSpotlight({
                 variant="outline"
                 onClick={() => window.open(withBasePath(item.repoUrl!), "_blank", "noopener,noreferrer")}
               >
-                Repo
+                Open repository
                 <ArrowUpRight className="size-4" aria-hidden="true" />
               </Button>
             ) : null}
@@ -81,11 +98,16 @@ export function EditorialProjectSpotlight({
               <Button
                 onClick={() => window.open(withBasePath(item.demoUrl!), "_blank", "noopener,noreferrer")}
               >
-                Live demo
+                Open standalone app
                 <ArrowUpRight className="size-4" aria-hidden="true" />
               </Button>
             ) : null}
           </div>
+          {item.demoUrl ? (
+            <p className="text-muted-foreground text-sm leading-6">
+              Interactive demos open in their own dedicated app so this CV site stays lightweight, private, and installable offline.
+            </p>
+          ) : null}
         </div>
       </div>
     </section>

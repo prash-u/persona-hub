@@ -8,6 +8,8 @@ const projectSchema = z.object({
   summary: z.string(),
   tags: z.array(z.string()),
   highlights: z.array(z.string()).optional(),
+  section: z.enum(["biotech", "audiovisual", "fun"]).optional(),
+  status: z.enum(["working", "wip", "upcoming"]).optional(),
   repoUrl: z.string().optional(),
   demoUrl: z.string().optional(),
   thumb: z.string(),
@@ -42,6 +44,8 @@ export const projects = collectionSchema.parse(rawProjects) as ProjectCollection
 export const githubMeta = githubMetaSchema.parse(
   rawGithubMeta
 ) as GitHubEnrichedProject[];
+
+export const allProjects = [...projects.biotech, ...projects.mlai, ...projects.other];
 
 export function getGithubMeta(repo?: string) {
   if (!repo) {

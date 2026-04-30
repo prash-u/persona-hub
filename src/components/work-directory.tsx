@@ -1,0 +1,206 @@
+import { ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
+import { EditorialProjectList } from "@/components/editorial-project-list";
+import { EditorialProjectSpotlight } from "@/components/editorial-project-spotlight";
+import { ProjectGrid } from "@/components/project-grid";
+import { SectionHeader } from "@/components/section-header";
+import { allProjects } from "@/lib/projects";
+import type { ProjectItem } from "@/lib/types";
+
+type WorkDirectoryMode = "all" | "scientific";
+
+type WorkDirectoryProps = {
+  mode: WorkDirectoryMode;
+};
+
+const sectionMeta = {
+  biotech: {
+    eyebrow: "Biotech",
+    title: "Scientific systems, disease programs, and research-facing interfaces.",
+    description:
+      "This section carries the strongest biotech signal in the portfolio: systems biology, target discovery thinking, pathway interfaces, and scientific product framing."
+  },
+  audiovisual: {
+    eyebrow: "Audio / Visual",
+    title: "Browser-native interfaces built around perception, signals, and visual interpretation.",
+    description:
+      "These projects lean into interactive graphics, neural visualisation, and local-first model demos that communicate technical depth through more intuitive interfaces."
+  },
+  fun: {
+    eyebrow: "Fun / Experimental",
+    title: "Lighter concepts that still reflect product thinking and technical curiosity.",
+    description:
+      "Not everything needs to read like regulated scientific software. This section leaves room for playful tools, collector workflows, and experiments with broader consumer appeal."
+  }
+} as const;
+
+const statusMeta = {
+  working: {
+    label: "Working now",
+    description: "Live or substantially formed products that best represent the current portfolio."
+  },
+  wip: {
+    label: "In progress",
+    description: "Active directions that are already concrete enough to frame as product or interface work."
+  },
+  upcoming: {
+    label: "Upcoming",
+    description: "Planned concepts and placeholders that indicate where the portfolio is heading next."
+  }
+} as const;
+
+function getSectionItems(section: keyof typeof sectionMeta) {
+  return allProjects.filter((item) => item.section === section);
+}
+
+function getLeadProject(items: ProjectItem[], preferredTitle?: string) {
+  return (
+    items.find((item) => item.title === preferredTitle) ??
+    items.find((item) => item.featured && item.status === "working") ??
+    items.find((item) => item.featured) ??
+    items[0]
+  );
+}
+
+function getStatusItems(items: ProjectItem[], status: keyof typeof statusMeta, leadTitle?: string) {
+  return items.filter((item) => item.status === status && item.title !== leadTitle);
+}
+
+export function WorkDirectory({ mode }: WorkDirectoryProps) {
+  const overviewItems = [
+    {
+      value: allProjects.filter((item) => item.status === "working").length,
+      label: "Working now",
+      copy: "Live or mature standalone apps worth opening directly."
+    },
+    {
+      value: allProjects.filter((item) => item.status === "wip").length,
+      label: "In progress",
+      copy: "Concepts already shaped enough to discuss as products."
+    },
+    {
+      value: allProjects.filter((item) => item.status === "upcoming").length,
+      label: "Upcoming",
+      copy: "Intentional placeholders for the next wave of work."
+    }
+  ];
+
+  const biotechItems = getSectionItems("biotech");
+  const audiovisualItems = getSectionItems("audiovisual");
+  const funItems = getSectionItems("fun");
+
+  const biotechLead = getLeadProject(biotechItems, "BioBody Insights");
+  const audiovisualLead = getLeadProject(audiovisualItems, "Neural Pulse Play");
+  const funLead = getLeadProject(funItems, "Pokemon Card Scanner & Deck Valuation");
+
+  const categories = [
+    { key: "biotech", items: biotechItems, lead: biotechLead },
+    { key: "audiovisual", items: audiovisualItems, lead: audiovisualLead },
+    { key: "fun", items: funItems, lead: funLead }
+  ] as const;
+
+  return (
+    <div className="space-y-14">
+      <section className="grid gap-4 lg:grid-cols-3">
+        {overviewItems.map((item) => (
+          <article key={item.label} className="surface p-6">
+            <p className="eyebrow">{item.label}</p>
+            <p className="font-display mt-4 text-4xl">{item.value}</p>
+            <p className="text-muted-foreground mt-3 text-sm leading-7">{item.copy}</p>
+          </article>
+        ))}
+      </section>
+
+      <section className="surface flex flex-col gap-5 p-6 md:flex-row md:items-center md:justify-between">
+        <div className="max-w-3xl">
+          <p className="eyebrow">Portfolio behavior</p>
+          <p className="mt-3 text-lg font-semibold">
+            Demos launch as standalone apps rather than being embedded directly in the CV shell.
+          </p>
+          <p className="text-muted-foreground mt-3 text-sm leading-7">
+            That keeps this PWA lighter, protects privacy for camera-based experiences, and makes each project feel like its own product rather than a bloated sub-feature of the portfolio.
+          </p>
+        </div>
+        {mode === "scientific" ? (
+          <Link
+            to="/projects"
+            className="focus-ring inline-flex items-center gap-2 text-sm font-semibold"
+          >
+            Open full work directory
+            <ArrowRight className="size-4" aria-hidden="true" />
+          </Link>
+        ) : (
+          <div className="flex flex-wrap gap-2">
+            {Object.entries(sectionMeta).map(([key, value]) => (
+              <a
+                key={key}
+                href={`#${key}`}
+                className="focus-ring rounded-full border border-border/70 px-4 py-2 text-sm font-semibold text-muted-foreground transition hover:border-foreground/20 hover:text-foreground"
+              >
+                {value.eyebrow}
+              </a>
+            ))}
+          </div>
+        )}
+      </section>
+
+      {categories.map(({ key, items, lead }) => {
+        if (!items.length) {
+          return null;
+        }
+
+        const content = sectionMeta[key];
+        const leadTitle = lead?.title;
+        const workingItems = getStatusItems(items, "working", leadTitle);
+        const wipItems = getStatusItems(items, "wip", leadTitle);
+        const upcomingItems = getStatusItems(items, "upcoming", leadTitle);
+
+        return (
+          <section key={key} id={key} className="space-y-8">
+            <SectionHeader
+              eyebrow={content.eyebrow}
+              title={content.title}
+              description={content.description}
+            />
+            {lead ? (
+              <EditorialProjectSpotlight
+                item={lead}
+                eyebrow={mode === "scientific" && key === "biotech" ? "Lead scientific case study" : "Lead project"}
+              />
+            ) : null}
+            {workingItems.length ? (
+              <EditorialProjectList
+                items={workingItems}
+                heading={statusMeta.working.label}
+                description={statusMeta.working.description}
+              />
+            ) : null}
+            {wipItems.length ? (
+              <EditorialProjectList
+                items={wipItems}
+                heading={statusMeta.wip.label}
+                description={statusMeta.wip.description}
+              />
+            ) : null}
+            {upcomingItems.length ? (
+              <EditorialProjectList
+                items={upcomingItems}
+                heading={statusMeta.upcoming.label}
+                description={statusMeta.upcoming.description}
+              />
+            ) : null}
+          </section>
+        );
+      })}
+
+      <section className="space-y-6">
+        <SectionHeader
+          eyebrow="Directory grid"
+          title="A compact index remains available for quick scanning."
+          description="Once the narrative sections have done their job, this grid acts as the repeat-visit layer: fast to scan, easy to compare, and direct to open."
+        />
+        <ProjectGrid items={allProjects} />
+      </section>
+    </div>
+  );
+}

@@ -15,6 +15,22 @@ type ProjectCardProps = {
 export function ProjectCard({ item }: ProjectCardProps) {
   const meta = getGithubMeta(item.githubRepo);
   const navigate = useNavigate();
+  const statusLabel =
+    item.status === "working"
+      ? "Working now"
+      : item.status === "wip"
+        ? "In progress"
+        : item.status === "upcoming"
+          ? "Upcoming"
+          : undefined;
+  const sectionLabel =
+    item.section === "audiovisual"
+      ? "Audio / visual"
+      : item.section === "fun"
+        ? "Fun / experimental"
+        : item.section === "biotech"
+          ? "Biotech"
+          : item.type.toUpperCase();
 
   const openTarget = (target: string) => {
     if (/^(\/|#)/.test(target)) {
@@ -42,6 +58,7 @@ export function ProjectCard({ item }: ProjectCardProps) {
         <div className="absolute left-5 top-5 flex gap-2">
           {item.featured ? <Badge variant="featured">Featured</Badge> : null}
           <Badge variant="accent">{item.year}</Badge>
+          {statusLabel ? <Badge variant="outline">{statusLabel}</Badge> : null}
         </div>
       </div>
       <div className="flex flex-1 flex-col gap-5 p-6">
@@ -80,7 +97,7 @@ export function ProjectCard({ item }: ProjectCardProps) {
                 {meta.stars}
               </span>
             ) : null}
-            <span>{item.type.toUpperCase()}</span>
+            <span>{sectionLabel}</span>
           </div>
           <div className="flex gap-2">
             {item.repoUrl ? (
@@ -91,7 +108,7 @@ export function ProjectCard({ item }: ProjectCardProps) {
                 onClick={() => item.repoUrl && openTarget(item.repoUrl)}
               >
                 <span>
-                  Repo
+                  Code
                   <ArrowUpRight
                     className="ml-1 inline size-4"
                     aria-hidden="true"
@@ -105,7 +122,7 @@ export function ProjectCard({ item }: ProjectCardProps) {
                 onClick={() => item.demoUrl && openTarget(item.demoUrl)}
               >
                 <span>
-                  Demo
+                  Open app
                   <ArrowUpRight
                     className="ml-1 inline size-4"
                     aria-hidden="true"

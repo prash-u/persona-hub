@@ -3,6 +3,8 @@ export type ProjectItem = {
   summary: string;
   tags: string[];
   highlights?: string[];
+  section?: "biotech" | "audiovisual" | "fun";
+  status?: "working" | "wip" | "upcoming";
   repoUrl?: string;
   demoUrl?: string;
   thumb: string;

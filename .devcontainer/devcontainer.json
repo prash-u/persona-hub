@@ -13,5 +13,5 @@
     }
   },
   "postCreateCommand": "npm ci",
-  "remoteUser": "node"
+  "remoteUser": "codespace"
 }

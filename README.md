@@ -95,9 +95,16 @@ Recommended setup for Instagram-derived images:
 
 1. Export or download selected Instagram images, reel covers, or stills.
 2. Add them to `public/photos/instagram`.
-3. Update the `media` entries in `src/data/projects.json`.
-4. Add `instagramUrl` to individual media items if you want a card to link to the original public post or reel.
-5. Set `VITE_INSTAGRAM_URL` in Vercel if you want the homepage to link to the Instagram profile.
+3. Run `npm run import:instagram` to print starter JSON templates.
+4. Rename downloaded files to match the generated slug, such as `ig-2026-01.jpg`.
+5. Paste the generated entries into the `media` array in `src/data/projects.json`.
+6. Set `VITE_INSTAGRAM_URL` in Vercel if you want the homepage to link to the Instagram profile.
+
+The importer is intentionally manual. It accepts a list of public Instagram post URLs in `scripts/importInstagram.ts`, generates stable local paths, and does not scrape, automate, or fetch Instagram CDN URLs.
+
+This workflow is developer-only. It is not bundled into the frontend app, does
+not create an upload form or admin panel, and is not reachable from the deployed
+site.
 
 Example media item:
 

@@ -79,17 +79,50 @@ Create a `.env` file if you need custom deployment settings:
 VITE_BASE_PATH=/persona-hub/
 VITE_SITE_URL=https://your-username.github.io/persona-hub/
 VITE_GH_TOKEN=github_personal_access_token_optional
+VITE_INSTAGRAM_URL=https://www.instagram.com/your-username/
 ```
 
 - `VITE_BASE_PATH`: use `/` for root hosting or `/<repo-name>/` for GitHub Pages project hosting
 - `VITE_SITE_URL`: canonical public URL used for SEO metadata and sitemap generation
 - `VITE_GH_TOKEN`: optional. If present at build time, project cards are enriched with GitHub stars, topics, and homepage metadata. If absent, the site works entirely from local JSON data.
+- `VITE_INSTAGRAM_URL`: optional public profile URL used for homepage/profile links.
+
+## Photo reel and Instagram
+
+The homepage photo reel is intentionally curated from local media rather than scraped from Instagram or fetched with private API tokens. This keeps the PWA fast, reliable, offline-friendly, and safe for a personal Instagram account.
+
+Recommended setup for Instagram-derived images:
+
+1. Export or download selected Instagram images, reel covers, or stills.
+2. Add them to `public/photos/instagram`.
+3. Update the `media` entries in `src/data/projects.json`.
+4. Add `instagramUrl` to individual media items if you want a card to link to the original public post or reel.
+5. Set `VITE_INSTAGRAM_URL` in Vercel if you want the homepage to link to the Instagram profile.
+
+Example media item:
+
+```json
+{
+  "id": "tokyo-night-frame",
+  "slug": "tokyo-night-frame",
+  "title": "Tokyo Night Frame",
+  "description": "A selected frame from travel and street photography.",
+  "tags": ["Travel", "Photography"],
+  "image": "/photos/instagram/tokyo-night-frame.jpg",
+  "fallbackImage": "/media/photo-coastal.svg",
+  "instagramUrl": "https://www.instagram.com/p/POST_ID/",
+  "year": 2026,
+  "mediaKind": "image",
+  "category": "travel"
+}
+```
 
 ## Content customization
 
 - Edit site-wide branding and links in `src/config/site.ts`
 - Update project and media data in `src/data/projects.json`
 - Replace placeholder media in `public/media`
+- Add curated Instagram exports to `public/photos/instagram`
 - Replace the placeholder CV at `public/cv.pdf`
 - Replace the default social/SEO image at `public/seo/og-default.svg`
 

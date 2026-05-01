@@ -49,10 +49,12 @@ const mediaSchema = z.object({
   description: z.string(),
   tags: z.array(z.string()),
   image: z.string(),
+  fallbackImage: z.string().optional(),
   year: z.number(),
   mediaKind: z.enum(["image", "video"]),
   category: z.enum(["portrait", "travel", "reel", "lab", "editorial"]),
-  demoUrl: z.string().optional()
+  demoUrl: z.string().optional(),
+  instagramUrl: z.string().optional()
 });
 
 const collectionSchema = z.object({

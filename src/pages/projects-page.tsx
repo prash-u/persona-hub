@@ -29,6 +29,26 @@ const filters: Array<{ label: string; value: ProjectFilter }> = [
   { label: "Planned", value: "planned" }
 ];
 
+const stageGroups = [
+  {
+    id: "active",
+    eyebrow: "Active prototypes",
+    title: "Working apps and demos with real interaction models.",
+    description:
+      "These are the strongest ecosystem pieces right now: standalone tools with enough shape to explore, test, and improve.",
+    matches: (project: ProjectItem) =>
+      project.status === "Live" || project.status === "Prototype"
+  },
+  {
+    id: "planned",
+    eyebrow: "Planned concepts",
+    title: "Ideas with clear scientific or product direction.",
+    description:
+      "These are intentionally marked as planned so the archive stays honest about what exists today and what is still being shaped.",
+    matches: (project: ProjectItem) => project.status === "Planned"
+  }
+];
+
 function applyFilter(project: ProjectItem, filter: ProjectFilter) {
   if (filter === "all") {
     return true;
@@ -44,20 +64,24 @@ function applyFilter(project: ProjectItem, filter: ProjectFilter) {
 export default function ProjectsPage() {
   const [activeFilter, setActiveFilter] = useState<ProjectFilter>("all");
 
-  const biotechProjects = [
-    ...projects.biotech.filter((project) => featuredIds.has(project.id)),
-    ...projects.biotech.filter((project) => !featuredIds.has(project.id))
-  ];
-  const personalProjects = projects.personal;
+  const orderedProjects = [
+    ...projects.biotech,
+    ...projects.personal
+  ].sort((a, b) => {
+    const featuredDelta =
+      Number(featuredIds.has(b.id)) - Number(featuredIds.has(a.id));
 
-  const visibleBiotechProjects = biotechProjects.filter((project) =>
+    if (featuredDelta !== 0) {
+      return featuredDelta;
+    }
+
+    return a.title.localeCompare(b.title);
+  });
+
+  const visibleProjects = orderedProjects.filter((project) =>
     applyFilter(project, activeFilter)
   );
-  const visiblePersonalProjects = personalProjects.filter((project) =>
-    applyFilter(project, activeFilter)
-  );
-  const hasProjects =
-    visibleBiotechProjects.length > 0 || visiblePersonalProjects.length > 0;
+  const hasProjects = visibleProjects.length > 0;
 
   return (
     <>
@@ -98,37 +122,34 @@ export default function ProjectsPage() {
         </section>
 
         {hasProjects ? (
-          <>
-            {visibleBiotechProjects.length ? (
-              <section className="space-y-8">
-                <SectionHeader
-                  eyebrow="BioTech & scientific"
-                  title="Signal, molecular, and lab-facing work."
-                  description="This is the core archive: scientific tools shaped by biotech practice, diagnostics, EEG workflows, data interpretation, and interface design."
-                />
-                <div className="space-y-5">
-                  {visibleBiotechProjects.map((project) => (
-                    <ProjectStoryCard key={project.id} item={project} />
-                  ))}
-                </div>
-              </section>
-            ) : null}
+          stageGroups.map((stage) => {
+            const stageProjects = visibleProjects.filter(stage.matches);
 
-            {visiblePersonalProjects.length ? (
-              <section className="space-y-8">
+            if (!stageProjects.length) {
+              return null;
+            }
+
+            return (
+              <section
+                key={stage.id}
+                className="space-y-8"
+              >
                 <SectionHeader
-                  eyebrow="Personal & experimental"
-                  title="Playful tools, visual ideas, and browser-first experiments."
-                  description="These are lighter in tone, but they still come from the same habit of making systems more interactive, privacy-aware, legible, and slightly more fun to use."
+                  eyebrow={stage.eyebrow}
+                  title={stage.title}
+                  description={stage.description}
                 />
                 <div className="space-y-5">
-                  {visiblePersonalProjects.map((project) => (
-                    <ProjectStoryCard key={project.id} item={project} />
+                  {stageProjects.map((project) => (
+                    <ProjectStoryCard
+                      key={project.id}
+                      item={project}
+                    />
                   ))}
                 </div>
               </section>
-            ) : null}
-          </>
+            );
+          })
         ) : (
           <section className="surface p-8 text-center">
             <p className="eyebrow">No matching projects</p>

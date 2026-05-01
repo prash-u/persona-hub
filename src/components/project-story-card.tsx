@@ -18,40 +18,42 @@ export function ProjectStoryCard({ item }: ProjectStoryCardProps) {
 
   return (
     <article className="surface overflow-hidden">
-      <div className="grid gap-0 lg:grid-cols-[0.38fr_1fr]">
-        <div className="relative min-h-[220px] overflow-hidden">
+      <div className="grid gap-0 lg:grid-cols-[0.32fr_1fr]">
+        <div className="relative aspect-[16/10] overflow-hidden lg:aspect-auto lg:min-h-full">
           <img
             src={item.image}
             alt={`${item.title} cover`}
             className="h-full w-full object-cover"
             loading="lazy"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 to-transparent" />
-          <div className="absolute left-5 top-5 flex flex-wrap gap-2">
-            <span className="rounded-full border border-white/15 bg-slate-950/65 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.22em] text-white/90">
-              {categoryLabel}
-            </span>
-            <span className="rounded-full border border-white/15 bg-slate-950/65 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.22em] text-white/90">
-              {item.status}
-            </span>
-            <span className="rounded-full border border-white/15 bg-slate-950/65 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.22em] text-white/90">
-              {item.maturity}
-            </span>
-          </div>
-          <div className="absolute inset-x-0 bottom-0 p-5">
-            <p className="text-xs font-semibold uppercase tracking-[0.22em] text-cyan-100/80">
-              {item.methods.slice(0, 2).join(" / ")}
-            </p>
-            <h3 className="mt-2 text-2xl font-semibold text-white">
-              {item.title}
-            </h3>
-          </div>
+          <div className="absolute inset-0 bg-gradient-to-t from-slate-950/45 via-transparent to-transparent" />
         </div>
 
         <div className="flex flex-col gap-5 p-6 md:p-7">
           <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
             <div className="space-y-3">
-              <p className="text-lg font-medium">{item.description}</p>
+              <div className="flex flex-wrap gap-2">
+                <span className="rounded-full border border-border/70 bg-background/70 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.2em] text-muted-foreground">
+                  {categoryLabel}
+                </span>
+                <span className="rounded-full border border-cyan-400/20 bg-cyan-400/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.2em] text-cyan-700 dark:text-cyan-200">
+                  {item.status}
+                </span>
+                <span className="rounded-full border border-border/70 bg-background/70 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.2em] text-muted-foreground">
+                  {item.maturity}
+                </span>
+              </div>
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
+                  {item.methods.slice(0, 2).join(" / ")}
+                </p>
+                <h3 className="mt-2 text-2xl font-semibold tracking-tight md:text-3xl">
+                  {item.title}
+                </h3>
+              </div>
+              <p className="text-base leading-7 text-muted-foreground md:text-lg">
+                {item.description}
+              </p>
               <TagBadges tags={item.tags} />
             </div>
             <div className="flex flex-wrap gap-2">

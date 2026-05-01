@@ -43,10 +43,12 @@ export type MediaItem = {
   description: string;
   tags: string[];
   image: string;
+  fallbackImage?: string;
   year: number;
   mediaKind: "image" | "video";
   category: "portrait" | "travel" | "reel" | "lab" | "editorial";
   demoUrl?: string;
+  instagramUrl?: string;
 };
 
 export type ProjectCollection = {

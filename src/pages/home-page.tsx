@@ -2,6 +2,7 @@ import { ArrowRight, ExternalLink } from "lucide-react";
 import { Link } from "react-router-dom";
 import { HeroSection } from "@/components/hero-section";
 import { InstallPrompt } from "@/components/install-prompt";
+import { PhotoReel } from "@/components/photo-reel";
 import { ProjectGrid } from "@/components/project-grid";
 import { SectionHeader } from "@/components/section-header";
 import { Seo } from "@/components/seo";
@@ -40,13 +41,6 @@ export default function HomePage() {
     ...projects.biotech.filter((project) => featuredIds.has(project.id)),
     ...projects.personal.filter((project) => featuredIds.has(project.id))
   ];
-
-  const reelItem =
-    projects.media.find((item) => item.category === "reel") ??
-    projects.media[0];
-  const stills = projects.media
-    .filter((item) => item.id !== reelItem?.id)
-    .slice(0, 2);
 
   return (
     <>
@@ -141,72 +135,9 @@ export default function HomePage() {
           <SectionHeader
             eyebrow="Life outside the lab"
             title="A photo reel for everything that does not fit neatly into datasets."
-            description="Photography, travel, visual studies, and small moments worth keeping. This stays curated and local-first for now, with room for Instagram links later."
+            description="Photography, travel, visual studies, and small moments worth keeping. The reel is curated from local images so it stays fast, reliable, and offline-friendly, with optional Instagram links per frame."
           />
-          <div className="grid gap-5 lg:grid-cols-[1.2fr_0.8fr]">
-            {reelItem ? (
-              <article className="surface overflow-hidden">
-                <div className="overflow-hidden border-b border-border/70">
-                  <img
-                    src={reelItem.image}
-                    alt={reelItem.title}
-                    className="h-72 w-full object-cover md:h-80"
-                    loading="lazy"
-                  />
-                </div>
-                <div className="space-y-4 p-6">
-                  <p className="eyebrow">Photo Reel</p>
-                  <h3 className="text-2xl font-semibold">{reelItem.title}</h3>
-                  <p className="text-sm leading-7 text-muted-foreground">
-                    {reelItem.description}
-                  </p>
-                  <div className="flex flex-wrap gap-3">
-                    <Button
-                      onClick={() =>
-                        (window.location.href = withBasePath("/photos"))
-                      }
-                    >
-                      Open Photo Reel
-                    </Button>
-                    {siteConfig.instagramUrl ? (
-                      <Button
-                        variant="outline"
-                        onClick={() =>
-                          window.open(
-                            siteConfig.instagramUrl,
-                            "_blank",
-                            "noopener,noreferrer"
-                          )
-                        }
-                      >
-                        Instagram
-                        <ExternalLink className="size-4" aria-hidden="true" />
-                      </Button>
-                    ) : null}
-                  </div>
-                </div>
-              </article>
-            ) : null}
-
-            <div className="grid gap-5">
-              {stills.map((item) => (
-                <article key={item.id} className="surface overflow-hidden">
-                  <img
-                    src={item.image}
-                    alt={item.title}
-                    className="h-48 w-full object-cover"
-                    loading="lazy"
-                  />
-                  <div className="space-y-2 p-5">
-                    <h3 className="text-lg font-semibold">{item.title}</h3>
-                    <p className="text-sm leading-6 text-muted-foreground">
-                      {item.description}
-                    </p>
-                  </div>
-                </article>
-              ))}
-            </div>
-          </div>
+          <PhotoReel items={projects.media} />
         </section>
 
         <section className="space-y-8">

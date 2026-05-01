@@ -32,9 +32,10 @@ jobs:
 
       - name: Build
         env:
-          VITE_BASE_PATH: /PWACV/
-          VITE_SITE_URL: https://your-username.github.io/PWACV/
+          VITE_BASE_PATH: /persona-hub/
+          VITE_SITE_URL: https://prash-u.github.io/persona-hub/
           VITE_GH_TOKEN: ${{ secrets.VITE_GH_TOKEN }}
+          VITE_INSTAGRAM_URL: ${{ vars.VITE_INSTAGRAM_URL }}
         run: npm run build
 
       - name: Upload artifact

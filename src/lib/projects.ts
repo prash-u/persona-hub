@@ -52,7 +52,14 @@ const mediaSchema = z.object({
   fallbackImage: z.string().optional(),
   year: z.number(),
   mediaKind: z.enum(["image", "video"]),
-  category: z.enum(["portrait", "travel", "reel", "lab", "editorial"]),
+  category: z.enum([
+    "portrait",
+    "travel",
+    "reel",
+    "lab",
+    "editorial",
+    "photography"
+  ]),
   demoUrl: z.string().optional(),
   instagramUrl: z.string().optional()
 });

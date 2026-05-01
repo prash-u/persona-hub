@@ -46,7 +46,7 @@ export type MediaItem = {
   fallbackImage?: string;
   year: number;
   mediaKind: "image" | "video";
-  category: "portrait" | "travel" | "reel" | "lab" | "editorial";
+  category: "portrait" | "travel" | "reel" | "lab" | "editorial" | "photography";
   demoUrl?: string;
   instagramUrl?: string;
 };

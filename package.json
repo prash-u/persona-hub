@@ -12,7 +12,8 @@
     "build": "node scripts/prepare-github-data.mjs && tsc --noEmit -p tsconfig.app.json && vite build && node scripts/generate-sitemap.mjs",
     "preview": "vite preview",
     "lint": "eslint .",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "import:instagram": "node scripts/importInstagram.mjs"
   },
   "dependencies": {
     "@tensorflow-models/coco-ssd": "^2.2.3",

@@ -635,6 +635,32 @@
       "year": 2024,
       "mediaKind": "image",
       "category": "lab"
+    },
+    {
+      "id": "ig-2026-01",
+      "slug": "ig-2026-01",
+      "title": "Instagram Photo",
+      "description": "Imported from Instagram",
+      "tags": ["Instagram"],
+      "image": "/photos/instagram/ig-2026-01.jpg",
+      "fallbackImage": "/photos/instagram/portrait-study.svg",
+      "instagramUrl": "",
+      "year": 2026,
+      "mediaKind": "image",
+      "category": "photography"
+    },
+    {
+      "id": "ig-2026-02",
+      "slug": "ig-2026-02",
+      "title": "Instagram Photo",
+      "description": "Imported from Instagram",
+      "tags": ["Instagram"],
+      "image": "/photos/instagram/ig-2026-02.jpg",
+      "fallbackImage": "/photos/instagram/coastal-frame.svg",
+      "instagramUrl": "",
+      "year": 2026,
+      "mediaKind": "image",
+      "category": "photography"
     }
   ]
 }

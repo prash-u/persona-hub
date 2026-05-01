@@ -12,7 +12,8 @@ const filters = [
   "travel",
   "reel",
   "lab",
-  "editorial"
+  "editorial",
+  "photography"
 ] as const;
 
 export default function PhotosPage() {

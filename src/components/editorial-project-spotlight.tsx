@@ -19,7 +19,7 @@ export function EditorialProjectSpotlight({
   const meta = getGithubMeta(item.githubRepo);
 
   return (
-    <section className="surface overflow-hidden">
+    <section className="signal-shell overflow-hidden">
       <div className="grid gap-0 xl:grid-cols-[1.05fr_0.95fr]">
         <div className="relative min-h-[320px]">
           <img

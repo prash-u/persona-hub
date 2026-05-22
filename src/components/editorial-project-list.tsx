@@ -32,7 +32,7 @@ export function EditorialProjectList({
       {items.map((item, index) => (
         <article
           key={item.title}
-          className="surface grid gap-5 p-5 md:grid-cols-[0.2fr_1fr_0.55fr] md:items-start"
+          className="signal-shell grid gap-5 p-5 md:grid-cols-[0.2fr_1fr_0.55fr] md:items-start"
         >
           <div className="eyebrow">0{index + 1}</div>
           <div className="space-y-3">

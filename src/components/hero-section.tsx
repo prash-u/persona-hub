@@ -24,7 +24,7 @@ export function HeroSection() {
     <section className="relative overflow-hidden pt-6 md:pt-10">
       <div className="absolute inset-0 -z-10 bg-grid bg-[length:44px_44px] opacity-25" />
       <div className="shell">
-        <div className="surface lg:py-18 relative overflow-hidden px-6 py-10 shadow-glow md:px-10 md:py-14 lg:px-14">
+        <div className="signal-shell lg:py-18 relative overflow-hidden px-6 py-10 shadow-glow md:px-10 md:py-14 lg:px-14">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(34,211,238,0.18),transparent_24%),radial-gradient(circle_at_80%_18%,rgba(20,184,166,0.14),transparent_22%),linear-gradient(135deg,rgba(8,15,28,0.02),rgba(8,15,28,0.16))]" />
           <div className="absolute inset-x-0 top-0 h-[260px] overflow-hidden opacity-90">
             <svg
@@ -79,9 +79,10 @@ export function HeroSection() {
               transition={{ duration: 0.7 }}
               className="max-w-3xl"
             >
+              <p className="eyebrow text-cyan-700 dark:text-cyan-300">CV PWA / portfolio hub</p>
               <h1 className="display-title mt-4">{siteConfig.name}</h1>
               <p className="mt-5 text-lg font-semibold tracking-wide text-cyan-700 dark:text-cyan-300">
-                Bioprocessing Scientist · Builder · Signal &amp; Data Explorer
+                {siteConfig.role}
               </p>
               <p className="mt-6 max-w-2xl text-base leading-8 text-muted-foreground md:text-lg">
                 I work in biotechnology, but I think in systems.
@@ -154,6 +155,20 @@ export function HeroSection() {
                   <Linkedin className="size-4" aria-hidden="true" />
                   LinkedIn
                 </Button>
+              </div>
+              <div className="mt-8 grid max-w-3xl gap-3 sm:grid-cols-3">
+                <div className="signal-metric">
+                  <p className="eyebrow">Current stack</p>
+                  <p className="mt-2 text-sm font-semibold">Biotech operations + browser systems</p>
+                </div>
+                <div className="signal-metric">
+                  <p className="eyebrow">Primary themes</p>
+                  <p className="mt-2 text-sm font-semibold">Signals, pathways, privacy-first tooling</p>
+                </div>
+                <div className="signal-metric">
+                  <p className="eyebrow">Site role</p>
+                  <p className="mt-2 text-sm font-semibold">Identity layer, archive, and recruiter handoff</p>
+                </div>
               </div>
             </motion.div>
             <motion.div

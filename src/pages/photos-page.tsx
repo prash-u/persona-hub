@@ -36,11 +36,19 @@ export default function PhotosPage() {
         breadcrumbLabel="Photos"
       />
       <div className="shell section-space space-y-8">
-        <SectionHeader
-          eyebrow="Life outside the lab"
-          title="A curated photo reel shaped more like a visual notebook than a social feed."
-          description="This route keeps the media side of the site local-first and easy to curate. It is the quieter, more personal counterpart to the project archive."
-        />
+        <section className="route-hero">
+          <SectionHeader
+            eyebrow="Life outside the lab"
+            title="A curated photo reel shaped more like a visual notebook than a social feed."
+            description="This route keeps the media side of the site local-first and easy to curate. It is the quieter, more personal counterpart to the project archive."
+          />
+          <div className="page-panel">
+            <p className="eyebrow">Why it is here</p>
+            <p className="text-sm leading-7 text-muted-foreground">
+              The portfolio is not only about technical output. The image work shows composition, atmosphere, and a parallel way of paying attention.
+            </p>
+          </div>
+        </section>
         <div className="flex flex-wrap gap-3">
           {filters.map((value) => (
             <Button

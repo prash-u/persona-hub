@@ -26,6 +26,7 @@ export function SectionHeader({
       <p className="text-muted-foreground mt-4 max-w-2xl text-base leading-7 md:text-lg">
         {description}
       </p>
+      <div className="signal-rule max-w-xl" aria-hidden="true" />
     </motion.div>
   );
 }

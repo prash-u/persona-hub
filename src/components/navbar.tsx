@@ -13,7 +13,7 @@ export function Navbar() {
   const location = useLocation();
 
   return (
-    <header className="sticky top-0 z-50 border-b border-border/40 bg-background/78 backdrop-blur-2xl">
+    <header className="sticky top-0 z-50 border-b border-border/40 bg-background/72 backdrop-blur-2xl">
       <div className="shell flex h-20 items-center justify-between gap-6">
         <Link
           to="/"
@@ -64,7 +64,7 @@ export function Navbar() {
         </div>
         <div className="flex items-center gap-2">
           <Button
-            variant="outline"
+            variant="default"
             size="sm"
             className="hidden lg:inline-flex"
             onClick={() => (window.location.href = withBasePath("/cv"))}

@@ -8,11 +8,11 @@ const instagramUrl = import.meta.env.VITE_INSTAGRAM_URL ?? "";
 export const siteConfig = {
   name: "Prashant Umrekar",
   shortName: "Prashant",
-  role: "Bioprocessing Scientist · Signal & Data Explorer · Builder of Interactive Systems",
+  role: "Bioprocessing Scientist · Builder · Signal & Data Explorer",
   tagline:
-    "A personal hub for scientific work, visual thinking, and privacy-first browser tools shaped by biotech practice.",
+    "A cinematic CV PWA for scientific systems, visual thinking, and privacy-first browser tools shaped by biotech practice.",
   description:
-    "Personal CV and project hub for Prashant Umrekar, combining biotechnology, signal exploration, creative media, and privacy-first browser-based tools.",
+    "Personal CV and project hub for Prashant Umrekar, combining biotechnology, signal exploration, translational biology, creative media, and privacy-first browser-based tools.",
   email: "p.umrekar@gmail.com",
   siteUrl:
     import.meta.env.VITE_SITE_URL ?? "https://prash-u.github.io/persona-hub/",
@@ -48,8 +48,10 @@ export const siteConfig = {
   ],
   navigation: [
     { label: "Home", href: "/" },
+    { label: "Scientific Work", href: "/biotech" },
     { label: "Projects", href: "/projects" },
-    { label: "About", href: "/#about" },
+    { label: "Photos", href: "/photos" },
+    { label: "CV", href: "/cv" },
     { label: "Contact", href: "/contact" }
   ] satisfies NavItem[],
   repo: {
@@ -83,7 +85,7 @@ export const routeMeta = {
   "/biotech": {
     title: "Scientific Work",
     description:
-      "BioTech and scientific projects spanning EEG visualisation, gene expression concepts, bioinformatics, and lab training interfaces."
+      "Scientific projects spanning EEG visualisation, translational biology, differential expression, bioinformatics, and lab training interfaces."
   },
   "/projects": {
     title: "Projects",

@@ -11,7 +11,7 @@ export default function OfflinePage() {
         breadcrumbLabel="Offline"
       />
       <div className="shell flex min-h-[70vh] items-center justify-center py-16">
-        <div className="surface max-w-xl p-10 text-center">
+        <div className="page-panel max-w-xl text-center">
           <WifiOff
             className="mx-auto size-10 text-cyan-500"
             aria-hidden="true"

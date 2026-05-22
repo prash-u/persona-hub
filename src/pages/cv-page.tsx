@@ -98,7 +98,7 @@ const education = [
 ];
 
 const achievements = [
-  "Built standalone browser-based scientific demos including BioBody Insights, Neural Pulse Play, Live Vision Model Lab, and Network Pulse Analyzer.",
+  "Built standalone browser-based scientific and analytical demos including BioBody Insights, Neural Pulse Play, Network Pulse Analyzer, Live Vision Model Lab, and RareSignal.",
   "Strong crossover between regulated biotech operations and interface-led scientific communication.",
   "Experienced in GMP documentation, SOPs, batch records, deviations, CAPAs, technology transfer, and quality audits.",
   "Comfortable translating dense technical or biological systems into interactive portfolio-grade product concepts.",
@@ -122,12 +122,20 @@ export default function CvPage() {
         breadcrumbLabel="CV"
       />
       <div className="shell section-space space-y-8">
-        <SectionHeader
-          eyebrow="Digital CV"
-          title="A recruiter-ready CV summary with a direct path into the portfolio."
-          description="This route reads as a clean on-screen CV while also acting as the handoff point to the full portfolio site, supporting future use as a QR-linked destination from the PDF CV."
-        />
-        <div className="surface flex flex-col gap-4 p-6 md:flex-row md:items-center md:justify-between">
+        <section className="route-hero">
+          <SectionHeader
+            eyebrow="Digital CV"
+            title="A recruiter-ready CV summary with a direct path into the portfolio."
+            description="This route reads as a clean on-screen CV while also acting as the handoff point to the full portfolio site, supporting future use as a QR-linked destination from the PDF CV."
+          />
+          <div className="page-panel">
+            <p className="eyebrow">What this route does</p>
+            <p className="text-sm leading-7 text-muted-foreground">
+              It is designed to be formal enough for recruiters and hiring managers, while still connecting naturally to the more visual and experimental parts of the portfolio.
+            </p>
+          </div>
+        </section>
+        <div className="signal-shell flex flex-col gap-4 p-6 md:flex-row md:items-center md:justify-between">
           <div>
             <h2 className="text-2xl font-semibold">Prashant Umrekar</h2>
             <p className="text-muted-foreground mt-2 max-w-2xl text-sm leading-7">

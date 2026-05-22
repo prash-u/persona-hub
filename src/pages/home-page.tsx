@@ -1,4 +1,4 @@
-import { ArrowRight, ExternalLink } from "lucide-react";
+import { ArrowRight, ExternalLink, Sparkles } from "lucide-react";
 import { Link } from "react-router-dom";
 import { HeroSection } from "@/components/hero-section";
 import { InstallPrompt } from "@/components/install-prompt";
@@ -8,39 +8,65 @@ import { SectionHeader } from "@/components/section-header";
 import { Seo } from "@/components/seo";
 import { Button } from "@/components/ui/button";
 import { siteConfig } from "@/config/site";
-import { projects } from "@/lib/projects";
+import { allProjects, projects } from "@/lib/projects";
 import { withBasePath } from "@/lib/site";
 
 const featuredIds = new Set([
   "neural-pulse",
   "biobody-insights",
-  "gene-expression-profiling",
-  "live-vision-model-lab"
+  "network-pulse-analyzer",
+  "live-vision-model-lab",
+  "rare-signal"
 ]);
 
-const currentlyBuilding = [
+const builderStrip = [
+  {
+    title: "RareSignal",
+    status: "WIP / product prototype",
+    description:
+      "A local-first TCG collection intelligence surface built around scanning, archive structure, and market-style analysis."
+  },
   {
     title: "Neural Pulse",
+    status: "EEG flagship",
     description:
-      "EEG signal visualisation and neural data playground for exploring simulated and structured brainwave activity."
+      "Clinical-style signal exploration for demo and uploaded EEG-style data with filtering, playback, and interpretability cues."
+  },
+  {
+    title: "Network Pulse Analyzer",
+    status: "Translational review app",
+    description:
+      "Turns differential expression signals into pathway, network, and report-ready stories for discussion and review."
   },
   {
     title: "Live Vision Model Lab",
+    status: "Browser ML demo",
     description:
-      "Client-side object detection experiments that keep camera and model inference in the browser."
+      "Client-side computer vision playground that keeps inference local while making model behaviour visible and testable."
+  }
+];
+
+const routeCards = [
+  {
+    eyebrow: "Scientific work",
+    title: "Neural systems, molecular systems, and lab-facing interfaces.",
+    description:
+      "The biotech route is the strongest expression of the portfolio: real scientific context translated into browsable systems and product surfaces.",
+    href: "/biotech",
+    action: "Open scientific work"
   },
   {
-    title: "Gene Expression Profiling",
+    eyebrow: "CV + contact",
+    title: "The recruiter-facing layer stays direct, credible, and easy to scan.",
     description:
-      "A local-first concept for exploring disease-linked gene patterns through upload, clustering, and visual comparison."
+      "The CV and contact routes are designed to support serious opportunities without losing the character of the wider portfolio.",
+    href: "/cv",
+    action: "Open CV"
   }
 ];
 
 export default function HomePage() {
-  const featuredProjects = [
-    ...projects.biotech.filter((project) => featuredIds.has(project.id)),
-    ...projects.personal.filter((project) => featuredIds.has(project.id))
-  ];
+  const featuredProjects = allProjects.filter((project) => featuredIds.has(project.id));
 
   return (
     <>
@@ -49,83 +75,60 @@ export default function HomePage() {
       <div className="shell section-space space-y-16 md:space-y-20">
         <InstallPrompt />
 
-        <section
-          id="about"
-          className="grid gap-6 lg:grid-cols-[0.8fr_1.2fr]"
-        >
-          <div className="surface overflow-hidden p-4">
+        <section id="about" className="route-hero">
+          <div className="page-panel">
+            <SectionHeader
+              eyebrow="Systems lens"
+              title="The hub is meant to feel like a scientific signal surface, not a generic portfolio grid."
+              description="The through-line across the site is simple: complex systems become more useful once they are easier to inspect, explain, and interact with. That shows up in biotech tooling, signal visualisation, browser ML, and even the more playful experiments."
+            />
+            <div className="mt-8 grid gap-4 md:grid-cols-3">
+              <article className="signal-metric">
+                <p className="eyebrow">Current role</p>
+                <p className="mt-3 text-lg font-semibold">Bioprocessing Scientist</p>
+                <p className="mt-2 text-sm leading-6 text-muted-foreground">
+                  GMP operations, investigations, documentation, and cross-functional delivery.
+                </p>
+              </article>
+              <article className="signal-metric">
+                <p className="eyebrow">Portfolio instinct</p>
+                <p className="mt-3 text-lg font-semibold">Make hard signals legible</p>
+                <p className="mt-2 text-sm leading-6 text-muted-foreground">
+                  From EEG traces to gene networks to privacy-first browser inference.
+                </p>
+              </article>
+              <article className="signal-metric">
+                <p className="eyebrow">What this site is</p>
+                <p className="mt-3 text-lg font-semibold">CV PWA + project archive</p>
+                <p className="mt-2 text-sm leading-6 text-muted-foreground">
+                  A front door for tools, experiments, photos, and scientific product thinking.
+                </p>
+              </article>
+            </div>
+          </div>
+
+          <div className="signal-shell p-4">
             <img
               src={siteConfig.profileImage}
               alt="Prashant Umrekar portrait"
-              className="h-80 w-full rounded-[24px] object-cover"
+              className="h-full min-h-[420px] w-full rounded-[26px] object-cover"
               loading="lazy"
             />
-          </div>
-          <div className="flex flex-col justify-center gap-5">
-            <SectionHeader
-              eyebrow="Short about me"
-              title="Biotech is the day job. Systems thinking is the through-line."
-              description="I am drawn to work where messy biological, operational, or signal-heavy systems become clearer through better tools. Persona Hub is the front door to that ecosystem: scientific prototypes, standalone browser apps, photo work, and notes from the edge of biology, data, and interaction."
-            />
-            <div className="flex flex-wrap gap-3">
-              <Button
-                variant="outline"
-                onClick={() =>
-                  window.open(
-                    "https://github.com/prash-u",
-                    "_blank",
-                    "noopener,noreferrer"
-                  )
-                }
-              >
-                GitHub
-                <ExternalLink className="size-4" aria-hidden="true" />
-              </Button>
-              <Button
-                variant="outline"
-                onClick={() =>
-                  window.open(
-                    "https://www.linkedin.com/in/prashant-umrekar/",
-                    "_blank",
-                    "noopener,noreferrer"
-                  )
-                }
-              >
-                LinkedIn
-                <ExternalLink className="size-4" aria-hidden="true" />
-              </Button>
-              {siteConfig.instagramUrl ? (
-                <Button
-                  variant="outline"
-                  onClick={() =>
-                    window.open(
-                      siteConfig.instagramUrl,
-                      "_blank",
-                      "noopener,noreferrer"
-                    )
-                  }
-                >
-                  Instagram
-                  <ExternalLink className="size-4" aria-hidden="true" />
-                </Button>
-              ) : null}
-            </div>
           </div>
         </section>
 
         <section className="space-y-8">
           <SectionHeader
-            eyebrow="Currently building"
-            title="The projects I keep returning to between lab work, notes, and experiments."
-            description="The emphasis is less on launching a polished product and more on finding useful ways to make difficult signals, workflows, and visual ideas easier to explore."
+            eyebrow="In progress now"
+            title="The current energy is around signal-rich interfaces, local-first tools, and products that feel analytical instead of generic."
+            description="This strip is the most accurate picture of where attention is going right now: neural review, translational biology, browser vision, and a new collection-intelligence experiment."
           />
-          <div className="grid gap-4 md:grid-cols-3">
-            {currentlyBuilding.map((item) => (
-              <article key={item.title} className="surface p-6">
-                <h3 className="text-xl font-semibold">{item.title}</h3>
-                <p className="mt-3 text-sm leading-7 text-muted-foreground">
-                  {item.description}
-                </p>
+          <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+            {builderStrip.map((item) => (
+              <article key={item.title} className="page-panel">
+                <p className="eyebrow">{item.status}</p>
+                <h3 className="mt-4 text-2xl font-semibold tracking-tight">{item.title}</h3>
+                <p className="mt-4 text-sm leading-7 text-muted-foreground">{item.description}</p>
               </article>
             ))}
           </div>
@@ -133,54 +136,78 @@ export default function HomePage() {
 
         <section className="space-y-8">
           <SectionHeader
-            eyebrow="Life outside the lab"
-            title="A photo reel for everything that does not fit neatly into datasets."
-            description="Photography, travel, visual studies, and small moments worth keeping. The reel is curated from local images so it stays fast, reliable, and offline-friendly, with optional Instagram links per frame."
-          />
-          <PhotoReel items={projects.media} />
-        </section>
-
-        <section className="space-y-8">
-          <SectionHeader
             eyebrow="Selected work"
-            title="A few projects that best capture the overlap between biology, data, and interaction."
-            description="Neural Pulse anchors the signal side, BioBody Insights shows the body-atlas direction, Live Vision Model Lab proves the privacy-first browser-tooling angle, and Gene Expression Profiling frames the molecular roadmap."
+            title="The strongest overlap between biology, data, and interaction."
+            description="These projects are the clearest argument for the direction of the portfolio: scientific systems explained through more tactile, expressive browser-based surfaces."
           />
           <ProjectGrid items={featuredProjects} />
         </section>
 
-        <section className="surface flex flex-col gap-5 p-6 md:flex-row md:items-center md:justify-between">
+        <section className="grid gap-6 lg:grid-cols-2">
+          {routeCards.map((item) => (
+            <article key={item.href} className="page-panel">
+              <p className="eyebrow">{item.eyebrow}</p>
+              <h2 className="mt-4 font-display text-3xl leading-tight md:text-4xl">
+                {item.title}
+              </h2>
+              <p className="mt-4 max-w-2xl text-sm leading-7 text-muted-foreground">
+                {item.description}
+              </p>
+              <div className="mt-6">
+                <Button onClick={() => (window.location.href = withBasePath(item.href))}>
+                  {item.action}
+                  <ArrowRight className="size-4" aria-hidden="true" />
+                </Button>
+              </div>
+            </article>
+          ))}
+        </section>
+
+        <section className="space-y-8">
+          <SectionHeader
+            eyebrow="Visual notebook"
+            title="Photography sits here as the quieter counterpart to the data-heavy work."
+            description="The image side of the site is still part of the same system: composition, framing, atmosphere, and a sense of what is worth paying attention to."
+          />
+          <PhotoReel items={projects.media} />
+        </section>
+
+        <section className="page-panel flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
           <div className="space-y-3">
-            <p className="eyebrow">Elsewhere</p>
+            <p className="eyebrow">Next step</p>
             <h2 className="text-2xl font-semibold">
-              The full timeline lives in the CV. The rest of the archive lives
-              in Projects.
+              Use the project archive for depth, the scientific route for narrative, and the CV when you need the formal version.
             </h2>
             <p className="max-w-2xl text-sm leading-7 text-muted-foreground">
-              This homepage is deliberately about identity, curiosity, and the
-              shape of the work. For the fuller background, the dedicated CV and
-              project archive go deeper.
+              The homepage is intentionally selective. The rest of the hub is there for people who want the deeper story, the exact projects, or the recruiter-facing summary.
             </p>
           </div>
           <div className="flex flex-wrap gap-3">
-            <Button
-              onClick={() => (window.location.href = withBasePath("/cv"))}
-            >
-              Open CV
+            <Button onClick={() => (window.location.href = withBasePath("/projects"))}>
+              Full archive
             </Button>
             <Button
               variant="outline"
               onClick={() => (window.location.href = withBasePath("/contact"))}
             >
-              Get in Touch
+              Get in touch
             </Button>
             <Link
-              to="/projects"
+              to="/biotech"
               className="focus-ring inline-flex items-center gap-2 rounded-full border border-border/70 px-4 py-2 text-sm font-semibold"
             >
-              Project archive
-              <ArrowRight className="size-4" aria-hidden="true" />
+              Scientific work
+              <Sparkles className="size-4" aria-hidden="true" />
             </Link>
+            <Button
+              variant="ghost"
+              onClick={() =>
+                window.open("https://github.com/prash-u", "_blank", "noopener,noreferrer")
+              }
+            >
+              GitHub
+              <ExternalLink className="size-4" aria-hidden="true" />
+            </Button>
           </div>
         </section>
       </div>

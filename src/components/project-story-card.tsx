@@ -17,7 +17,7 @@ export function ProjectStoryCard({ item }: ProjectStoryCardProps) {
       : "Personal & Experimental";
 
   return (
-    <article className="surface overflow-hidden">
+    <article className="signal-shell overflow-hidden">
       <div className="grid gap-0 lg:grid-cols-[0.32fr_1fr]">
         <div className="relative aspect-[16/10] overflow-hidden lg:aspect-auto lg:min-h-full">
           <img

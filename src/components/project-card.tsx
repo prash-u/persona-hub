@@ -30,7 +30,7 @@ export function ProjectCard({ item }: ProjectCardProps) {
     <motion.article
       whileHover={{ y: -6 }}
       transition={{ duration: 0.24, ease: "easeOut" }}
-      className="surface group flex h-full flex-col overflow-hidden"
+      className="signal-shell group flex h-full flex-col overflow-hidden"
     >
       <div className="relative overflow-hidden">
         <img

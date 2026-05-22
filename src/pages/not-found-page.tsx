@@ -13,7 +13,7 @@ export default function NotFoundPage() {
         breadcrumbLabel="404"
       />
       <div className="shell flex min-h-[70vh] items-center justify-center py-16">
-        <div className="surface max-w-xl p-10 text-center">
+        <div className="page-panel max-w-xl text-center">
           <p className="eyebrow">404</p>
           <h1 className="font-display mt-4 text-4xl">This route is out of frame.</h1>
           <p className="text-muted-foreground mt-4 text-sm leading-7">

@@ -6,7 +6,7 @@ import { siteConfig } from "@/config/site";
 
 export function ContactForm() {
   return (
-    <div className="surface grid gap-8 p-6 lg:grid-cols-[1.2fr_0.8fr] lg:p-8">
+    <div className="signal-shell grid gap-8 p-6 lg:grid-cols-[1.2fr_0.8fr] lg:p-8">
       <form
         name="contact"
         method="POST"
@@ -92,14 +92,14 @@ export function ContactForm() {
           </Button>
         </div>
       </form>
-      <div className="bg-secondary/50 rounded-[26px] p-6">
+      <div className="rounded-[26px] border border-border/60 bg-background/55 p-6">
         <p className="eyebrow">Direct contact</p>
         <h3 className="mt-4 text-2xl font-semibold">Trusted, straightforward communication.</h3>
         <p className="text-muted-foreground mt-4 text-sm leading-6">
           This form is ready for Netlify Forms on static hosting. Use it for biotech collaboration ideas,
           software project enquiries, or roles that benefit from a mix of scientific operations and practical product building.
         </p>
-        <div className="mt-6 space-y-4 text-sm">
+        <div className="mt-6 grid gap-3 text-sm">
           <p>
             <span className="font-semibold">Email:</span> {siteConfig.email}
           </p>

@@ -191,6 +191,75 @@
       "year": 2026
     },
     {
+      "id": "network-pulse-analyzer",
+      "slug": "network-pulse-analyzer",
+      "title": "Network Pulse Analyzer",
+      "category": "biotech",
+      "featured": true,
+      "status": "Live",
+      "maturity": "Demo-ready",
+      "description": "Dark-first translational network analysis workspace for turning differential expression signals into interpretable biological stories.",
+      "longDescription": "Network Pulse Analyzer is an analytical surface for converting differential expression cohorts into readable network structure, pathway framing, hub discovery, evidence-linked comparison, and exportable report views without pretending to be a full omics ingestion pipeline.",
+      "tags": [
+        "Differential expression",
+        "Translational biology",
+        "Network analysis",
+        "Pathway interpretation",
+        "Scientific storytelling"
+      ],
+      "methods": [
+        "Force-directed networks",
+        "Pathway overlap review",
+        "Cross-cohort comparison",
+        "CSV intake",
+        "Markdown export",
+        "Print briefing"
+      ],
+      "whyBuilt": "I wanted a cleaner way to move from DEG lists toward something that felt discussion-ready for translational biology, biotech strategy, and internal review.",
+      "problem": "Gene-level differential expression outputs often stay fragmented across tables, enrichment screenshots, and disconnected narrative summaries.",
+      "approach": "Treat the network, pathway layer, and analyst framing as one coherent workspace so biological signals become easier to interpret and communicate.",
+      "whatWorksNow": [
+        "Built-in disease cohorts",
+        "Interactive network graph",
+        "Searchable gene and pathway panels",
+        "Browser-stored custom cohort intake",
+        "Compare mode across cohorts",
+        "Markdown, CSV, and print-ready exports"
+      ],
+      "whatILearned": [
+        "Interpretability matters as much as analytical density",
+        "Translational review benefits from explicit narrative framing",
+        "Compact demo datasets can still be credible if scope is clearly stated"
+      ],
+      "limitations": "The built-in cohorts are representative slices rather than full transcriptome-scale DEG tables, and the app is not a replacement for validated enrichment or clinical workflows.",
+      "nextSteps": "Broaden custom cohort support, improve evidence-linking, expand pathway depth, and refine the reporting layer for review meetings and slide export.",
+      "relatedSkills": [
+        "Gene expression analysis",
+        "Bioinformatics",
+        "Scientific communication",
+        "Data-rich UI design",
+        "Translational biology"
+      ],
+      "credibility": [
+        "Transparent scope limits",
+        "Differential expression framing",
+        "Report-ready analysis surface"
+      ],
+      "highlights": [
+        "Turns DEG cohorts into network and pathway stories",
+        "Includes browser-stored custom cohort intake and exportable briefing views"
+      ],
+      "repoUrl": "https://github.com/prash-u/network-pulse-analyzer",
+      "demoUrl": "https://network-pulse-analyzer.vercel.app",
+      "image": "/media/network-pulse-analyzer.svg",
+      "accent": "teal",
+      "privacyNote": "Custom cohorts stay in browser storage in the current prototype unless explicitly exported.",
+      "offlineCapable": false,
+      "clientSideOnly": true,
+      "year": 2026,
+      "githubRepo": "prash-u/network-pulse-analyzer"
+    },
+    {
       "id": "bioinformatics-sequence-alignment-tool",
       "slug": "bioinformatics-sequence-alignment-tool",
       "title": "Bioinformatics Sequence Alignment Tool",
@@ -422,7 +491,7 @@
         "COCO-SSD",
         "MobileNet",
         "Handpose",
-        "Face detection",
+        "Virtual puppeteering",
         "Face expression",
         "JSON/CSV export"
       ],
@@ -436,7 +505,7 @@
         "Cached model instances",
         "Export latest inference payload to JSON/CSV",
         "Local face-api weights",
-        "Models: COCO-SSD, MobileNet, Handpose, face detection, face expression"
+        "Models: COCO-SSD, MobileNet, Handpose, virtual puppeteering, face expression"
       ],
       "whatILearned": [
         "Privacy-first positioning matters",
@@ -470,6 +539,74 @@
       "clientSideOnly": true,
       "year": 2026,
       "githubRepo": "prash-u/live-vision-model-lab"
+    },
+    {
+      "id": "rare-signal",
+      "slug": "rare-signal",
+      "title": "RareSignal",
+      "category": "personal",
+      "featured": true,
+      "status": "Prototype",
+      "maturity": "Active prototype",
+      "description": "Local-first TCG collection intelligence prototype for scanning cards, confirming variants, tracking value, and exploring archive and market views.",
+      "longDescription": "RareSignal explores a deliberately different angle on card tooling: not an AR creature scanner, but a privacy-aware collection intelligence surface that combines browser-side identification workflows, archive structure, variant confirmation, mock market movement, and exportable collection data.",
+      "tags": [
+        "PWA",
+        "Collection intelligence",
+        "Computer vision",
+        "OCR",
+        "Data visualisation"
+      ],
+      "methods": [
+        "Local-first archive",
+        "Scanner UX",
+        "Variant confirmation",
+        "Mock market analytics",
+        "JSON/CSV import-export",
+        "localStorage prototype"
+      ],
+      "whyBuilt": "I wanted to explore how computer vision-adjacent workflows and local-first collection data could turn a messy card archive into something searchable, analysable, and genuinely fun to inspect.",
+      "problem": "Collector tools often split scanning, archive management, condition nuance, and value analysis into awkward disconnected workflows.",
+      "approach": "Use a product surface that feels more like collection intelligence: scan, confirm, archive, analyse, and export, while keeping the prototype local-first.",
+      "whatWorksNow": [
+        "Demo scanner interface",
+        "Variant confirmation banner",
+        "Archive and binder views",
+        "Mock market analytics and volatility panels",
+        "Collection insight summaries",
+        "Local JSON/CSV import-export placeholders"
+      ],
+      "whatILearned": [
+        "Consumer tools still benefit from rigorous systems thinking",
+        "Local-first positioning can be compelling outside scientific tooling",
+        "Archive structure and explanation matter as much as the scanner moment"
+      ],
+      "limitations": "Scanner, OCR, and price intelligence are still simulated, and the collection data model is prototype-only.",
+      "nextSteps": "Add real browser camera capture, OCR for set and card markers, verified metadata integration, live or imported price history, IndexedDB storage, and multi-card desk scans.",
+      "relatedSkills": [
+        "Client-side product design",
+        "Data modelling",
+        "Computer vision thinking",
+        "PWA architecture",
+        "Interaction design"
+      ],
+      "credibility": [
+        "Local-first collection workflow",
+        "Clear prototype limits",
+        "Strong product-systems framing"
+      ],
+      "highlights": [
+        "Reframes card tooling as collection intelligence rather than novelty scanning",
+        "Combines scanner UX, archive structure, and market-style views in one prototype"
+      ],
+      "repoUrl": "https://github.com/prash-u/rare-signal",
+      "image": "/media/rare-signal.svg",
+      "accent": "magenta",
+      "privacyNote": "Collection data stays in-browser in the current MVP unless the user exports it.",
+      "offlineCapable": false,
+      "clientSideOnly": true,
+      "year": 2026,
+      "githubRepo": "prash-u/rare-signal"
     },
     {
       "id": "pokemon-card-scanner",

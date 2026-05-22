@@ -8,6 +8,8 @@ import type { ProjectItem } from "@/lib/types";
 
 const featuredIds = new Set([
   "neural-pulse",
+  "network-pulse-analyzer",
+  "rare-signal",
   "gene-expression-profiling",
   "live-vision-model-lab"
 ]);
@@ -92,19 +94,31 @@ export default function ProjectsPage() {
         breadcrumbLabel="Projects"
       />
       <div className="shell section-space space-y-14 md:space-y-16">
-        <section className="grid gap-6 lg:grid-cols-[1.05fr_0.95fr] lg:items-end">
+        <section className="route-hero">
           <SectionHeader
             eyebrow="Projects"
             title="A story archive of tools, experiments, and systems-in-progress."
-            description="Some of these projects are grounded in real lab workflows. Others are lighter experiments shaped by the same instinct: if a process is difficult to understand, there is usually a better way to see it."
+            description="Some routes are grounded in real lab or translational workflows. Others are lighter experiments shaped by the same instinct: if a process is difficult to understand, there is usually a better way to see it."
           />
-          <div className="surface space-y-3 p-6">
-            <p className="eyebrow">A note on scope</p>
+          <div className="page-panel space-y-4">
+            <p className="eyebrow">How to read the archive</p>
             <p className="text-sm leading-7 text-muted-foreground">
-              I would rather show the shape of the work honestly than pretend
-              every idea is finished. Most of the projects here are prototypes,
-              concepts, or evolving browser-first tools.
+              This route is intentionally honest about maturity. Live and demo-ready work sits next to active prototypes and planned concepts so the portfolio stays credible rather than overproduced.
             </p>
+            <div className="grid gap-3 sm:grid-cols-3">
+              <div className="signal-metric">
+                <p className="eyebrow">Live</p>
+                <p className="mt-2 text-lg font-semibold">Deployed apps</p>
+              </div>
+              <div className="signal-metric">
+                <p className="eyebrow">Prototype</p>
+                <p className="mt-2 text-lg font-semibold">Meaningful interaction</p>
+              </div>
+              <div className="signal-metric">
+                <p className="eyebrow">Planned</p>
+                <p className="mt-2 text-lg font-semibold">Clear direction</p>
+              </div>
+            </div>
           </div>
         </section>
 

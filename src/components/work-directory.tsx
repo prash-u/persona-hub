@@ -52,14 +52,11 @@ export function WorkDirectory({ mode }: WorkDirectoryProps) {
 
   const neuralPulse =
     biotechProjects.find((project) => project.id === "neural-pulse") ?? biotechProjects[0];
+  const networkPulse =
+    biotechProjects.find((project) => project.id === "network-pulse-analyzer");
   const personalLead =
-    personalProjects.find((project) => project.id === "live-vision-model-lab") ?? personalProjects[0];
+    personalProjects.find((project) => project.id === "rare-signal") ?? personalProjects[0];
   const reelItem = projects.media.find((item) => item.category === "reel") ?? projects.media[0];
-
-  const groupedBiotech = {
-    featured: biotechProjects.filter((project) => project.featured && project.id !== neuralPulse?.id),
-    archive: biotechProjects.filter((project) => project.id !== neuralPulse?.id)
-  };
 
   const neuralSystems = biotechProjects.filter((project) =>
     ["neural-pulse"].includes(project.id)
@@ -67,6 +64,7 @@ export function WorkDirectory({ mode }: WorkDirectoryProps) {
   const molecularSystems = biotechProjects.filter((project) =>
     [
       "biobody-insights",
+      "network-pulse-analyzer",
       "gene-expression-profiling",
       "bioinformatics-sequence-alignment-tool",
       "microarray-data-processor"
@@ -90,7 +88,7 @@ export function WorkDirectory({ mode }: WorkDirectoryProps) {
   const renderOverview = (
     <section className="grid gap-4 lg:grid-cols-3">
       {statusCounts.map((item) => (
-        <article key={item.key} className="surface p-6">
+        <article key={item.key} className="page-panel">
           <p className="eyebrow">{item.label}</p>
           <p className="font-display mt-4 text-4xl">
             {allProjects.filter((project) => project.status === item.key).length}
@@ -117,13 +115,13 @@ export function WorkDirectory({ mode }: WorkDirectoryProps) {
           />
         ) : null}
         <div className="grid gap-4">
-          <article className="surface overflow-hidden p-6">
-            <p className="eyebrow">Photo reel from Instagram</p>
+          <article className="page-panel overflow-hidden">
+            <p className="eyebrow">Visual notebook</p>
             <h3 className="mt-3 text-2xl font-semibold">
-              A cleaner showcase layer for visual work and creative output.
+              The image route keeps the portfolio from becoming all data and no atmosphere.
             </h3>
             <p className="text-muted-foreground mt-3 text-sm leading-7">
-              The media route is positioned as a personal visual showcase, not a disconnected gallery. It is the natural home for a curated Instagram-derived reel and selected photography.
+              The media route is the quieter counterpart to the scientific archive: still curated, still intentional, but tuned around observation and image-making.
             </p>
             <div className="mt-5 overflow-hidden rounded-[24px] border border-border/70">
               <img
@@ -147,11 +145,21 @@ export function WorkDirectory({ mode }: WorkDirectoryProps) {
               ) : null}
             </div>
           </article>
+          {networkPulse ? (
+            <article className="page-panel">
+              <p className="eyebrow">Translational systems</p>
+              <h3 className="mt-3 text-xl font-semibold">{networkPulse.title}</h3>
+              <p className="text-muted-foreground mt-3 text-sm leading-7">{networkPulse.description}</p>
+            </article>
+          ) : null}
           {featuredProjects
-            .filter((project) => project.id !== neuralPulse?.id)
-            .slice(0, 3)
+            .filter(
+              (project) =>
+                project.id !== neuralPulse?.id && project.id !== networkPulse?.id
+            )
+            .slice(0, 2)
             .map((project, index) => (
-              <article key={project.id} className="surface p-5">
+              <article key={project.id} className="page-panel">
                 <p className="eyebrow">0{index + 2} / Selected</p>
                 <h3 className="mt-3 text-xl font-semibold">{project.title}</h3>
                 <p className="text-muted-foreground mt-3 text-sm leading-7">{project.description}</p>
@@ -231,7 +239,7 @@ export function WorkDirectory({ mode }: WorkDirectoryProps) {
 
       {mode === "all" ? (
         <>
-          <section className="surface flex flex-col gap-5 p-6 md:flex-row md:items-center md:justify-between">
+          <section className="page-panel flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
             <div className="max-w-3xl">
               <p className="eyebrow">Project view</p>
               <p className="mt-3 text-lg font-semibold">
